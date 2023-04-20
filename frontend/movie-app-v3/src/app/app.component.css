@@ -1,0 +1,18 @@
+.search-bar{
+    border: 1px solid white;
+    color: white;
+}
+.search-bar::placeholder { 
+    color: white;
+    opacity: 0.8; 
+  }
+
+.search-btn{
+    border: 1px solid white;
+    color: white;
+}
+.containerClass{
+    margin-top: 40px;
+    padding: 20px 50px;
+    /* background-color: aquamarine; */
+}

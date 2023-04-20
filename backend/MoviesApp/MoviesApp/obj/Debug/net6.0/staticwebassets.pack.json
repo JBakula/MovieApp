@@ -1,0 +1,117 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\00cf1a5f6eae45d69e9d7713cf8f81b3_MV5BOTY4YjI2N2MtYmFlMC00ZjcyLTg3YjEtMDQyM2ZjYzQ5YWFkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg",
+      "PackagePath": "staticwebassets\\images\\00cf1a5f6eae45d69e9d7713cf8f81b3_MV5BOTY4YjI2N2MtYmFlMC00ZjcyLTg3YjEtMDQyM2ZjYzQ5YWFkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\1dc712744d36482594d0ed5cc31748fa_46529_pulp_fiction.jpg",
+      "PackagePath": "staticwebassets\\images\\1dc712744d36482594d0ed5cc31748fa_46529_pulp_fiction.jpg"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\2574250faf724b0dbbdbf4e8706e3b68_Schindlers_list-1-.jpg",
+      "PackagePath": "staticwebassets\\images\\2574250faf724b0dbbdbf4e8706e3b68_Schindlers_list-1-.jpg"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\2a0e1246ece14738b0f28af3ca42d6c3_MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_FMjpg_UX1000_.jpg",
+      "PackagePath": "staticwebassets\\images\\2a0e1246ece14738b0f28af3ca42d6c3_MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_FMjpg_UX1000_.jpg"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\2c9f47b04847428795cec44108b1aa22_lord-of-the-rings-return-of-the-king.webp",
+      "PackagePath": "staticwebassets\\images\\2c9f47b04847428795cec44108b1aa22_lord-of-the-rings-return-of-the-king.webp"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\3dd3c86853fd4fa0a0a8201d3f13f177_MV5BMTczMjQ3NTcwMl5BMl5BanBnXkFtZTcwMzUzNDMyMw@@._V1_.jpg",
+      "PackagePath": "staticwebassets\\images\\3dd3c86853fd4fa0a0a8201d3f13f177_MV5BMTczMjQ3NTcwMl5BMl5BanBnXkFtZTcwMzUzNDMyMw@@._V1_.jpg"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\40261d30b3af48ccb7f0a6dd23b42fb8_aff504599ef9efa3-600x338.jpg",
+      "PackagePath": "staticwebassets\\images\\40261d30b3af48ccb7f0a6dd23b42fb8_aff504599ef9efa3-600x338.jpg"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\5539c3c4683d454982d18d8c33c09573_MV5BMTg4ODEwMTg1N15BMl5BanBnXkFtZTcwOTk4OTIyNw@@._V1_.jpg",
+      "PackagePath": "staticwebassets\\images\\5539c3c4683d454982d18d8c33c09573_MV5BMTg4ODEwMTg1N15BMl5BanBnXkFtZTcwOTk4OTIyNw@@._V1_.jpg"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\67f6af3f290c4953a8d4f8b6293a110b_TELEMMGLPICT000000687552_trans_NvBQzQNjv4BqqVzuuqpFlyLIwiB6NTmJwSX5rhseiWKOo9p9OQ-ymek.jpeg",
+      "PackagePath": "staticwebassets\\images\\67f6af3f290c4953a8d4f8b6293a110b_TELEMMGLPICT000000687552_trans_NvBQzQNjv4BqqVzuuqpFlyLIwiB6NTmJwSX5rhseiWKOo9p9OQ-ymek.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\76773125de7d4ccbafd0adb5346f812a_Return-of-the-King.png",
+      "PackagePath": "staticwebassets\\images\\76773125de7d4ccbafd0adb5346f812a_Return-of-the-King.png"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\7c41981d52964b939d43a011fc2dfece_shawshank-redemption-759.jpg",
+      "PackagePath": "staticwebassets\\images\\7c41981d52964b939d43a011fc2dfece_shawshank-redemption-759.jpg"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\876e894a27fd4450a70c70b68ef12972_the-lord-of-the-rings-the-return-of-the-king-59b7d7a3775bf_dhkf.jpg",
+      "PackagePath": "staticwebassets\\images\\876e894a27fd4450a70c70b68ef12972_the-lord-of-the-rings-the-return-of-the-king-59b7d7a3775bf_dhkf.jpg"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\898806c59ce746f6a295d517ee71491a_production-actually-ended-twice-1617827765.jpg",
+      "PackagePath": "staticwebassets\\images\\898806c59ce746f6a295d517ee71491a_production-actually-ended-twice-1617827765.jpg"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\98da3bc5f800406494dbdb5ea18ad13d_theprestige.jpg",
+      "PackagePath": "staticwebassets\\images\\98da3bc5f800406494dbdb5ea18ad13d_theprestige.jpg"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\9d19fae2751f4dbd87ca873201e962d8_MV5BMjAyMjUyNzg1Ml5BMl5BanBnXkFtZTgwNzAwMzg5MTE@._V1_.jpg",
+      "PackagePath": "staticwebassets\\images\\9d19fae2751f4dbd87ca873201e962d8_MV5BMjAyMjUyNzg1Ml5BMl5BanBnXkFtZTgwNzAwMzg5MTE@._V1_.jpg"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\a43460056c224a4ab5c5fc9376a773c3_1629185672147.jpg",
+      "PackagePath": "staticwebassets\\images\\a43460056c224a4ab5c5fc9376a773c3_1629185672147.jpg"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\addc9c70444048d5bd76080878c2d864_b51aab85720086a24244.jpeg",
+      "PackagePath": "staticwebassets\\images\\addc9c70444048d5bd76080878c2d864_b51aab85720086a24244.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\b76aa2646a57421a926760f06929f513_schindler-s-list-original2.jpg",
+      "PackagePath": "staticwebassets\\images\\b76aa2646a57421a926760f06929f513_schindler-s-list-original2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\cb1b50d50c184e388aa0d98f296ca8b4_MV5BMTQ2MDk3ODAwMV5BMl5BanBnXkFtZTgwNzE4OTEwMjE@._V1_.jpg",
+      "PackagePath": "staticwebassets\\images\\cb1b50d50c184e388aa0d98f296ca8b4_MV5BMTQ2MDk3ODAwMV5BMl5BanBnXkFtZTgwNzE4OTEwMjE@._V1_.jpg"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\cb54f0311c2545ddb3efca9426fa507f_MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+      "PackagePath": "staticwebassets\\images\\cb54f0311c2545ddb3efca9426fa507f_MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\d36795b4c45e44129aa3e7b262422506_batman-begins-bfi-00n-a58.jpg",
+      "PackagePath": "staticwebassets\\images\\d36795b4c45e44129aa3e7b262422506_batman-begins-bfi-00n-a58.jpg"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\d563e965310347f9ab0f5f783574954c_batman_begins_banner.jpeg",
+      "PackagePath": "staticwebassets\\images\\d563e965310347f9ab0f5f783574954c_batman_begins_banner.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\d7065964c49c404cb6ebeabdcfc80194_740x438-schindler-s-list-02-20210123090655.jpg",
+      "PackagePath": "staticwebassets\\images\\d7065964c49c404cb6ebeabdcfc80194_740x438-schindler-s-list-02-20210123090655.jpg"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\f5c4f207ade143e9940c9895a4f4e3a0_shawshankredemption.jpg",
+      "PackagePath": "staticwebassets\\images\\f5c4f207ade143e9940c9895a4f4e3a0_shawshankredemption.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.MoviesApp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.MoviesApp.props",
+      "PackagePath": "build\\MoviesApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.MoviesApp.props",
+      "PackagePath": "buildMultiTargeting\\MoviesApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.MoviesApp.props",
+      "PackagePath": "buildTransitive\\MoviesApp.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -1,0 +1,8 @@
+{{movieDetails|json}}
+
+<p *ngFor="let actor of movieDetails.actors" >
+    <span *ngIf="actor.star">
+    {{actor.actorName}}
+
+    </span>
+</p>
