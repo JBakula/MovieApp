@@ -20,8 +20,10 @@ namespace MoviesApp.Services.CategoryRepo
             var categoriesDto = _mapper.Map<List<CategoryResponse>>(categories);
             return categoriesDto;
         }
-        public ICollection<MoviesResponse> GetMoviesByCategoryId(int categoryId) 
+        public MoviesResponsePaginated GetMoviesByCategoryId(int categoryId, int page) 
         {
+            var numberOfMoviesPerPage = 8f;
+            var numberOfPages = NumberOfPages(categoryId,numberOfMoviesPerPage);
             var movies = _context.CategoryMovies.Where(c=>c.CategoryId == categoryId)
                                                 .Select(c => new
                                                 {
@@ -43,9 +45,15 @@ namespace MoviesApp.Services.CategoryRepo
                     Description = movie.Description
                 });
             }
-            return moviesResponseList;
-                                          
-            
+            var moviesResponsePaginated = new MoviesResponsePaginated()
+            {
+                Movies = moviesResponseList,
+                CurrentPage = page,
+                NumberOfPages = (int)numberOfPages
+            };
+            return moviesResponsePaginated;
+
+
         }
         public bool IsCategoryExist(int id)
         {
@@ -61,6 +69,10 @@ namespace MoviesApp.Services.CategoryRepo
             _context.Categories.Add(newCategory);
             _context.SaveChanges();
             return true;
+        }
+        public double NumberOfPages(int categoryId,float numberofItemsPerPage)
+        {
+            return Math.Ceiling(_context.CategoryMovies.Where(cm=>cm.CategoryId == categoryId).Count() / numberofItemsPerPage);
         }
 
 

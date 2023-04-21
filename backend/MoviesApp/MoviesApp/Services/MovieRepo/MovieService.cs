@@ -108,10 +108,13 @@ namespace MoviesApp.Services.MovieRepo
             }
         }
 
-        public MoviesResponsePaginated GetMovies(int page)
+        public MoviesResponsePaginated GetMovies(int page, string ordering)
         {
+           
             var numberOfMoviesPerPage = 8f;
             var numberOfPages = NumberOfPages(numberOfMoviesPerPage);
+
+
             var movies = _context.Movies.OrderBy(m => m.MovieName)
                                .Skip((page - 1) * (int)numberOfPages)
                                .Take((int)numberOfMoviesPerPage)
@@ -139,12 +142,14 @@ namespace MoviesApp.Services.MovieRepo
                     Description = movie.Description
                 });
             }
+            
             var moviesResponsePaginated = new MoviesResponsePaginated()
             {
                 Movies = moviesResponeList,
                 CurrentPage = page,
                 NumberOfPages = (int)numberOfPages
             };
+            
             return moviesResponsePaginated;
                                
             
@@ -239,26 +244,50 @@ namespace MoviesApp.Services.MovieRepo
             return _context.Movies.Where(m=>m.MovieId==id).Any();
         }
 
-        public ICollection<MoviesSearchDTO> GetMovieBySearchTerm(string searchTerm)
+        public MoviesResponsePaginated GetMovieBySearchTerm(string searchTerm,int page)
         {
-            
+            var numberOfMoviesPerPage = 8f;
+            var numberOfPages = NumberOfPages(numberOfMoviesPerPage);
             var movies = _context.Movies.Where(m => (m.MovieName.ToLower()).Contains(searchTerm.ToLower())
                                                     ||(m.Director.DirectorName.ToLower().Contains(searchTerm.ToLower()))
-            ).ToList();
-                            
+            ).Skip((page - 1) * (int)numberOfPages)
+                               .Take((int)numberOfMoviesPerPage)
+                               .Select(m => new
+                               {
+                                   m.MovieId,
+                                   m.MovieName,
+                                   m.CoverImage,
+                                   m.Year,
+                                   m.Description
+
+                               }).ToList();
 
 
 
-            var moviesResponseList = new List<MoviesSearchDTO>();
-            foreach(var movie in movies)
+
+            var moviesResponeList = new List<MoviesResponse>();
+            foreach (var movie in movies)
             {
-                moviesResponseList.Add(new MoviesSearchDTO()
+                var rating = CountMovieRating(movie.MovieId);
+                moviesResponeList.Add(new MoviesResponse()
                 {
                     MovieId = movie.MovieId,
-                    MovieName = movie.MovieName
+                    MovieName = movie.MovieName,
+                    Rating = rating,
+                    Year = movie.Year,
+                    CoverImage = movie.CoverImage,
+                    Description = movie.Description
                 });
             }
-            return moviesResponseList;
+
+            var moviesResponsePaginated = new MoviesResponsePaginated()
+            {
+                Movies = moviesResponeList,
+                CurrentPage = page,
+                NumberOfPages = (int)numberOfPages
+            };
+
+            return moviesResponsePaginated;
         }
 
         public MoviesResponsePaginated GetMoviesOrderedByYear(int page)

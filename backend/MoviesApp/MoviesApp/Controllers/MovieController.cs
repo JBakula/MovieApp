@@ -16,10 +16,10 @@ namespace MoviesApp.Controllers
         }
 
         [HttpGet]
-        [Route("{page:int}")]
-        public IActionResult GetMovies([FromRoute]int page)
+        
+        public IActionResult GetMovies([FromQuery]int page = 1, [FromQuery] string ordering="Name")
         {
-            var movies = _movieService.GetMovies(page);
+            var movies = _movieService.GetMovies(page, ordering);
             if(movies!=null)
             {
                 return Ok(movies);
@@ -56,10 +56,10 @@ namespace MoviesApp.Controllers
             return Ok(_movieService.GetMovieDetails(id));
         }
         [HttpGet]
-        [Route("search/{term}")]
-        public IActionResult GetMoviesBySearchTerm(string term)
+        [Route("search")]
+        public IActionResult GetMoviesBySearchTerm([FromQuery]string term, [FromQuery] int page)
         {
-            return Ok(_movieService.GetMovieBySearchTerm(term));
+            return Ok(_movieService.GetMovieBySearchTerm(term,page));
         }
         [HttpGet]
         [Route("year/asc/{page:int}")]

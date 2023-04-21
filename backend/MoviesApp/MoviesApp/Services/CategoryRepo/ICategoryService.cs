@@ -6,7 +6,7 @@ namespace MoviesApp.Services.CategoryRepo
     public interface ICategoryService
     {
         ICollection<CategoryResponse> GetCategories();
-        ICollection<MoviesResponse> GetMoviesByCategoryId(int categoryId);
+        MoviesResponsePaginated GetMoviesByCategoryId(int categoryId,int page);
         bool IsCategoryExist(int id);
         bool IsCategoryNameAlreadExist(string name);
         bool AddCategory(CategoryRequest categoryRequest);

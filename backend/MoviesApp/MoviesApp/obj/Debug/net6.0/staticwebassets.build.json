@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "CDdbb4mzvde8FwTUhP9f6XHafPUqxQo0pj8IWp9wPdg=",
+  "Hash": "0tEyZJRGS1nPE4DiQphA8J5sk6/07rQqTq3leKty4wo=",
   "Source": "MoviesApp",
   "BasePath": "_content/MoviesApp",
   "Mode": "Default",
@@ -32,6 +32,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\00cf1a5f6eae45d69e9d7713cf8f81b3_MV5BOTY4YjI2N2MtYmFlMC00ZjcyLTg3YjEtMDQyM2ZjYzQ5YWFkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\04223862346c4f1eba7ccf1c85d83e9b_saving-private-ryan.webp",
+      "SourceId": "MoviesApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\",
+      "BasePath": "_content/MoviesApp",
+      "RelativePath": "images/04223862346c4f1eba7ccf1c85d83e9b_saving-private-ryan.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\04223862346c4f1eba7ccf1c85d83e9b_saving-private-ryan.webp"
+    },
+    {
+      "Identity": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\1d17b2ada08f433ba0af18d78141f10c_Saving-Pvt-Ryan-CTS725-Featured.webp",
+      "SourceId": "MoviesApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\",
+      "BasePath": "_content/MoviesApp",
+      "RelativePath": "images/1d17b2ada08f433ba0af18d78141f10c_Saving-Pvt-Ryan-CTS725-Featured.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\1d17b2ada08f433ba0af18d78141f10c_Saving-Pvt-Ryan-CTS725-Featured.webp"
     },
     {
       "Identity": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\1dc712744d36482594d0ed5cc31748fa_46529_pulp_fiction.jpg",
@@ -102,6 +136,40 @@
       "OriginalItemSpec": "wwwroot\\images\\2c9f47b04847428795cec44108b1aa22_lord-of-the-rings-return-of-the-king.webp"
     },
     {
+      "Identity": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\368d92fadc6540078ff229ea78b02077_gf63idlewild-main1.jpg",
+      "SourceId": "MoviesApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\",
+      "BasePath": "_content/MoviesApp",
+      "RelativePath": "images/368d92fadc6540078ff229ea78b02077_gf63idlewild-main1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\368d92fadc6540078ff229ea78b02077_gf63idlewild-main1.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\3af5b609e8e8445fa8577fa989e25665_poster-goodfellas.jpg",
+      "SourceId": "MoviesApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\",
+      "BasePath": "_content/MoviesApp",
+      "RelativePath": "images/3af5b609e8e8445fa8577fa989e25665_poster-goodfellas.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\3af5b609e8e8445fa8577fa989e25665_poster-goodfellas.jpg"
+    },
+    {
       "Identity": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\3dd3c86853fd4fa0a0a8201d3f13f177_MV5BMTczMjQ3NTcwMl5BMl5BanBnXkFtZTcwMzUzNDMyMw@@._V1_.jpg",
       "SourceId": "MoviesApp",
       "SourceType": "Discovered",
@@ -134,6 +202,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\40261d30b3af48ccb7f0a6dd23b42fb8_aff504599ef9efa3-600x338.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\42e1402dcc5c4769bee4a701339b61af_MV5BZjhkMDM4MWItZTVjOC00ZDRhLThmYTAtM2I5NzBmNmNlMzI1XkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_FMjpg_UX1000_.jpg",
+      "SourceId": "MoviesApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\",
+      "BasePath": "_content/MoviesApp",
+      "RelativePath": "images/42e1402dcc5c4769bee4a701339b61af_MV5BZjhkMDM4MWItZTVjOC00ZDRhLThmYTAtM2I5NzBmNmNlMzI1XkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_FMjpg_UX1000_.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\42e1402dcc5c4769bee4a701339b61af_MV5BZjhkMDM4MWItZTVjOC00ZDRhLThmYTAtM2I5NzBmNmNlMzI1XkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_FMjpg_UX1000_.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\462396e924a248299bdb1bfd09a0e80d_matrix-red-pill.webp",
+      "SourceId": "MoviesApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\",
+      "BasePath": "_content/MoviesApp",
+      "RelativePath": "images/462396e924a248299bdb1bfd09a0e80d_matrix-red-pill.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\462396e924a248299bdb1bfd09a0e80d_matrix-red-pill.webp"
     },
     {
       "Identity": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\5539c3c4683d454982d18d8c33c09573_MV5BMTg4ODEwMTg1N15BMl5BanBnXkFtZTcwOTk4OTIyNw@@._V1_.jpg",
@@ -204,6 +306,23 @@
       "OriginalItemSpec": "wwwroot\\images\\7c41981d52964b939d43a011fc2dfece_shawshank-redemption-759.jpg"
     },
     {
+      "Identity": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\854ec0afd06449b08940be02f2d87d04_MV5BMTU5NTA0OTIxNF5BMl5BanBnXkFtZTcwNjI4MTc4Mw@@._V1_.jpg",
+      "SourceId": "MoviesApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\",
+      "BasePath": "_content/MoviesApp",
+      "RelativePath": "images/854ec0afd06449b08940be02f2d87d04_MV5BMTU5NTA0OTIxNF5BMl5BanBnXkFtZTcwNjI4MTc4Mw@@._V1_.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\854ec0afd06449b08940be02f2d87d04_MV5BMTU5NTA0OTIxNF5BMl5BanBnXkFtZTcwNjI4MTc4Mw@@._V1_.jpg"
+    },
+    {
       "Identity": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\876e894a27fd4450a70c70b68ef12972_the-lord-of-the-rings-the-return-of-the-king-59b7d7a3775bf_dhkf.jpg",
       "SourceId": "MoviesApp",
       "SourceType": "Discovered",
@@ -255,6 +374,23 @@
       "OriginalItemSpec": "wwwroot\\images\\98da3bc5f800406494dbdb5ea18ad13d_theprestige.jpg"
     },
     {
+      "Identity": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\9ca869745a6141288e5d89236212bf72_GF_main-3.jpg",
+      "SourceId": "MoviesApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\",
+      "BasePath": "_content/MoviesApp",
+      "RelativePath": "images/9ca869745a6141288e5d89236212bf72_GF_main-3.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\9ca869745a6141288e5d89236212bf72_GF_main-3.jpg"
+    },
+    {
       "Identity": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\9d19fae2751f4dbd87ca873201e962d8_MV5BMjAyMjUyNzg1Ml5BMl5BanBnXkFtZTgwNzAwMzg5MTE@._V1_.jpg",
       "SourceId": "MoviesApp",
       "SourceType": "Discovered",
@@ -270,6 +406,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\9d19fae2751f4dbd87ca873201e962d8_MV5BMjAyMjUyNzg1Ml5BMl5BanBnXkFtZTgwNzAwMzg5MTE@._V1_.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\a05e556d9f824fd892d1988495fc9462_MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg",
+      "SourceId": "MoviesApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\",
+      "BasePath": "_content/MoviesApp",
+      "RelativePath": "images/a05e556d9f824fd892d1988495fc9462_MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\a05e556d9f824fd892d1988495fc9462_MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg"
     },
     {
       "Identity": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\a43460056c224a4ab5c5fc9376a773c3_1629185672147.jpg",
@@ -323,6 +476,23 @@
       "OriginalItemSpec": "wwwroot\\images\\b76aa2646a57421a926760f06929f513_schindler-s-list-original2.jpg"
     },
     {
+      "Identity": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\be0316c44ebe440b93464a79138c01c6_MV5BN2ZkY2E2ODYtZTY1MC00NTAzLWJhNDUtNzAyNTcyZTcwZmE3XkEyXkFqcGdeQXVyMDc2NTEzMw@@._V1_.jpg",
+      "SourceId": "MoviesApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\",
+      "BasePath": "_content/MoviesApp",
+      "RelativePath": "images/be0316c44ebe440b93464a79138c01c6_MV5BN2ZkY2E2ODYtZTY1MC00NTAzLWJhNDUtNzAyNTcyZTcwZmE3XkEyXkFqcGdeQXVyMDc2NTEzMw@@._V1_.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\be0316c44ebe440b93464a79138c01c6_MV5BN2ZkY2E2ODYtZTY1MC00NTAzLWJhNDUtNzAyNTcyZTcwZmE3XkEyXkFqcGdeQXVyMDc2NTEzMw@@._V1_.jpg"
+    },
+    {
       "Identity": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\cb1b50d50c184e388aa0d98f296ca8b4_MV5BMTQ2MDk3ODAwMV5BMl5BanBnXkFtZTgwNzE4OTEwMjE@._V1_.jpg",
       "SourceId": "MoviesApp",
       "SourceType": "Discovered",
@@ -355,6 +525,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\cb54f0311c2545ddb3efca9426fa507f_MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\d2d8a690fe944446bb13a590777a629c_13gangster-movies1-mediumSquareAt3X-v2.jpg",
+      "SourceId": "MoviesApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\",
+      "BasePath": "_content/MoviesApp",
+      "RelativePath": "images/d2d8a690fe944446bb13a590777a629c_13gangster-movies1-mediumSquareAt3X-v2.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\d2d8a690fe944446bb13a590777a629c_13gangster-movies1-mediumSquareAt3X-v2.jpg"
     },
     {
       "Identity": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\d36795b4c45e44129aa3e7b262422506_batman-begins-bfi-00n-a58.jpg",
@@ -423,6 +610,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\f5c4f207ade143e9940c9895a4f4e3a0_shawshankredemption.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\fa65d2daaf614a968d71c99a8dddbb8b_5e31d435ab49fd290b1ed218.webp",
+      "SourceId": "MoviesApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\",
+      "BasePath": "_content/MoviesApp",
+      "RelativePath": "images/fa65d2daaf614a968d71c99a8dddbb8b_5e31d435ab49fd290b1ed218.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\fa65d2daaf614a968d71c99a8dddbb8b_5e31d435ab49fd290b1ed218.webp"
     }
   ]
 }

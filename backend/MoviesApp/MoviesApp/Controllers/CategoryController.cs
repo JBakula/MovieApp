@@ -21,13 +21,14 @@ namespace MoviesApp.Controllers
         }
         [HttpGet]
         [Route("{id:int}")]
-        public IActionResult GetMoviesByCategoryId([FromRoute] int id)
+        public IActionResult GetMoviesByCategoryId([FromRoute]int id, [FromQuery]int page=1)
         {
+            
             if (!_categoryService.IsCategoryExist(id))
             {
                 return NotFound("Kategorija ne postoji");
             }
-            return Ok(_categoryService.GetMoviesByCategoryId(id));
+            return Ok(_categoryService.GetMoviesByCategoryId(id,page));
         }
         [HttpPost]
         public IActionResult AddCategories(CategoryRequest categoryRequest)
