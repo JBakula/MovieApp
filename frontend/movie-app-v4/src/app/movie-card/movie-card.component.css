@@ -1,0 +1,30 @@
+.cardClass{
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    border: 1px solid grey;
+    border-radius: 6px;
+    min-height: 450px;
+}
+.image-div{
+    height: 250px;
+}
+.image{
+    width: 100%;
+    height: 100%;
+    object-fit: center;
+}
+.info-div{
+   flex: 1;
+   display: flex;
+   flex-direction: column;
+   
+   padding: 10px 10px;
+}
+.title-div{
+    display: flex;
+    justify-content: space-between;
+}
+.description{
+    font-size: 14px;
+}

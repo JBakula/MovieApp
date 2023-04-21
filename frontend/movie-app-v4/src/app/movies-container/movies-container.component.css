@@ -1,0 +1,21 @@
+.moviesContainerClass{
+    display: flex;
+    flex-direction: column;
+}
+.cards-container{
+    width: 100%;
+}
+.pagination-container{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+
+}
+.pager{
+    color: black;
+    
+}
+.pager-div{
+    border: 1px solid black;
+    border-radius: 5px;
+}

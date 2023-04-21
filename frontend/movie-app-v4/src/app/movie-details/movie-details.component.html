@@ -1,0 +1,6 @@
+{{movieDetails|json}}
+<p *ngFor="let category of movieDetails.categories">
+    <button routerLink="/category/{{category.categoryId}}">
+        {{category.categoryName}}
+    </button>
+</p>

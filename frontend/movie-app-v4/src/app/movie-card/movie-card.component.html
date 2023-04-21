@@ -1,0 +1,16 @@
+<div class="cardClass" routerLink="/details/{{data.movieId}}"  >
+    <div class="image-div">
+      <img class="image" src="{{defaultPath+data.coverImage}}" alt="">
+      
+    </div>
+    <div class="info-div">
+      <div class="title-div">
+        <h5 class="">{{data.movieName}}</h5>
+        <span>({{data.year}})</span>            
+      </div>
+      <span class="description">
+        {{data.description}}
+      </span>
+      
+    </div>
+  </div>

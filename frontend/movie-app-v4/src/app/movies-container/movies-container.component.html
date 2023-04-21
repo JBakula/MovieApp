@@ -1,0 +1,20 @@
+<div  class="moviesContainerClass">
+    <div class="cards-container">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4  g-3">
+        <app-movie-card [defaultPath] = "defaultPath" *ngFor="let card of cards" [data]="card" ></app-movie-card>
+      </div>
+    </div>
+      <div *ngIf="totalPages.length>1" class="pagination-container">
+        <div aria-label="Page navigation example">
+          <ul class="pagination pager-div">
+            <li class="page-item"><a class="page-link pager" href="#" (click)="handlePrevious()" >Previous </a></li>
+            <li *ngFor="let p of totalPages"  class="page-item " (click)="handlePageChange(p)"><a class="page-link pager" href="#" >{{p}}</a></li>
+            <li class="page-item"><a class="page-link pager" href="#" (click)="handleNext()">Next</a></li>
+          </ul>
+        </div>  
+      </div>
+      
+        
+  
+  </div>
+  
