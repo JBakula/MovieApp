@@ -6,9 +6,10 @@ namespace MoviesApp.Services.DirectorRepo
     public interface IDirectorService
     {
         ICollection<DirectorResponse> GetDirectors();
-        ICollection<Movie> GetMoviesByDirectoryId(int id);
+        MoviesResponsePaginated GetMoviesByDirectoryId(int id,int page);
         bool AddDirector(DirectorRequest directorRequest);
         bool IsDirectorExist(int id);
         bool DirectorNameExist(string name);
+        double NumberOfPages(int id,float numberOfMoviesPerPage);
     }
 }

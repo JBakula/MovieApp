@@ -250,20 +250,17 @@ namespace MoviesApp.Services.MovieRepo
             var numberOfPages = NumberOfPages(numberOfMoviesPerPage);
             var movies = _context.Movies.Where(m => (m.MovieName.ToLower()).Contains(searchTerm.ToLower())
                                                     ||(m.Director.DirectorName.ToLower().Contains(searchTerm.ToLower()))
-            ).Skip((page - 1) * (int)numberOfPages)
-                               .Take((int)numberOfMoviesPerPage)
-                               .Select(m => new
-                               {
-                                   m.MovieId,
-                                   m.MovieName,
-                                   m.CoverImage,
-                                   m.Year,
-                                   m.Description
+                                                    ).Skip((page - 1) * (int)numberOfPages)
+                                                                       .Take((int)numberOfMoviesPerPage)
+                                                                       .Select(m => new
+                                                                       {
+                                                                           m.MovieId,
+                                                                           m.MovieName,
+                                                                           m.CoverImage,
+                                                                           m.Year,
+                                                                           m.Description
 
-                               }).ToList();
-
-
-
+                                                                       }).ToList();
 
             var moviesResponeList = new List<MoviesResponse>();
             foreach (var movie in movies)
@@ -290,6 +287,13 @@ namespace MoviesApp.Services.MovieRepo
             return moviesResponsePaginated;
         }
 
+        //private float CountMoviesBySearch(string searchTerm,float numberOfMoviesPerPage)
+        //{
+        //    return (float)Math.Ceiling((_context.Movies.Where(m => (m.MovieName.ToLower())
+        //                                .Contains(searchTerm.ToLower())
+        //                                        || ((m.Director.DirectorName.ToLower()).Contains(searchTerm.ToLower()))
+        //                                ).Count())/numberOfMoviesPerPage);
+        //}
         public MoviesResponsePaginated GetMoviesOrderedByYear(int page)
         {
             var numberOfMoviesPerPage = 8f;

@@ -4,3 +4,8 @@
         {{category.categoryName}}
     </button>
 </p>
+
+<button routerLink="/director/{{movieDetails.directorId}}"> {{movieDetails.directorName}}</button>
+<p *ngFor="let actor of movieDetails.actors">
+    <button routerLink="/actor/{{actor.actorId}}">{{actor.actorName}}</button>
+</p>

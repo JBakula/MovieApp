@@ -21,13 +21,13 @@ namespace MoviesApp.Controllers
         }
         [HttpGet]
         [Route("{id:int}")]
-        public IActionResult GetMoviesByDirectoryId([FromRoute]int id)
+        public IActionResult GetMoviesByDirectoryId([FromRoute]int id,int page=1)
         {
             if(!_directorService.IsDirectorExist(id))
             {
                 return NotFound("Redatelj ne postoji");
             }
-            return Ok(_directorService.GetMoviesByDirectoryId(id));
+            return Ok(_directorService.GetMoviesByDirectoryId(id,page));
         }
 
         [HttpPost]

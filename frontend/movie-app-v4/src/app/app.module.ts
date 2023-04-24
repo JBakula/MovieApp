@@ -7,13 +7,15 @@ import { FormsModule } from '@angular/forms';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { MoviesContainerComponent } from './movies-container/movies-container.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MovieCardComponent,
     MoviesContainerComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,

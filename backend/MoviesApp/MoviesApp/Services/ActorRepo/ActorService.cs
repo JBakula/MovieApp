@@ -22,31 +22,66 @@ namespace MoviesApp.Services.ActorRepo
             return actorsDto;
         }
         
-        public ICollection<MoviesResponse> GetMoviesByActorId(int actorId) 
+        public MoviesResponsePaginated GetMoviesByActorId(int actorId,int page) 
         {
-            var movies = _context.MovieActors.Where(ma => ma.ActorId == actorId)
-                                            .Select(ma => new
-                                            {
-                                                ma.Movie.MovieId,
-                                                ma.Movie.CoverImage,
-                                                ma.Movie.Year,
-                                                ma.Movie.MovieName,
-                                                ma.Movie.Description
-                                            })
-                                            .ToList();
-            var moviesResponseList = new List<MoviesResponse>();
+            var numberOfMoviesPerPage = 8f;
+            var numberOfPages = NumberOfPages(actorId, numberOfMoviesPerPage);
+
+
+            var movies = _context.MovieActors.Where(m => m.ActorId == actorId)
+                               .Skip((page - 1) * (int)numberOfPages)
+                               .Take((int)numberOfMoviesPerPage)
+                               .Select(m => new
+                               {
+                                   m.Movie.MovieId,
+                                   m.Movie.MovieName,
+                                   m.Movie.CoverImage,
+                                   m.Movie.Year,
+                                   m.Movie.Description
+
+                               }).ToList();
+            
+
+            var moviesResponeList = new List<MoviesResponse>();
             foreach (var movie in movies)
             {
-                moviesResponseList.Add(new MoviesResponse()
+                var rating = CountMovieRating(movie.MovieId);
+                moviesResponeList.Add(new MoviesResponse()
                 {
                     MovieId = movie.MovieId,
                     MovieName = movie.MovieName,
-                    CoverImage = movie.CoverImage,
+                    Rating = rating,
                     Year = movie.Year,
+                    CoverImage = movie.CoverImage,
                     Description = movie.Description
                 });
             }
-            return moviesResponseList;
+
+            var moviesResponsePaginated = new MoviesResponsePaginated()
+            {
+                Movies = moviesResponeList,
+                CurrentPage = page,
+                NumberOfPages = (int)numberOfPages
+            };
+
+            return moviesResponsePaginated;
+        }
+        public double NumberOfPages(int id, float numberOfMoviesPerPage)
+        {
+            return Math.Ceiling((_context.MovieActors.Where(ma=>ma.ActorId == id).Count() / numberOfMoviesPerPage));
+        }
+        private float CountMovieRating(int id)
+        {
+            if (NumberOfRatings(id) == 0)
+            {
+                return 0;
+            }
+            return _context.Ratings.Where(r => r.MovieId == id).Select(r => r.Value).Sum()
+                                            / NumberOfRatings(id);
+        }
+        private int NumberOfRatings(int id)
+        {
+            return _context.Ratings.Where(r => r.MovieId == id).Count();
         }
         public bool IsActorExist(int actorId)
         {

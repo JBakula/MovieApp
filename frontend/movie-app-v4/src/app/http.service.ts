@@ -18,11 +18,19 @@ export class HttpService {
     let params = new HttpParams().set("term",search).set("page",page);
     return this.http.get<any>(`${this.defaultPath}`+'api/Movie/search',{params:params});
   }
+  getMoviesByDirectoryId(directoryId:number,page:number):Observable<any>{
+   let params = new HttpParams().set("page",page);
+   return this.http.get<any>(`${this.defaultPath}api/Director/${directoryId}`,{params:params}); 
+  }
   getMoviesByCategoryId(categoryId:number, page:number):Observable<any>{
     let params = new HttpParams().set("page",page);
     return this.http.get<any>(`${this.defaultPath}api/Category/${categoryId}`,{params:params});
   }
   getMovieDetails(movieId:number):Observable<any>{
     return this.http.get<any>(`${this.defaultPath}api/Movie/details/${movieId}`);
+  }
+  getMoviesByActorId(actorId:number,page:number):Observable<any>{
+    let params = new HttpParams().set("page",page);
+    return this.http.get<any>(`${this.defaultPath}api/Actor/${actorId}`,{params:params});
   }
 }

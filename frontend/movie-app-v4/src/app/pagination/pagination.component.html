@@ -1,0 +1,8 @@
+
+    <div aria-label="Page navigation example">
+      <ul class="pagination pager-div">
+        <li class="page-item"><a class="page-link pager" (click)="handlePrevious()" >Previous </a></li>
+        <li *ngFor="let p of totalPages"  class="page-item " ><a class="page-link pager" (click)="handlePageChange(p)" >{{p}}</a></li>
+        <li class="page-item"><a class="page-link pager"  (click)="handleNext()">Next</a></li>
+      </ul>
+    </div>  

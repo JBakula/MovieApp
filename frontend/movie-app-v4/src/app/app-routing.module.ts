@@ -17,6 +17,12 @@ const routes: Routes = [
   },
   {
     path:'details/:movieId', component:MovieDetailsComponent
+  },
+  {
+    path:'director/:directorId',component:MoviesContainerComponent
+  },
+  {
+    path:'actor/:actorId',component:MoviesContainerComponent
   }
 ];
 

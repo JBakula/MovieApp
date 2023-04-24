@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MoviesResponse } from '../interfaces/moviesResponse';
 import { MovieCard } from '../interfaces/movieCardInterface';
 
@@ -13,12 +13,13 @@ export class MoviesContainerComponent implements OnInit{
   defaultPath:string =  "https://localhost:7179/"
   moviesResponse:MoviesResponse
   cards:MovieCard[] = []
-  page:number = 1;
-  
+  page:number = 1
+  currentPath:string = "";
   totalPages:number[] = [];
-  constructor(private http:HttpService, private activatedRoute:ActivatedRoute){
+  constructor(private http:HttpService, private activatedRoute:ActivatedRoute,private router:Router){
     this.moviesResponse = {} as MoviesResponse
-  }
+    
+  } 
   getData(page:number,ordering:string){
     this.http.getMovies(page,ordering).subscribe((res)=>{
       this.cards = res.movies;
@@ -45,31 +46,54 @@ export class MoviesContainerComponent implements OnInit{
       this.totalPages = Array.from(new Array(res.numberOfPages),(x,i)=>i+1)
     })
   }
-  handlePageChange(p:number){
-    this.page = p;
-    console.log(this.page);
-    
-    this.getData(this.page,"Name");
-  }
-  handlePrevious(){
-   this.page == 1 ? this.page = 1 : this.page = this.page - 1; 
-   console.log(this.page);
-   this.getData(this.page,"Name");
-  }
-  handleNext(){
-   this.page == this.totalPages.length ? this.page = this.totalPages.length : this.page = this.page + 1; 
-   console.log(this.page);
-   this.getData(this.page,"Name");
 
+  getDataByDirectorId(directoryId:number,page:number){
+    this.http.getMoviesByDirectoryId(directoryId,page).subscribe((res)=>{
+      console.log(res)
+      this.moviesResponse = res;
+      this.cards = res.movies
+      this.totalPages = Array.from(new Array(res.numberOfPages),(x,i)=>i+1)
+    })
   }
-  ngOnInit(): void {
+  getDataByActorId(actorId:number,page:number){
+    this.http.getMoviesByActorId(actorId,page).subscribe((res)=>{
+      console.log(res);
+      this.moviesResponse = res;
+      this.cards = res.movies;
+      this.totalPages = Array.from(new Array(res.numberOfPages),(x,i)=>i+1)
+       
+    })
+  }
+  handlePageChange(event:number){
+    this.page = event
     this.activatedRoute.params.subscribe((params:Params)=>{
       if(params['movie-search']){
         this.getDataBySearch(params['movie-search'],this.page);
       }else if(params['categoryId']){
         this.getDataByCategoryId(params['categoryId'],this.page);
+      }else if(params['directorId']){
+        this.getDataByDirectorId(params['directorId'],this.page)
+      }else if(params['actorId']){
+        this.getDataByActorId(params['actorId'],this.page)
       }else{
-        this.getData(1,"Name");
+        this.getData(this.page,"Name");
+      }
+    })
+  }
+  
+  ngOnInit(): void {
+    this.currentPath = this.router.url;
+    this.activatedRoute.params.subscribe((params:Params)=>{
+      if(params['movie-search']){
+        this.getDataBySearch(params['movie-search'],this.page);
+      }else if(params['categoryId']){
+        this.getDataByCategoryId(params['categoryId'],this.page);
+      }else if(params['directorId']){
+        this.getDataByDirectorId(params['directorId'],this.page)
+      }else if(params['actorId']){
+        this.getDataByActorId(params['actorId'],this.page)
+      }else{
+        this.getData(this.page,"Name");
       }
     })
   }
