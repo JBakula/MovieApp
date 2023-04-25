@@ -10,7 +10,7 @@ namespace MoviesApp.Services.MovieRepo
         double NumberOfPages(float numberofItemsPerPage);
         MovieDetails GetMovieDetails(int id);
         bool IsMovieExist(int id);
-        MoviesResponsePaginated GetMovieBySearchTerm(string searchTerm,int page);
-        MoviesResponsePaginated GetMoviesOrderedByYear(int page);
+        MoviesResponsePaginated GetMovieBySearchTerm(string searchTerm,string ordering,int page);
+        //MoviesResponsePaginated GetMoviesOrderedByYear(int page);
     }
 }

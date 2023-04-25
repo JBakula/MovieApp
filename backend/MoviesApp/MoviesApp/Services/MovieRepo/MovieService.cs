@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using MoviesApp.DTO;
 using MoviesApp.Models;
 using System.Linq;
@@ -108,13 +109,11 @@ namespace MoviesApp.Services.MovieRepo
             }
         }
 
-        public MoviesResponsePaginated GetMovies(int page, string ordering)
+        public MoviesResponsePaginated GetMovies([FromQuery]int page,[FromQuery] string ordering)
         {
            
             var numberOfMoviesPerPage = 8f;
             var numberOfPages = NumberOfPages(numberOfMoviesPerPage);
-
-
             var movies = _context.Movies.OrderBy(m => m.MovieName)
                                .Skip((page - 1) * (int)numberOfPages)
                                .Take((int)numberOfMoviesPerPage)
@@ -127,6 +126,83 @@ namespace MoviesApp.Services.MovieRepo
                                    m.Description
 
                                }).ToList();
+
+
+            switch (ordering)
+            {
+                case "Title ascending":
+                     movies = _context.Movies.OrderBy(m => m.MovieName)
+                               .Skip((page - 1) * (int)numberOfPages)
+                               .Take((int)numberOfMoviesPerPage)
+                               .Select(m => new
+                               {
+                                   m.MovieId,
+                                   m.MovieName,
+                                   m.CoverImage,
+                                   m.Year,
+                                   m.Description
+
+                               }).ToList();
+                    break;
+                case "Title descending":
+                    movies = _context.Movies.OrderByDescending(m => m.MovieName)
+                              .Skip((page - 1) * (int)numberOfPages)
+                              .Take((int)numberOfMoviesPerPage)
+                              .Select(m => new
+                              {
+                                  m.MovieId,
+                                  m.MovieName,
+                                  m.CoverImage,
+                                  m.Year,
+                                  m.Description
+
+                              }).ToList();
+                    break;
+                case "Year ascending":
+                    movies = _context.Movies.OrderBy(m => m.Year)
+                              .Skip((page - 1) * (int)numberOfPages)
+                              .Take((int)numberOfMoviesPerPage)
+                              .Select(m => new
+                              {
+                                  m.MovieId,
+                                  m.MovieName,
+                                  m.CoverImage,
+                                  m.Year,
+                                  m.Description
+
+                              }).ToList();
+                    break;
+                case "Year descending":
+                    movies = _context.Movies.OrderByDescending(m => m.Year)
+                              .Skip((page - 1) * (int)numberOfPages)
+                              .Take((int)numberOfMoviesPerPage)
+                              .Select(m => new
+                              {
+                                  m.MovieId,
+                                  m.MovieName,
+                                  m.CoverImage,
+                                  m.Year,
+                                  m.Description
+
+                              }).ToList();
+                    break;
+                default:
+                    movies = _context.Movies.OrderBy(m => m.MovieName)
+                               .Skip((page - 1) * (int)numberOfPages)
+                               .Take((int)numberOfMoviesPerPage)
+                               .Select(m => new
+                               {
+                                   m.MovieId,
+                                   m.MovieName,
+                                   m.CoverImage,
+                                   m.Year,
+                                   m.Description
+
+                               }).ToList();
+                    break;
+
+            }
+
 
             var moviesResponeList = new List<MoviesResponse>();
             foreach (var movie in movies)
@@ -244,10 +320,10 @@ namespace MoviesApp.Services.MovieRepo
             return _context.Movies.Where(m=>m.MovieId==id).Any();
         }
 
-        public MoviesResponsePaginated GetMovieBySearchTerm(string searchTerm,int page)
+        public MoviesResponsePaginated GetMovieBySearchTerm(string searchTerm,string ordering,int page)
         {
             var numberOfMoviesPerPage = 8f;
-            var numberOfPages = NumberOfPages(numberOfMoviesPerPage);
+            var numberOfPages = CountMoviesBySearch(searchTerm, numberOfMoviesPerPage);
             var movies = _context.Movies.Where(m => (m.MovieName.ToLower()).Contains(searchTerm.ToLower())
                                                     ||(m.Director.DirectorName.ToLower().Contains(searchTerm.ToLower()))
                                                     ).Skip((page - 1) * (int)numberOfPages)
@@ -261,7 +337,85 @@ namespace MoviesApp.Services.MovieRepo
                                                                            m.Description
 
                                                                        }).ToList();
+            switch (ordering)
+            {
+                case "Title ascending":
+                    movies = _context.Movies.Where(m => (m.MovieName.ToLower()).Contains(searchTerm.ToLower())
+                                                    || (m.Director.DirectorName.ToLower().Contains(searchTerm.ToLower()))
+                                                    ).OrderBy(m=>m.MovieName).Skip((page - 1) * (int)numberOfPages)
+                                                                       .Take((int)numberOfMoviesPerPage)
+                                                                       .Select(m => new
+                                                                       {
+                                                                           m.MovieId,
+                                                                           m.MovieName,
+                                                                           m.CoverImage,
+                                                                           m.Year,
+                                                                           m.Description
 
+                                                                       }).ToList();
+                    break;
+                case "Title descending":
+                    movies = _context.Movies.Where(m => (m.MovieName.ToLower()).Contains(searchTerm.ToLower())
+                                                    || (m.Director.DirectorName.ToLower().Contains(searchTerm.ToLower()))
+                                                    ).OrderByDescending(m => m.MovieName).Skip((page - 1) * (int)numberOfPages)
+                                                                       .Take((int)numberOfMoviesPerPage)
+                                                                       .Select(m => new
+                                                                       {
+                                                                           m.MovieId,
+                                                                           m.MovieName,
+                                                                           m.CoverImage,
+                                                                           m.Year,
+                                                                           m.Description
+
+                                                                       }).ToList();
+                    break;
+                case "Year ascending":
+                    movies = _context.Movies.Where(m => (m.MovieName.ToLower()).Contains(searchTerm.ToLower())
+                                                    || (m.Director.DirectorName.ToLower().Contains(searchTerm.ToLower()))
+                                                    ).OrderBy(m=>m.Year).Skip((page - 1) * (int)numberOfPages)
+                                                                       .Take((int)numberOfMoviesPerPage)
+                                                                       .Select(m => new
+                                                                       {
+                                                                           m.MovieId,
+                                                                           m.MovieName,
+                                                                           m.CoverImage,
+                                                                           m.Year,
+                                                                           m.Description
+
+                                                                       }).ToList();
+                    break;
+                case "Year descending":
+                    movies = _context.Movies.Where(m => (m.MovieName.ToLower()).Contains(searchTerm.ToLower())
+                                                    || (m.Director.DirectorName.ToLower().Contains(searchTerm.ToLower()))
+                                                    ).OrderByDescending(m => m.Year).Skip((page - 1) * (int)numberOfPages)
+                                                                       .Take((int)numberOfMoviesPerPage)
+                                                                       .Select(m => new
+                                                                       {
+                                                                           m.MovieId,
+                                                                           m.MovieName,
+                                                                           m.CoverImage,
+                                                                           m.Year,
+                                                                           m.Description
+
+                                                                       }).ToList();
+                    break;
+                default:
+                    movies = _context.Movies.Where(m => (m.MovieName.ToLower()).Contains(searchTerm.ToLower())
+                                                    || (m.Director.DirectorName.ToLower().Contains(searchTerm.ToLower()))
+                                                    ).OrderBy(m => m.MovieName).Skip((page - 1) * (int)numberOfPages)
+                                                                       .Take((int)numberOfMoviesPerPage)
+                                                                       .Select(m => new
+                                                                       {
+                                                                           m.MovieId,
+                                                                           m.MovieName,
+                                                                           m.CoverImage,
+                                                                           m.Year,
+                                                                           m.Description
+
+                                                                       }).ToList();
+                    break;
+
+            }
             var moviesResponeList = new List<MoviesResponse>();
             foreach (var movie in movies)
             {
@@ -287,52 +441,14 @@ namespace MoviesApp.Services.MovieRepo
             return moviesResponsePaginated;
         }
 
-        //private float CountMoviesBySearch(string searchTerm,float numberOfMoviesPerPage)
-        //{
-        //    return (float)Math.Ceiling((_context.Movies.Where(m => (m.MovieName.ToLower())
-        //                                .Contains(searchTerm.ToLower())
-        //                                        || ((m.Director.DirectorName.ToLower()).Contains(searchTerm.ToLower()))
-        //                                ).Count())/numberOfMoviesPerPage);
-        //}
-        public MoviesResponsePaginated GetMoviesOrderedByYear(int page)
+        private double CountMoviesBySearch(string searchTerm, float numberOfMoviesPerPage)
         {
-            var numberOfMoviesPerPage = 8f;
-            var numberOfPages = NumberOfPages(numberOfMoviesPerPage);
-            var movies = _context.Movies.OrderBy(m=>m.Year)
-                               .Skip((page - 1) * (int)numberOfPages)
-                               .Take((int)numberOfMoviesPerPage)
-                               .Select(m => new
-                               {
-                                   m.MovieId,
-                                   m.MovieName,
-                                   m.CoverImage,
-                                   m.Year,
-                                   m.Description
-
-                               }).ToList();
-            var moviesResponeList = new List<MoviesResponse>();
-            foreach (var movie in movies)
-            {
-                var rating = CountMovieRating(movie.MovieId);
-                moviesResponeList.Add(new MoviesResponse()
-                {
-                    MovieId = movie.MovieId,
-                    MovieName = movie.MovieName,
-                    Rating = rating,
-                    Year = movie.Year,
-                    CoverImage = movie.CoverImage,
-                    Description = movie.Description
-                });
-            }
-            var moviesResponsePaginated = new MoviesResponsePaginated()
-            {
-                Movies = moviesResponeList,
-                CurrentPage = page,
-                NumberOfPages = (int)numberOfPages
-            };
-            return moviesResponsePaginated;
+           var numberOfMovies =  _context.Movies.Where(m=>(((m.MovieName.ToLower()).Contains(searchTerm.ToLower()))
+                                    ||((m.Director.DirectorName.ToLower()).Contains(searchTerm.ToLower())))).Count();
+            return Math.Ceiling(numberOfMovies / numberOfMoviesPerPage);
         }
-        
+
+
 
 
     }

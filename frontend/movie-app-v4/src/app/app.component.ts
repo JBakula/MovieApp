@@ -9,12 +9,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'movie-app-v4';
+  searchValue = "";
   constructor(private router:Router){
 
   }
+
   handleKeyUp(event:any){
     event.target.value == "" ? this.router.navigate(['']):
     this.router.navigate(['search',event.target.value]);
+    
   }
   
 }

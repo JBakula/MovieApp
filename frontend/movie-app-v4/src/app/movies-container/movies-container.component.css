@@ -20,5 +20,6 @@
     border-radius: 5px;
 } */
 .select-container{
-    padding: 5px 10px;
+    padding: 5px;
+    width: 300px;
 }

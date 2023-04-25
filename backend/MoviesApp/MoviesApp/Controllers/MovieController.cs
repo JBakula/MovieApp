@@ -57,16 +57,16 @@ namespace MoviesApp.Controllers
         }
         [HttpGet]
         [Route("search")]
-        public IActionResult GetMoviesBySearchTerm([FromQuery]string term, [FromQuery] int page)
+        public IActionResult GetMoviesBySearchTerm([FromQuery]string term, [FromQuery] string ordering,[FromQuery] int page=1)
         {
-            return Ok(_movieService.GetMovieBySearchTerm(term,page));
+            return Ok(_movieService.GetMovieBySearchTerm(term,ordering,page));
         }
-        [HttpGet]
-        [Route("year/asc/{page:int}")]
-        public IActionResult GetMoviesByYear([FromRoute]int page)
-        {
-            return Ok(_movieService.GetMoviesOrderedByYear(page));
-        }
+        //[HttpGet]
+        //[Route("year/asc/{page:int}")]
+        //public IActionResult GetMoviesByYear([FromRoute]int page)
+        //{
+        //    return Ok(_movieService.GetMoviesOrderedByYear(page));
+        //}
         
 
     }

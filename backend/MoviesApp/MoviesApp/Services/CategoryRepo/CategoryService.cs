@@ -20,11 +20,13 @@ namespace MoviesApp.Services.CategoryRepo
             var categoriesDto = _mapper.Map<List<CategoryResponse>>(categories);
             return categoriesDto;
         }
-        public MoviesResponsePaginated GetMoviesByCategoryId(int categoryId, int page) 
+        public MoviesResponsePaginated GetMoviesByCategoryId(int id,string ordering, int page) 
         {
             var numberOfMoviesPerPage = 8f;
-            var numberOfPages = NumberOfPages(categoryId,numberOfMoviesPerPage);
-            var movies = _context.CategoryMovies.Where(c=>c.CategoryId == categoryId)
+            var numberOfPages = NumberOfPages(id,numberOfMoviesPerPage);
+            var movies = _context.CategoryMovies.Where(c=>c.CategoryId == id)
+                                                .Skip((page - 1) * (int)numberOfPages)
+                                                .Take((int)numberOfMoviesPerPage)
                                                 .Select(c => new
                                                 {
                                                     c.MovieId,
@@ -33,6 +35,80 @@ namespace MoviesApp.Services.CategoryRepo
                                                     c.Movie.Year,
                                                     c.Movie.Description
                                                 }).ToList();
+            switch (ordering)
+            {
+                case "Title ascending":
+                    movies = _context.CategoryMovies.Where(c => c.CategoryId == id)
+                                                .OrderBy(c=>c.Movie.MovieName)
+                                                .Skip((page - 1) * (int)numberOfPages)
+                                                .Take((int)numberOfMoviesPerPage)
+                                                .Select(c => new
+                                                {
+                                                    c.MovieId,
+                                                    c.Movie.MovieName,
+                                                    c.Movie.CoverImage,
+                                                    c.Movie.Year,
+                                                    c.Movie.Description
+                                                }).ToList();
+                    break;
+                case "Title descending":
+                    movies = _context.CategoryMovies.Where(c => c.CategoryId == id)
+                                                .OrderByDescending(c => c.Movie.MovieName)
+                                                .Skip((page - 1) * (int)numberOfPages)
+                                                .Take((int)numberOfMoviesPerPage)
+                                                .Select(c => new
+                                                {
+                                                    c.MovieId,
+                                                    c.Movie.MovieName,
+                                                    c.Movie.CoverImage,
+                                                    c.Movie.Year,
+                                                    c.Movie.Description
+                                                }).ToList();
+                    break;
+                case "Year ascending":
+                    movies = _context.CategoryMovies.Where(c => c.CategoryId == id)
+                                                .OrderBy(c => c.Movie.Year)
+                                                .Skip((page - 1) * (int)numberOfPages)
+                                                .Take((int)numberOfMoviesPerPage)
+                                                .Select(c => new
+                                                {
+                                                    c.MovieId,
+                                                    c.Movie.MovieName,
+                                                    c.Movie.CoverImage,
+                                                    c.Movie.Year,
+                                                    c.Movie.Description
+                                                }).ToList();
+                    break;
+                case "Year descending":
+                    movies = _context.CategoryMovies.Where(c => c.CategoryId == id)
+                                                 .OrderByDescending(c => c.Movie.Year)
+                                                 .Skip((page - 1) * (int)numberOfPages)
+                                                .Take((int)numberOfMoviesPerPage)
+                                                .Select(c => new
+                                                {
+                                                    c.MovieId,
+                                                    c.Movie.MovieName,
+                                                    c.Movie.CoverImage,
+                                                    c.Movie.Year,
+                                                    c.Movie.Description
+                                                }).ToList();
+                    break;
+                default:
+                    movies = _context.CategoryMovies.Where(c => c.CategoryId == id).OrderBy(c => c.Movie.MovieName)
+
+                                                .Skip((page - 1) * (int)numberOfPages)
+                                                .Take((int)numberOfMoviesPerPage)
+                                                .Select(c => new
+                                                {
+                                                    c.MovieId,
+                                                    c.Movie.MovieName,
+                                                    c.Movie.CoverImage,
+                                                    c.Movie.Year,
+                                                    c.Movie.Description
+                                                }).ToList();
+                    break;
+
+            }
             var moviesResponseList = new List<MoviesResponse>();
             foreach (var movie in movies)
             {
@@ -42,7 +118,8 @@ namespace MoviesApp.Services.CategoryRepo
                     MovieName = movie.MovieName,
                     Year = movie.Year,
                     CoverImage = movie.CoverImage,
-                    Description = movie.Description
+                    Description = movie.Description,
+                    
                 });
             }
             var moviesResponsePaginated = new MoviesResponsePaginated()

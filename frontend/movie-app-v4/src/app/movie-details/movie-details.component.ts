@@ -15,7 +15,6 @@ export class MovieDetailsComponent {
   }
   getDetails(movieId:number){
     this.http.getMovieDetails(movieId).subscribe((res)=>{
-      console.log(res)
       this.movieDetails = res;
     })
   }

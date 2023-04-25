@@ -21,13 +21,13 @@ namespace MoviesApp.Controllers
         }
         [HttpGet]
         [Route("{id:int}")]
-        public IActionResult GetMoviesByActorId(int id,[FromQuery]int page=1)
+        public IActionResult GetMoviesByActorId(int id,[FromQuery]string ordering,[FromQuery]int page=1)
         {
             if (!_actorService.IsActorExist(id))
             {
                 return NotFound();
             }
-            return Ok(_actorService.GetMoviesByActorId(id,page));
+            return Ok(_actorService.GetMoviesByActorId(id,ordering,page));
         }
         [HttpPost]
         public IActionResult AddActor(NewActorDto actorDto)

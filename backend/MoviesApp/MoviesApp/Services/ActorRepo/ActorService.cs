@@ -22,7 +22,7 @@ namespace MoviesApp.Services.ActorRepo
             return actorsDto;
         }
         
-        public MoviesResponsePaginated GetMoviesByActorId(int actorId,int page) 
+        public MoviesResponsePaginated GetMoviesByActorId(int actorId,string ordering,int page) 
         {
             var numberOfMoviesPerPage = 8f;
             var numberOfPages = NumberOfPages(actorId, numberOfMoviesPerPage);
@@ -40,7 +40,86 @@ namespace MoviesApp.Services.ActorRepo
                                    m.Movie.Description
 
                                }).ToList();
-            
+            switch (ordering)
+            {
+                case "Title ascending":
+                    movies = _context.MovieActors.Where(m => m.ActorId == actorId)
+                               .OrderBy(m=>m.Movie.MovieName)
+                               .Skip((page - 1) * (int)numberOfPages)
+                               .Take((int)numberOfMoviesPerPage)
+                               .Select(m => new
+                               {
+                                   m.Movie.MovieId,
+                                   m.Movie.MovieName,
+                                   m.Movie.CoverImage,
+                                   m.Movie.Year,
+                                   m.Movie.Description
+
+                               }).ToList();
+                    break;
+                case "Title descending":
+                    movies = _context.MovieActors.Where(m => m.ActorId == actorId)
+                               .OrderByDescending(m => m.Movie.MovieName)
+                               .Skip((page - 1) * (int)numberOfPages)
+                               .Take((int)numberOfMoviesPerPage)
+                               .Select(m => new
+                               {
+                                   m.Movie.MovieId,
+                                   m.Movie.MovieName,
+                                   m.Movie.CoverImage,
+                                   m.Movie.Year,
+                                   m.Movie.Description
+
+                               }).ToList();
+                    break;
+                case "Year ascending":
+                    movies = _context.MovieActors.Where(m => m.ActorId == actorId)
+                               .OrderBy(m => m.Movie.Year)
+                               .Skip((page - 1) * (int)numberOfPages)
+                               .Take((int)numberOfMoviesPerPage)
+                               .Select(m => new
+                               {
+                                   m.Movie.MovieId,
+                                   m.Movie.MovieName,
+                                   m.Movie.CoverImage,
+                                   m.Movie.Year,
+                                   m.Movie.Description
+
+                               }).ToList();
+                    break;
+                case "Year descending":
+                    movies = _context.MovieActors.Where(m => m.ActorId == actorId)
+                               .OrderByDescending(m => m.Movie.Year)
+                               .Skip((page - 1) * (int)numberOfPages)
+                               .Take((int)numberOfMoviesPerPage)
+                               .Select(m => new
+                               {
+                                   m.Movie.MovieId,
+                                   m.Movie.MovieName,
+                                   m.Movie.CoverImage,
+                                   m.Movie.Year,
+                                   m.Movie.Description
+
+                               }).ToList();
+                    break;
+                default:
+                    movies = _context.MovieActors.Where(m => m.ActorId == actorId)
+                               .OrderBy(m => m.Movie.MovieName)
+                               .Skip((page - 1) * (int)numberOfPages)
+                               .Take((int)numberOfMoviesPerPage)
+                               .Select(m => new
+                               {
+                                   m.Movie.MovieId,
+                                   m.Movie.MovieName,
+                                   m.Movie.CoverImage,
+                                   m.Movie.Year,
+                                   m.Movie.Description
+
+                               }).ToList();
+                    break;
+
+            }
+
 
             var moviesResponeList = new List<MoviesResponse>();
             foreach (var movie in movies)
