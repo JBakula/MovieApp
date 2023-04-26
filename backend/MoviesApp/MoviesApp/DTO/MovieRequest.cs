@@ -7,6 +7,7 @@ namespace MoviesApp.DTO
         public string MovieName { get; set; }=string.Empty;
         public int Year { get; set; }
         public IFormFile CoverImage { get; set; }
+        public float IMDbRating { get; set; }
         public int DirectorId { get; set; }
         public string? Description { get; set; }= string.Empty;
         //public List<Category> Categories { get;set; }

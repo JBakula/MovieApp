@@ -33,6 +33,7 @@ namespace MoviesApp.Services.DirectorRepo
                                    m.MovieId,
                                    m.MovieName,
                                    m.CoverImage,
+                                   m.IMDbRating,
                                    m.Year,
                                    m.Description
 
@@ -50,6 +51,7 @@ namespace MoviesApp.Services.DirectorRepo
                                   m.MovieId,
                                   m.MovieName,
                                   m.CoverImage,
+                                  m.IMDbRating,
                                   m.Year,
                                   m.Description
 
@@ -65,6 +67,7 @@ namespace MoviesApp.Services.DirectorRepo
                                   m.MovieId,
                                   m.MovieName,
                                   m.CoverImage,
+                                  m.IMDbRating,
                                   m.Year,
                                   m.Description
 
@@ -81,6 +84,7 @@ namespace MoviesApp.Services.DirectorRepo
                                   m.MovieId,
                                   m.MovieName,
                                   m.CoverImage,
+                                  m.IMDbRating,
                                   m.Year,
                                   m.Description
 
@@ -97,6 +101,41 @@ namespace MoviesApp.Services.DirectorRepo
                                   m.MovieId,
                                   m.MovieName,
                                   m.CoverImage,
+                                  m.IMDbRating,
+                                  m.Year,
+                                  m.Description
+
+                              }).ToList();
+                    break;
+                case "IMDb rating ascending":
+                    movies = _context.Movies
+                              .Where(m => m.DirectorId == id)
+                              .OrderBy(m => m.IMDbRating)
+                              .Skip((page - 1) * (int)numberOfPages)
+                              .Take((int)numberOfMoviesPerPage)
+                              .Select(m => new
+                              {
+                                  m.MovieId,
+                                  m.MovieName,
+                                  m.CoverImage,
+                                  m.IMDbRating,
+                                  m.Year,
+                                  m.Description
+
+                              }).ToList();
+                    break;
+                case "IMDb rating descending":
+                    movies = _context.Movies
+                              .Where(m => m.DirectorId == id)
+                              .OrderByDescending(m => m.IMDbRating)
+                              .Skip((page - 1) * (int)numberOfPages)
+                              .Take((int)numberOfMoviesPerPage)
+                              .Select(m => new
+                              {
+                                  m.MovieId,
+                                  m.MovieName,
+                                  m.CoverImage,
+                                  m.IMDbRating,
                                   m.Year,
                                   m.Description
 
@@ -112,6 +151,7 @@ namespace MoviesApp.Services.DirectorRepo
                                    m.MovieId,
                                    m.MovieName,
                                    m.CoverImage,
+                                   m.IMDbRating,
                                    m.Year,
                                    m.Description
 
@@ -131,6 +171,7 @@ namespace MoviesApp.Services.DirectorRepo
                     Rating = rating,
                     Year = movie.Year,
                     CoverImage = movie.CoverImage,
+                    IMDbRating = (float)movie.IMDbRating,
                     Description = movie.Description
                 });
             }

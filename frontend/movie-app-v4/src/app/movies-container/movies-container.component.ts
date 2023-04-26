@@ -16,7 +16,7 @@ export class MoviesContainerComponent implements OnInit{
   page:number = 1
   currentPath:string = "";
   totalPages:number[] = [];
-  selectListOptions:string[] = ["Title ascending","Title descending","Year ascending","Year descending"];
+  selectListOptions:string[] = ["Title ascending","Title descending","Year ascending","Year descending","IMDb rating ascending","IMDb rating descending"];
   order:string = "Title ascending";
   
   constructor(private http:HttpService, private activatedRoute:ActivatedRoute,private router:Router){

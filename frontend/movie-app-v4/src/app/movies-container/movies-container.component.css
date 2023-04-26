@@ -20,6 +20,13 @@
     border-radius: 5px;
 } */
 .select-container{
-    padding: 5px;
+    padding: 10px 0px;
     width: 300px;
+    display: flex;
+    justify-content: flex-start;
+}
+.select{
+    background-color: black;
+    color: white;
+    width: 80%;
 }

@@ -23,6 +23,7 @@ namespace MoviesApp.Services.MovieRepo
                 MovieName = movieRequest.MovieName,
                 Year = movieRequest.Year,
                 CoverImage = GenerateImagePath(movieRequest.CoverImage),
+                IMDbRating = movieRequest.IMDbRating,
                 Description = movieRequest.Description,
                 Director = director,
                 DirectorId = movieRequest.DirectorId,
@@ -122,6 +123,7 @@ namespace MoviesApp.Services.MovieRepo
                                    m.MovieId,
                                    m.MovieName,
                                    m.CoverImage,
+                                   m.IMDbRating,
                                    m.Year,
                                    m.Description
 
@@ -139,6 +141,7 @@ namespace MoviesApp.Services.MovieRepo
                                    m.MovieId,
                                    m.MovieName,
                                    m.CoverImage,
+                                   m.IMDbRating,
                                    m.Year,
                                    m.Description
 
@@ -153,6 +156,7 @@ namespace MoviesApp.Services.MovieRepo
                                   m.MovieId,
                                   m.MovieName,
                                   m.CoverImage,
+                                  m.IMDbRating,
                                   m.Year,
                                   m.Description
 
@@ -167,6 +171,7 @@ namespace MoviesApp.Services.MovieRepo
                                   m.MovieId,
                                   m.MovieName,
                                   m.CoverImage,
+                                  m.IMDbRating,
                                   m.Year,
                                   m.Description
 
@@ -181,6 +186,37 @@ namespace MoviesApp.Services.MovieRepo
                                   m.MovieId,
                                   m.MovieName,
                                   m.CoverImage,
+                                  m.IMDbRating,
+                                  m.Year,
+                                  m.Description
+
+                              }).ToList();
+                    break;
+                case "IMDb rating ascending":
+                    movies = _context.Movies.OrderBy(m => m.IMDbRating)
+                              .Skip((page - 1) * (int)numberOfPages)
+                              .Take((int)numberOfMoviesPerPage)
+                              .Select(m => new
+                              {
+                                  m.MovieId,
+                                  m.MovieName,
+                                  m.CoverImage,
+                                  m.IMDbRating,
+                                  m.Year,
+                                  m.Description
+
+                              }).ToList();
+                    break;
+                case "IMDb rating descending":
+                    movies = _context.Movies.OrderByDescending(m => m.IMDbRating)
+                              .Skip((page - 1) * (int)numberOfPages)
+                              .Take((int)numberOfMoviesPerPage)
+                              .Select(m => new
+                              {
+                                  m.MovieId,
+                                  m.MovieName,
+                                  m.CoverImage,
+                                  m.IMDbRating,
                                   m.Year,
                                   m.Description
 
@@ -195,6 +231,7 @@ namespace MoviesApp.Services.MovieRepo
                                    m.MovieId,
                                    m.MovieName,
                                    m.CoverImage,
+                                   m.IMDbRating,
                                    m.Year,
                                    m.Description
 
@@ -215,6 +252,7 @@ namespace MoviesApp.Services.MovieRepo
                     Rating = rating,
                     Year = movie.Year,
                     CoverImage = movie.CoverImage,
+                    IMDbRating = (float)movie.IMDbRating,
                     Description = movie.Description
                 });
             }
@@ -257,6 +295,7 @@ namespace MoviesApp.Services.MovieRepo
                                            m.MovieName,
                                            m.Year,
                                            m.CoverImage,
+                                           m.IMDbRating,
                                            m.Description,
                                            m.DirectorId,
                                            m.Director.DirectorName,
@@ -306,6 +345,7 @@ namespace MoviesApp.Services.MovieRepo
                 Rating = CountMovieRating(movie.MovieId),
                 CoverImage = movie.CoverImage,
                 Description = movie.Description,
+                IMDbRating = (float)movie.IMDbRating,
                 DirectorId = movie.DirectorId,
                 DirectorName = movie.DirectorName,
                 Images = images,
@@ -333,6 +373,7 @@ namespace MoviesApp.Services.MovieRepo
                                                                            m.MovieId,
                                                                            m.MovieName,
                                                                            m.CoverImage,
+                                                                           m.IMDbRating,
                                                                            m.Year,
                                                                            m.Description
 
@@ -349,6 +390,7 @@ namespace MoviesApp.Services.MovieRepo
                                                                            m.MovieId,
                                                                            m.MovieName,
                                                                            m.CoverImage,
+                                                                           m.IMDbRating,
                                                                            m.Year,
                                                                            m.Description
 
@@ -364,6 +406,7 @@ namespace MoviesApp.Services.MovieRepo
                                                                            m.MovieId,
                                                                            m.MovieName,
                                                                            m.CoverImage,
+                                                                           m.IMDbRating,
                                                                            m.Year,
                                                                            m.Description
 
@@ -379,6 +422,7 @@ namespace MoviesApp.Services.MovieRepo
                                                                            m.MovieId,
                                                                            m.MovieName,
                                                                            m.CoverImage,
+                                                                           m.IMDbRating,
                                                                            m.Year,
                                                                            m.Description
 
@@ -394,6 +438,7 @@ namespace MoviesApp.Services.MovieRepo
                                                                            m.MovieId,
                                                                            m.MovieName,
                                                                            m.CoverImage,
+                                                                           m.IMDbRating,
                                                                            m.Year,
                                                                            m.Description
 
@@ -409,6 +454,7 @@ namespace MoviesApp.Services.MovieRepo
                                                                            m.MovieId,
                                                                            m.MovieName,
                                                                            m.CoverImage,
+                                                                           m.IMDbRating,
                                                                            m.Year,
                                                                            m.Description
 
@@ -427,6 +473,7 @@ namespace MoviesApp.Services.MovieRepo
                     Rating = rating,
                     Year = movie.Year,
                     CoverImage = movie.CoverImage,
+                    IMDbRating = (float)movie.IMDbRating,
                     Description = movie.Description
                 });
             }

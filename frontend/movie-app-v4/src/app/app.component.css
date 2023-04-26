@@ -1,6 +1,7 @@
 .search-bar{
     border: 1px solid white;
     color: white;
+    
 }
 .search-bar::placeholder { 
     color: white;
@@ -15,4 +16,7 @@
     margin-top: 40px;
     padding: 20px 50px;
     /* background-color: aquamarine; */
+}
+.navClass{
+    background-color: black;
 }

@@ -3,6 +3,7 @@ export interface movieDetails{
     movieName:string,
     year:number,
     rating:number,
+    imDbRating:number,
     coverImage:string,
     description:string,
     directorId:number,

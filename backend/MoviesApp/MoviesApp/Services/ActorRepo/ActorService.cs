@@ -36,6 +36,7 @@ namespace MoviesApp.Services.ActorRepo
                                    m.Movie.MovieId,
                                    m.Movie.MovieName,
                                    m.Movie.CoverImage,
+                                   m.Movie.IMDbRating,
                                    m.Movie.Year,
                                    m.Movie.Description
 
@@ -52,6 +53,7 @@ namespace MoviesApp.Services.ActorRepo
                                    m.Movie.MovieId,
                                    m.Movie.MovieName,
                                    m.Movie.CoverImage,
+                                   m.Movie.IMDbRating,
                                    m.Movie.Year,
                                    m.Movie.Description
 
@@ -67,6 +69,7 @@ namespace MoviesApp.Services.ActorRepo
                                    m.Movie.MovieId,
                                    m.Movie.MovieName,
                                    m.Movie.CoverImage,
+                                   m.Movie.IMDbRating,
                                    m.Movie.Year,
                                    m.Movie.Description
 
@@ -82,6 +85,7 @@ namespace MoviesApp.Services.ActorRepo
                                    m.Movie.MovieId,
                                    m.Movie.MovieName,
                                    m.Movie.CoverImage,
+                                   m.Movie.IMDbRating,
                                    m.Movie.Year,
                                    m.Movie.Description
 
@@ -97,6 +101,39 @@ namespace MoviesApp.Services.ActorRepo
                                    m.Movie.MovieId,
                                    m.Movie.MovieName,
                                    m.Movie.CoverImage,
+                                   m.Movie.IMDbRating,
+                                   m.Movie.Year,
+                                   m.Movie.Description
+
+                               }).ToList();
+                    break;
+                case "IMDb rating ascending":
+                    movies = _context.MovieActors.Where(m => m.ActorId == actorId)
+                               .OrderBy(m => m.Movie.IMDbRating)
+                               .Skip((page - 1) * (int)numberOfPages)
+                               .Take((int)numberOfMoviesPerPage)
+                               .Select(m => new
+                               {
+                                   m.Movie.MovieId,
+                                   m.Movie.MovieName,
+                                   m.Movie.CoverImage,
+                                   m.Movie.IMDbRating,
+                                   m.Movie.Year,
+                                   m.Movie.Description
+
+                               }).ToList();
+                    break;
+                case "IMDb rating descending":
+                    movies = _context.MovieActors.Where(m => m.ActorId == actorId)
+                               .OrderByDescending(m => m.Movie.IMDbRating)
+                               .Skip((page - 1) * (int)numberOfPages)
+                               .Take((int)numberOfMoviesPerPage)
+                               .Select(m => new
+                               {
+                                   m.Movie.MovieId,
+                                   m.Movie.MovieName,
+                                   m.Movie.CoverImage,
+                                   m.Movie.IMDbRating,
                                    m.Movie.Year,
                                    m.Movie.Description
 
@@ -112,6 +149,7 @@ namespace MoviesApp.Services.ActorRepo
                                    m.Movie.MovieId,
                                    m.Movie.MovieName,
                                    m.Movie.CoverImage,
+                                   m.Movie.IMDbRating,
                                    m.Movie.Year,
                                    m.Movie.Description
 
@@ -132,6 +170,7 @@ namespace MoviesApp.Services.ActorRepo
                     Rating = rating,
                     Year = movie.Year,
                     CoverImage = movie.CoverImage,
+                    IMDbRating = (float)movie.IMDbRating,
                     Description = movie.Description
                 });
             }

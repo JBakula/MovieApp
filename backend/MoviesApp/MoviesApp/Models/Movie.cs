@@ -11,6 +11,7 @@ namespace MoviesApp.Models
         public string CoverImage { get; set; }= string.Empty;
         public string? Description { get; set; } = string.Empty;
         public int DirectorId { get; set; }
+        public float? IMDbRating { get; set; }
         public Director Director { get; set; }
         public ICollection<MovieActor> MovieActors { get; set; }
         public ICollection<CategoryMovie> CategoryMovies { get; set; }

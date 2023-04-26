@@ -32,6 +32,7 @@ namespace MoviesApp.Services.CategoryRepo
                                                     c.MovieId,
                                                     c.Movie.MovieName,
                                                     c.Movie.CoverImage,
+                                                    c.Movie.IMDbRating,
                                                     c.Movie.Year,
                                                     c.Movie.Description
                                                 }).ToList();
@@ -47,6 +48,7 @@ namespace MoviesApp.Services.CategoryRepo
                                                     c.MovieId,
                                                     c.Movie.MovieName,
                                                     c.Movie.CoverImage,
+                                                    c.Movie.IMDbRating,
                                                     c.Movie.Year,
                                                     c.Movie.Description
                                                 }).ToList();
@@ -61,6 +63,7 @@ namespace MoviesApp.Services.CategoryRepo
                                                     c.MovieId,
                                                     c.Movie.MovieName,
                                                     c.Movie.CoverImage,
+                                                    c.Movie.IMDbRating,
                                                     c.Movie.Year,
                                                     c.Movie.Description
                                                 }).ToList();
@@ -75,6 +78,7 @@ namespace MoviesApp.Services.CategoryRepo
                                                     c.MovieId,
                                                     c.Movie.MovieName,
                                                     c.Movie.CoverImage,
+                                                    c.Movie.IMDbRating,
                                                     c.Movie.Year,
                                                     c.Movie.Description
                                                 }).ToList();
@@ -89,6 +93,37 @@ namespace MoviesApp.Services.CategoryRepo
                                                     c.MovieId,
                                                     c.Movie.MovieName,
                                                     c.Movie.CoverImage,
+                                                    c.Movie.IMDbRating,
+                                                    c.Movie.Year,
+                                                    c.Movie.Description
+                                                }).ToList();
+                    break;
+                case "IMDb rating ascending":
+                    movies = _context.CategoryMovies.Where(c => c.CategoryId == id)
+                                                 .OrderBy(c => c.Movie.IMDbRating)
+                                                 .Skip((page - 1) * (int)numberOfPages)
+                                                .Take((int)numberOfMoviesPerPage)
+                                                .Select(c => new
+                                                {
+                                                    c.MovieId,
+                                                    c.Movie.MovieName,
+                                                    c.Movie.CoverImage,
+                                                    c.Movie.IMDbRating,
+                                                    c.Movie.Year,
+                                                    c.Movie.Description
+                                                }).ToList();
+                    break;
+                case "IMDb rating descending":
+                    movies = _context.CategoryMovies.Where(c => c.CategoryId == id)
+                                                 .OrderByDescending(c => c.Movie.IMDbRating)
+                                                 .Skip((page - 1) * (int)numberOfPages)
+                                                .Take((int)numberOfMoviesPerPage)
+                                                .Select(c => new
+                                                {
+                                                    c.MovieId,
+                                                    c.Movie.MovieName,
+                                                    c.Movie.CoverImage,
+                                                    c.Movie.IMDbRating,
                                                     c.Movie.Year,
                                                     c.Movie.Description
                                                 }).ToList();
@@ -103,6 +138,7 @@ namespace MoviesApp.Services.CategoryRepo
                                                     c.MovieId,
                                                     c.Movie.MovieName,
                                                     c.Movie.CoverImage,
+                                                    c.Movie.IMDbRating,
                                                     c.Movie.Year,
                                                     c.Movie.Description
                                                 }).ToList();
@@ -118,6 +154,7 @@ namespace MoviesApp.Services.CategoryRepo
                     MovieName = movie.MovieName,
                     Year = movie.Year,
                     CoverImage = movie.CoverImage,
+                    IMDbRating = (float)movie.IMDbRating,
                     Description = movie.Description,
                     
                 });

@@ -33,6 +33,10 @@
       "PackagePath": "staticwebassets\\images\\368d92fadc6540078ff229ea78b02077_gf63idlewild-main1.jpg"
     },
     {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\3a3c9950c8564aed821001f22f420e3e_MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+      "PackagePath": "staticwebassets\\images\\3a3c9950c8564aed821001f22f420e3e_MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg"
+    },
+    {
       "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\3af5b609e8e8445fa8577fa989e25665_poster-goodfellas.jpg",
       "PackagePath": "staticwebassets\\images\\3af5b609e8e8445fa8577fa989e25665_poster-goodfellas.jpg"
     },
@@ -51,6 +55,14 @@
     {
       "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\462396e924a248299bdb1bfd09a0e80d_matrix-red-pill.webp",
       "PackagePath": "staticwebassets\\images\\462396e924a248299bdb1bfd09a0e80d_matrix-red-pill.webp"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\4909887bd68c4b0297a52dfb393decba_gettyimages-3248844.jpg",
+      "PackagePath": "staticwebassets\\images\\4909887bd68c4b0297a52dfb393decba_gettyimages-3248844.jpg"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\539827161b6e40deb9d6cc18fa42ac69_MV5BMTkzNTkxMDUtNDJmMi00MjNhLWIyNjItN2RjZmE0MjllNTI0XkEyXkFqcGdeQVRoaXJkUGFydHlJbmdlc3Rpb25Xb3JrZmxvdw@@._V1_.jpg",
+      "PackagePath": "staticwebassets\\images\\539827161b6e40deb9d6cc18fa42ac69_MV5BMTkzNTkxMDUtNDJmMi00MjNhLWIyNjItN2RjZmE0MjllNTI0XkEyXkFqcGdeQVRoaXJkUGFydHlJbmdlc3Rpb25Xb3JrZmxvdw@@._V1_.jpg"
     },
     {
       "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\5539c3c4683d454982d18d8c33c09573_MV5BMTg4ODEwMTg1N15BMl5BanBnXkFtZTcwOTk4OTIyNw@@._V1_.jpg",
@@ -111,6 +123,10 @@
     {
       "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\be0316c44ebe440b93464a79138c01c6_MV5BN2ZkY2E2ODYtZTY1MC00NTAzLWJhNDUtNzAyNTcyZTcwZmE3XkEyXkFqcGdeQXVyMDc2NTEzMw@@._V1_.jpg",
       "PackagePath": "staticwebassets\\images\\be0316c44ebe440b93464a79138c01c6_MV5BN2ZkY2E2ODYtZTY1MC00NTAzLWJhNDUtNzAyNTcyZTcwZmE3XkEyXkFqcGdeQXVyMDc2NTEzMw@@._V1_.jpg"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\c5d90a37d1b146b8ae77d83e427fd612_gf.jfif",
+      "PackagePath": "staticwebassets\\images\\c5d90a37d1b146b8ae77d83e427fd612_gf.jfif"
     },
     {
       "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\cb1b50d50c184e388aa0d98f296ca8b4_MV5BMTQ2MDk3ODAwMV5BMl5BanBnXkFtZTgwNzE4OTEwMjE@._V1_.jpg",
