@@ -12,9 +12,13 @@ export class MovieCardComponent {
   @Input() defaultPath:string 
   @Input() data:MovieCard;
   movieDetails:movieDetails
+  descriptionToggle:boolean 
+  
   constructor(private http:HttpService){
     this.data = {} as MovieCard;
     this.defaultPath = {} as string;
     this.movieDetails = {} as movieDetails;
+    this.descriptionToggle = false;
   }
+  
 }

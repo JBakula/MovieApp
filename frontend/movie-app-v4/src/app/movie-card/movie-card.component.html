@@ -22,7 +22,7 @@
       </div>
     </div>
   </div> -->
-  <div class="cardClass" routerLink="/details/{{data.movieId}}">
+  <div class="cardClass" routerLink="/details/{{data.movieId}}" (mouseover)="descriptionToggle = true" (mouseout)="descriptionToggle = false">
     <img class="image" src="{{defaultPath+data.coverImage}}" alt="">
     <div class="info-div">
       <div class="title-div">
@@ -31,7 +31,7 @@
       </div>
       <div class="bottom-div">
         <div>
-          <span class="description">
+          <span *ngIf="descriptionToggle == true" class="description">
             {{data.description}}
           </span>
         </div>

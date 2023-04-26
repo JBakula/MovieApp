@@ -1,11 +1,16 @@
-{{movieDetails|json}}
-<p *ngFor="let category of movieDetails.categories">
-    <button routerLink="/category/{{category.categoryId}}">
-        {{category.categoryName}}
-    </button>
-</p>
 
-<button routerLink="/director/{{movieDetails.directorId}}"> {{movieDetails.directorName}}</button>
-<p *ngFor="let actor of movieDetails.actors">
-    <button routerLink="/actor/{{actor.actorId}}">{{actor.actorName}}</button>
-</p>
+<!-- <div class="container detailsContainer">
+    <div class="coverimage-div">
+        <img class="cover-image" src="{{defaultPath+movieDetails.coverImage}}" alt="">
+    </div>
+    <div>
+        
+    </div>
+    
+</div> -->
+<div class="container detailsContainer">
+    <div class="coverimage-div">
+        <img class="cover-image" src="{{defaultPath+movieDetails.coverImage}}" alt="">
+    </div>
+    <div class="info-div"></div>
+</div>

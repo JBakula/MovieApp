@@ -1,0 +1,14 @@
+.detailsContainer{
+    
+    display: flex;
+    flex-direction: column;
+}
+
+.coverimage-div{
+    height: 500px;
+    
+}
+.cover-image{
+    width: 100%;
+    
+}

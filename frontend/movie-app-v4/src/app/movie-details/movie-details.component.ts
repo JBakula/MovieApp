@@ -10,6 +10,7 @@ import { movieDetails } from '../interfaces/movieDetails';
 })
 export class MovieDetailsComponent {
   movieDetails:any;
+  defaultPath:string =  "https://localhost:7179/"
   constructor(private http:HttpService, private activatedRoute:ActivatedRoute){
     this.movieDetails = {} as movieDetails;
   }
