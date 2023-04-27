@@ -1,28 +1,5 @@
-<!-- <div class="cardClass" routerLink="/details/{{data.movieId}}"  >
-    <div class="image-div">
-      <img class="image" src="{{defaultPath+data.coverImage}}" alt="">
-      
-    </div>
-    <div class="info-div">
-      <div class="title-div">
-        <h5 class="">{{data.movieName}}</h5>
-        <span>({{data.year}})</span>            
-      </div>
-      <div class="bottom-div">
-        <div>
-          <span class="description">
-            {{data.description}}
-          </span>
-        </div>
-        <div class="rating-div">
-          <span>
-            {{data.imDbRating}}
-          </span>   
-        </div>
-      </div>
-    </div>
-  </div> -->
-  <div class="cardClass" routerLink="/details/{{data.movieId}}" (mouseover)="descriptionToggle = true" (mouseout)="descriptionToggle = false">
+
+  <div class="cardClass" routerLink="/details/{{data.movieId}}" >
     <img class="image" src="{{defaultPath+data.coverImage}}" alt="">
     <div class="info-div">
       <div class="title-div">
@@ -30,15 +7,27 @@
         <span>({{data.year}})</span> 
       </div>
       <div class="bottom-div">
-        <div>
-          <span *ngIf="descriptionToggle == true" class="description">
+        <div class="description-div">
+          <span >
             {{data.description}}
           </span>
         </div>
         <div class="rating-div">
-          <span>
-            {{data.imDbRating}}
-          </span>   
+          <div class="iconDiv">
+            <i class="fa-brands fa-imdb fa-xl imdb-icon"></i> {{data.imDbRating}}
+          </div>
+          <button (click)="ratingPopUp($event)" class="rate-btn" [ngClass]="{'hide-button': modalClosed}"  >Rate</button>
+          <div class="ngb-rating-div" [ngClass]="{'rating-opened': modalClosed}">
+            <div class="closeModal-div" >
+              <button (click)="closeModal($event)" class="close-btn">x</button>
+            </div>
+            <div>
+              <ngb-rating class="ngb-rating" [max]="10" [formControl]="ratingControl"  (click)="getRating($event)"></ngb-rating>   
+
+            </div>
+            
+
+          </div>
         </div>
     </div>
   </div>

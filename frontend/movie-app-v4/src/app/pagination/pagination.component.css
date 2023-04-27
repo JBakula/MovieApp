@@ -1,10 +1,13 @@
+.page-navigation{
+    border-radius: 0px;
+}
 .pager{
     color: white;
     background-color: black;
 }
 .pager-div{
-    border: 1px solid black;
-    border-radius: 5px;
+    
+    border-radius: 0px;
 }
 li{
     cursor: pointer;

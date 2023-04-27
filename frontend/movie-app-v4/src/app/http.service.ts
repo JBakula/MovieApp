@@ -33,4 +33,6 @@ export class HttpService {
     let params = new HttpParams().set("ordering",order).set("page",page);
     return this.http.get<any>(`${this.defaultPath}api/Actor/${actorId}`,{params:params});
   }
+
+  
 }

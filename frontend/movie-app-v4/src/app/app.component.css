@@ -1,7 +1,7 @@
 .search-bar{
     border: 1px solid white;
     color: white;
-    
+    background-color: rgb(15, 15, 15);
 }
 .search-bar::placeholder { 
     color: white;
@@ -19,4 +19,9 @@
 }
 .navClass{
     background-color: rgb(15, 15, 15);
+    
+}
+
+.brand{
+    color: white;
 }
