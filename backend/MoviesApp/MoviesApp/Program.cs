@@ -4,6 +4,7 @@ using MoviesApp.Services.ActorRepo;
 using MoviesApp.Services.CategoryRepo;
 using MoviesApp.Services.DirectorRepo;
 using MoviesApp.Services.MovieRepo;
+using MoviesApp.Services.RatingRepo;
 using MoviesApp.Services.UserRepo;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +18,7 @@ builder.Services.AddScoped<ICategoryService,CategoryService>();
 builder.Services.AddScoped<IDirectorService,DirectorService>();
 builder.Services.AddScoped<IMovieService,MovieService>();
 builder.Services.AddScoped<IUserService,UserService>();
+builder.Services.AddScoped<IRatingService, RatingService>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

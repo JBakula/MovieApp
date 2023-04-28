@@ -13,20 +13,19 @@
           </span>
         </div>
         <div class="rating-div">
-          <div class="iconDiv">
+          <div class="iconDiv" [ngClass]="{'icon-div-closed':modalOpen}">
             <i class="fa-brands fa-imdb fa-xl imdb-icon"></i> {{data.imDbRating}}
-          </div>
-          <button (click)="ratingPopUp($event)" class="rate-btn" [ngClass]="{'hide-button': modalClosed}"  >Rate</button>
-          <div class="ngb-rating-div" [ngClass]="{'rating-opened': modalClosed}">
+        </div>
+          <button *ngIf="data.rating === 0" (click)="ratingPopUp($event)" class="rate-btn" [ngClass]="{'hide-button': modalOpen}"  >Rate</button>
+          <i *ngIf="data.rating > 0" (click)="ratingPopUp($event)" class="fas fa-star user-rating" [ngClass]="{'hide-user-rating':modalOpen}"> {{data.rating}}</i>
+          
+          <div class="ngb-rating-div" [ngClass]="{'rating-opened': modalOpen}">
             <div class="closeModal-div" >
               <button (click)="closeModal($event)" class="close-btn">x</button>
             </div>
             <div>
-              <ngb-rating class="ngb-rating" [max]="10" [formControl]="ratingControl"  (click)="getRating($event)"></ngb-rating>   
-
+              <ngb-rating class="ngb-rating" [max]="10" [formControl]="ratingControl"  (click)="getRating($event,data.movieId)"></ngb-rating>   
             </div>
-            
-
           </div>
         </div>
     </div>

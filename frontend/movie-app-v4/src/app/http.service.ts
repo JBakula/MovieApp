@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { MoviesResponse } from './interfaces/moviesResponse';
+import { Rating } from './interfaces/rating';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,9 @@ export class HttpService {
     let params = new HttpParams().set("ordering",order).set("page",page);
     return this.http.get<any>(`${this.defaultPath}api/Actor/${actorId}`,{params:params});
   }
-
-  
+  rateMovie(rating:Rating):Observable<any>{
+    
+    return this.http.post<any>(`${this.defaultPath}api/Rating`,rating);
+  }
+ 
 }

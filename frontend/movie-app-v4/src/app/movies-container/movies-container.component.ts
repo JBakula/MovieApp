@@ -29,7 +29,7 @@ export class MoviesContainerComponent implements OnInit{
       this.moviesResponse = res;
       
       this.totalPages = Array.from(new Array(res.numberOfPages),(x,i)=>i+1)
-      console.log(this.totalPages)
+      
     });
   }
   getDataBySearch(searchedTerm:string,order:string,page:number){

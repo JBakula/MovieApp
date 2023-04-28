@@ -4,6 +4,8 @@ import { HttpService } from '../http.service';
 import { MovieCard } from '../interfaces/movieCardInterface';
 import {faImdb} from '@fortawesome/free-brands-svg-icons'
 import { FormControl } from '@angular/forms';
+import { Rating } from '../interfaces/rating';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-movie-card',
@@ -14,32 +16,40 @@ export class MovieCardComponent {
   @Input() defaultPath:string 
   @Input() data:MovieCard;
   movieDetails:movieDetails
-  modalClosed:boolean
-  // descriptionToggle:boolean 
+  modalOpen:boolean
   imdb = faImdb
-  
+  rating:Rating 
+  ratingSubscribe:Subscription
   constructor(private http:HttpService){
     this.data = {} as MovieCard;
     this.defaultPath = {} as string;
     this.movieDetails = {} as movieDetails;
-    this.modalClosed = false;
+    this.modalOpen = false;
+    this.rating = {} as Rating;
+    this.ratingSubscribe = {} as Subscription  
   }
   ratingPopUp(event:any){
     event.preventDefault();
     event.stopPropagation();
-    this.modalClosed = true;
-    console.log(this.modalClosed);
+    this.modalOpen = true; 
   }
   ratingControl = new FormControl(0);
-  getRating(event:any){
+  getRating(event:any,movieId:number){
     event.preventDefault();
     event.stopPropagation();
-    console.log(this.ratingControl.value);
+    this.rating.MovieId = movieId;
+    this.rating.Rating = this.ratingControl.value;
+    this.ratingSubscribe=this.http.rateMovie(this.rating).subscribe((res)=>{
+      console.log(res);
+    });
+    this.modalOpen = false;
   }
   closeModal(event:any){
     event.preventDefault();
     event.stopPropagation();
-    this.modalClosed = false;
+    this.modalOpen = false;
   }
+  
+  
   
 }

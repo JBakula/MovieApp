@@ -12,7 +12,7 @@ export class PaginationComponent {
   @Output() pageEvent = new EventEmitter<number>;
   page:number = 1;
   constructor(private router:Router){}
-  handlePageChange(p:number){
+  handlePageChange(p:any){
     this.page = p;
     this.router.navigate([this.currentPath],{ queryParams: { page: this.page }});
     this.pageEvent.emit(this.page);

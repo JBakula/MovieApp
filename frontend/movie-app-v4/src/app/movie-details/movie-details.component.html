@@ -15,3 +15,13 @@
     <div class="info-div"></div>
 </div>-->
 {{movieDetails|json}}
+<br>
+Actors: 
+<span *ngFor="let actor of movieDetails.actors">
+    <button routerLink="/actor/{{actor.actorId}}">{{actor.actorName}}</button>
+</span>
+<br>
+Genres: 
+<span *ngFor="let category of movieDetails.categories">
+    <button routerLink="/category/{{category.categoryId}}">{{category.categoryName}}</button>
+</span>

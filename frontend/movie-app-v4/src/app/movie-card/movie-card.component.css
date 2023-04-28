@@ -74,6 +74,9 @@
     display: flex;
     align-items: center;
 }
+.icon-div-closed{
+    opacity: 0;
+}
 .ngb-rating{
     color: #FFC107;
     font-size: 20px;
@@ -127,4 +130,10 @@
     margin-right: 5px;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+.user-rating{
+    color: #FFC107;
+}
+.hide-user-rating{
+    display: none;
 }

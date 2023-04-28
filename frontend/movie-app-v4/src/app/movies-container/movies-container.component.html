@@ -6,7 +6,7 @@
   </div>  
   <div class="cards-container">
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4  g-3">
-      <app-movie-card [defaultPath] = "defaultPath" *ngFor="let card of cards" [data]="card" ></app-movie-card>
+      <app-movie-card [defaultPath] = "defaultPath"  *ngFor="let card of cards" [data]="card"  ></app-movie-card>
     </div>
   </div>
   <div *ngIf="totalPages.length>1" class="pagination-container">

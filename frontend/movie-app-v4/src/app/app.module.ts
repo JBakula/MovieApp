@@ -11,13 +11,15 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     MovieCardComponent,
     MoviesContainerComponent,
     MovieDetailsComponent,
-    PaginationComponent
+    PaginationComponent,
+    
   ],
   imports: [
     BrowserModule,
