@@ -14,5 +14,6 @@ namespace MoviesApp.Models
         public byte[] PasswordSalt { get; set; }
 
         public ICollection<Rating> Ratings { get; set; }
+        public ICollection<RefreshToken> RefreshTokens { get; set; }
     }
 }

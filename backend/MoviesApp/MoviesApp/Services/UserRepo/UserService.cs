@@ -1,6 +1,8 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.IdentityModel.Tokens;
 using MoviesApp.DTO;
 using MoviesApp.Models;
+using Newtonsoft.Json.Linq;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -37,58 +39,128 @@ namespace MoviesApp.Services.UserRepo
             using(var hmac = new HMACSHA512())
             {
                 passwordSalt = hmac.Key;
-                passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+                passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
             }
         }
         public bool IsEmailAlreadyExist(string email)
         {
             return _context.Users.Where(u=>u.Email == email).Any();
         }
-        public string LoginUser(UserLogin userLogin)
+        public AuthResponse LoginUser(UserLogin userLogin)
         {
+            AuthResponse authResponse = new AuthResponse();
             if(IsEmailAlreadyExist(userLogin.Email))
             {
                 var user = _context.Users.Where(u=>u.Email == userLogin.Email).FirstOrDefault();
                 if (!VerifyPasswordHash(userLogin.Password, user.PasswordHash,user.PasswordSalt))
                 {
-                    return "";
+                    return null;
                 }
                 else
                 {
-                    return CreateToken(user);
+                    var refreshToken = GenerateRefreshToken(user);
+                    var jwtToken =  CreateToken(user);
+
+                    authResponse.JwtToken = jwtToken;
+                    authResponse.RefreshToken = refreshToken;
+                    return authResponse;
+                    
                 }
             }
             else
             {
-                return "";
+                return null;
             }
             
+        }
+        public AuthResponse RefreshToken(string token)
+        {
+            AuthResponse authResponse = new AuthResponse();
+            var refreshToken = _context.RefreshTokens.Where(r=>r.Token == token).FirstOrDefault();
+            if(refreshToken != null)
+            {
+                var user = _context.Users.Where(u=>u.UserId == refreshToken.UserId).FirstOrDefault();
+                string newJwtToken = CreateToken(user);
+                var newRefreshToken = GenerateRefreshToken(user);
+                authResponse.JwtToken = newJwtToken;
+                authResponse.RefreshToken = newRefreshToken;
+                return authResponse;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public bool IsTokenExpired(string token)
+        {
+            var refreshToken = _context.RefreshTokens.Where(r=>r.Token == token ).FirstOrDefault(); 
+            if( refreshToken != null )
+            {
+                if(refreshToken.ExpiresAt < DateTime.UtcNow)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return true;
+            }
+            
+        }
+        public CookieOptions SetRefreshToken(RefreshToken refreshToken)
+        {
+            var cookieOptions = new CookieOptions
+            {
+                HttpOnly = true,
+                Expires = refreshToken.ExpiresAt
+            };
+            return cookieOptions;
+        }
+        private RefreshToken GenerateRefreshToken(User user)
+        {
+            var refreshToken = new RefreshToken()
+            {
+                Token = Convert.ToBase64String(RandomNumberGenerator.GetBytes(64)),
+                ExpiresAt = DateTime.UtcNow.AddDays(1),
+                CreatedAt = DateTime.UtcNow,
+                User = user,
+                UserId = user.UserId,
+                
+            };
+            _context.RefreshTokens.Add(refreshToken);
+            _context.SaveChanges();
+            return refreshToken;
         }
         private string CreateToken(User user)
         {
             List<Claim> claims = new List<Claim>
             {
-                
+                new Claim("UserId", user.UserId.ToString()),
                 new Claim(ClaimTypes.Email, user.Email),
                 new Claim(ClaimTypes.Name, user.Name),
                 new Claim(ClaimTypes.Surname,user.Lastname)
             };
 
-            var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(_configuration.GetSection("AppSettings:SecretKey").Value));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetSection("AppSettings:SecretKey").Value));
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
             var token = new JwtSecurityToken(
                 claims: claims,
-                expires: DateTime.Now.AddMinutes(30),
+                expires: DateTime.Now.AddMinutes(1),
                 signingCredentials: credentials);
 
             var jwt = new JwtSecurityTokenHandler().WriteToken(token);
             return jwt;
         }
+        
         private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
         {
             using(var hmac = new HMACSHA512(passwordSalt))
             {
-                var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+                var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
                 return computedHash.SequenceEqual(passwordHash);
                 
             }

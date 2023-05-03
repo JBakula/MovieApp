@@ -16,6 +16,7 @@ namespace MoviesApp.Models
         
         public DbSet<User> Users { get; set; }
         public DbSet<Rating>Ratings { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
     }
 }
 

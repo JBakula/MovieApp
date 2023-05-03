@@ -1,4 +1,5 @@
 ﻿using MoviesApp.DTO;
+using MoviesApp.Models;
 
 namespace MoviesApp.Services.UserRepo
 {
@@ -6,6 +7,9 @@ namespace MoviesApp.Services.UserRepo
     {
         bool RegisterUser(UserRegistration userRegistration);
         bool IsEmailAlreadyExist(string email);
-        string LoginUser(UserLogin userLogin);
+        AuthResponse LoginUser(UserLogin userLogin);
+        CookieOptions SetRefreshToken(RefreshToken refreshToken);
+        AuthResponse RefreshToken(string token);
+        bool IsTokenExpired(string token);
     }
 }

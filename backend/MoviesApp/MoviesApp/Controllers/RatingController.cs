@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MoviesApp.DTO;
 
@@ -15,9 +16,11 @@ namespace MoviesApp.Controllers
         {
             _ratingService = ratingService;
         }
-        [HttpPost]
+        [HttpPost, Authorize]
         public IActionResult RateMovie(RatingRequest ratingRequest)
         {
+            var token = HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+
             if (!_ratingService.IsMovieExist(ratingRequest.MovieId))
             {
                 return NotFound("Movie doesnt exist");
@@ -26,7 +29,7 @@ namespace MoviesApp.Controllers
             {
                 return BadRequest();
             }
-            if (_ratingService.RateMovie(ratingRequest))
+            if (_ratingService.RateMovie(ratingRequest,token))
             {
                 return Ok();
             }

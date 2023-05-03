@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MoviesApp.DTO;
 using MoviesApp.Services.MovieRepo;
@@ -17,7 +18,7 @@ namespace MoviesApp.Controllers
 
         [HttpGet]
         
-        public IActionResult GetMovies([FromQuery]int page = 1, [FromQuery] string ordering="Name")
+        public IActionResult GetMovies([FromQuery]int page = 1, [FromQuery] string ordering= "Name ascending")
         {
             var movies = _movieService.GetMovies(page, ordering);
             if(movies!=null)

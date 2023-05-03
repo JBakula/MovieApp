@@ -1,4 +1,7 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using MoviesApp.Models;
 using MoviesApp.Services.ActorRepo;
 using MoviesApp.Services.CategoryRepo;
@@ -6,6 +9,8 @@ using MoviesApp.Services.DirectorRepo;
 using MoviesApp.Services.MovieRepo;
 using MoviesApp.Services.RatingRepo;
 using MoviesApp.Services.UserRepo;
+using Swashbuckle.AspNetCore.Filters;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,7 +26,17 @@ builder.Services.AddScoped<IUserService,UserService>();
 builder.Services.AddScoped<IRatingService, RatingService>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+    {
+        Description = "Standard Authorization header using Bearer scheme (\"Bearer {token} \")",
+        In = ParameterLocation.Header,
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey
+    });
+    options.OperationFilter<SecurityRequirementsOperationFilter>();
+});
 
 builder.Services.AddDbContext<MoviesDbContext>(options =>
                 options.UseNpgsql(builder.Configuration.GetConnectionString("MoviesDB")));
@@ -43,7 +58,19 @@ builder.Services.AddCors(options =>
             .SetIsOriginAllowedToAllowWildcardSubdomains();
         });
 });
-
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8
+                                                .GetBytes(builder.Configuration.GetSection("AppSettings:SecretKey").Value)),
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+                        ValidateLifetime= true
+                    };
+                });
 var app = builder.Build();
 
 
@@ -60,6 +87,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseCors(MyAllowSpecificOrigins);
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

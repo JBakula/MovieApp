@@ -48,3 +48,12 @@ C:\Users\bakula\source\repos\MoviesApp\MoviesApp\bin\Debug\net6.0\Microsoft.Iden
 C:\Users\bakula\source\repos\MoviesApp\MoviesApp\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
 C:\Users\bakula\source\repos\MoviesApp\MoviesApp\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\bakula\source\repos\MoviesApp\MoviesApp\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\bakula\source\repos\MoviesApp\MoviesApp\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\bakula\source\repos\MoviesApp\MoviesApp\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\bakula\source\repos\MoviesApp\MoviesApp\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\bakula\source\repos\MoviesApp\MoviesApp\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\bakula\source\repos\MoviesApp\MoviesApp\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\bakula\source\repos\MoviesApp\MoviesApp\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\bakula\source\repos\MoviesApp\MoviesApp\bin\Debug\net6.0\Scrutor.dll
+C:\Users\bakula\source\repos\MoviesApp\MoviesApp\bin\Debug\net6.0\Swashbuckle.AspNetCore.Annotations.dll
+C:\Users\bakula\source\repos\MoviesApp\MoviesApp\bin\Debug\net6.0\Swashbuckle.AspNetCore.Filters.dll

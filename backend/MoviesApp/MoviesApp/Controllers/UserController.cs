@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MoviesApp.DTO;
 using MoviesApp.Services.UserRepo;
@@ -34,14 +35,41 @@ namespace MoviesApp.Controllers
         [Route("login")]
         public IActionResult LoginUser(UserLogin userLogin)
         {
-            var token = _userService.LoginUser(userLogin);
-            if (token=="")
+            var authResponse = _userService.LoginUser(userLogin);
+            if (authResponse == null)
             {
                 return BadRequest("Pogresno ime ili lozinka");
             }
             else
             {
-                return Ok(token);
+                Response.Cookies.Append("refreshToken", authResponse.RefreshToken.Token, _userService.SetRefreshToken(authResponse.RefreshToken));
+                return Ok(authResponse.JwtToken);
+            }
+
+        }
+        [HttpPost]
+        [Route("refresh-token")]
+        public IActionResult RefreshToken()
+        {
+            var refreshToken = Request.Cookies["refreshToken"];
+            if (_userService.IsTokenExpired(refreshToken))
+            {
+                return Unauthorized();
+            }
+            else
+            {
+                
+               var refreshedToken =  _userService.RefreshToken(refreshToken);
+                if(refreshedToken != null)
+                {
+                    Response.Cookies.Append("refreshToken", refreshedToken.RefreshToken.Token, _userService.SetRefreshToken(refreshedToken.RefreshToken));
+                    return Ok(refreshedToken.JwtToken);
+                }
+                else
+                {
+                    return Unauthorized();
+                }
+                
             }
         }
     }
