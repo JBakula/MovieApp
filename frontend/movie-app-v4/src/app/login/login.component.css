@@ -1,0 +1,27 @@
+.form-container{
+    display: flex;
+    flex-direction: column;
+    padding: 50px 300px;
+    color: white;
+    align-items: center;
+}
+.form-class{
+    width: 75%;
+}
+.submit-div{
+    display: flex;
+    padding-top: 20px;
+}
+.submit-button{
+    flex: 1;
+    border-radius: 15px;
+    border:none;
+    background-color: rgb(29, 51, 243);
+    color: white;
+}
+.input.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+small{
+    color: red;
+}

@@ -76,14 +76,16 @@ namespace MoviesApp.Services.UserRepo
         public AuthResponse RefreshToken(string token)
         {
             AuthResponse authResponse = new AuthResponse();
-            var refreshToken = _context.RefreshTokens.Where(r=>r.Token == token).FirstOrDefault();
-            if(refreshToken != null)
+            var oldRefreshToken = _context.RefreshTokens.Where(r=>r.Token == token).FirstOrDefault();
+            if(oldRefreshToken != null)
             {
-                var user = _context.Users.Where(u=>u.UserId == refreshToken.UserId).FirstOrDefault();
+                var user = _context.Users.Where(u=>u.UserId == oldRefreshToken.UserId).FirstOrDefault();
                 string newJwtToken = CreateToken(user);
                 var newRefreshToken = GenerateRefreshToken(user);
                 authResponse.JwtToken = newJwtToken;
                 authResponse.RefreshToken = newRefreshToken;
+                _context.Remove(oldRefreshToken);
+                _context.SaveChanges();
                 return authResponse;
             }
             else
@@ -149,7 +151,7 @@ namespace MoviesApp.Services.UserRepo
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
             var token = new JwtSecurityToken(
                 claims: claims,
-                expires: DateTime.Now.AddMinutes(1),
+                expires: DateTime.UtcNow.AddMinutes(10),
                 signingCredentials: credentials);
 
             var jwt = new JwtSecurityTokenHandler().WriteToken(token);

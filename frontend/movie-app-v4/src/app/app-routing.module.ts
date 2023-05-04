@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MoviesContainerComponent } from './movies-container/movies-container.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   {
@@ -23,6 +25,12 @@ const routes: Routes = [
   },
   {
     path:'actor/:actorId',component:MoviesContainerComponent
+  },
+  {
+    path:'login',component:LoginComponent
+  },
+  {
+    path:'signup',component:SignupComponent
   }
 ];
 

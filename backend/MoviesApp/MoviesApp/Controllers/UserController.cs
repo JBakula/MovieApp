@@ -24,7 +24,8 @@ namespace MoviesApp.Controllers
             }
             if(_userService.RegisterUser(userRegistration))
             {
-                return Ok("Uspjesna registracija");
+                return Ok(new {
+                    message="Signup successfull"});
             }
             else
             {
@@ -43,7 +44,11 @@ namespace MoviesApp.Controllers
             else
             {
                 Response.Cookies.Append("refreshToken", authResponse.RefreshToken.Token, _userService.SetRefreshToken(authResponse.RefreshToken));
-                return Ok(authResponse.JwtToken);
+                return Ok(new
+                {
+                    message="Login success",
+                    token= authResponse.JwtToken
+                });
             }
 
         }

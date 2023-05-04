@@ -21,7 +21,16 @@
     background-color: rgb(15, 15, 15);
     
 }
-
+.search-bar-div{
+    display: flex;
+}
 .brand{
     color: white;
+}
+.signup-btn{
+    margin-left: 5px ;
+    color: black;
+}
+.submit-button{
+    width: 100%;
 }

@@ -10,6 +10,8 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 @NgModule({
@@ -19,6 +21,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MoviesContainerComponent,
     MovieDetailsComponent,
     PaginationComponent,
+    LoginComponent,
+    SignupComponent,
     
   ],
   imports: [

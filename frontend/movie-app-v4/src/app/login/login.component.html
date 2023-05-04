@@ -1,0 +1,40 @@
+<div class="form-container">
+    <h3> Login</h3>
+    <form action="" class="form-class" [formGroup]="formData" (ngSubmit)="onSubmit()">
+        
+        
+        <label for="Email" class="form label">Email</label>
+        <div class="input-group">
+            <input type="text" formControlName="Email" class="form-control">
+        </div>
+        <div>
+            <small *ngIf="formData.controls['Email'].errors?.['required']">
+                Email is required field
+            </small>
+        </div>
+        <div>
+            <small *ngIf="formData.controls['Email'].errors?.['email']">
+                Email must have valid form
+            </small>
+        </div>
+        <label for="Password" class="form label">Password</label>
+        <div class="input-group">
+            <input type="password" formControlName="Password" class="form-control" >
+        </div>
+        <div>
+            <small *ngIf="formData.controls['Password'].errors?.['required']">
+                Password is required field
+            </small>
+        </div>
+        <div>
+            <small *ngIf="formData.controls['Password'].errors?.['minlength']">
+                Password must be at least 6 characters long
+            </small>
+        </div>
+        
+        
+        <div class="submit-div">
+            <button type="submit" class="submit-button">Submit</button>
+        </div>
+    </form>
+</div>

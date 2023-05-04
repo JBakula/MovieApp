@@ -1,0 +1,67 @@
+<div class="form-container">
+    <h3> Sign up</h3>
+    <form action="" class="form-class" [formGroup]="formData" (ngSubmit)="onSubmit()">
+        <label for="Name" class="form label">Name</label>
+        <div class="input-group">
+            <input type="text" formControlName="Name" class="form-control">
+            
+        </div>
+        <div>
+            <small *ngIf="formData.controls['Name'].errors?.['required']">
+                Name is required field
+            </small>
+        </div>
+        <label for="Lastname" class="form label">Lastname</label>
+        <div class="input-group">
+            <input type="text" formControlName="Lastname" class="form-control">
+        </div>
+        <div>
+            <small *ngIf="formData.controls['Lastname'].errors?.['required']">
+                Lastname is required field
+            </small>
+        </div>
+        
+        <label for="Email" class="form label">Email</label>
+        <div class="input-group">
+            <input type="text" formControlName="Email" class="form-control">
+        </div>
+        <div>
+            <small *ngIf="formData.controls['Email'].errors?.['required']">
+                Email is required field
+            </small>
+        </div>
+        <div>
+            <small *ngIf="formData.controls['Email'].errors?.['email']">
+                Email must have valid form
+            </small>
+        </div>
+        <label for="Password" class="form label">Password</label>
+        <div class="input-group">
+            <input type="password" formControlName="Password" class="form-control" >
+        </div>
+        <div>
+            <small *ngIf="formData.controls['Password'].errors?.['required']">
+                Password is required field
+            </small>
+        </div>
+        <div>
+            <small *ngIf="formData.controls['Password'].errors?.['minlength']">
+                Password must be at least 6 characters long
+            </small>
+        </div>
+        <label for="Confirm password" class="form label">Confirm password</label>
+        <div class="input-group">
+            <input type="password" class="form-control" formControlName="ConfirmPassword" >
+        </div>
+        <div>
+            <small *ngIf="formData.controls['ConfirmPassword'].errors?.['required']">
+                Confirm password field is required field
+            </small>
+            
+        </div>
+        
+        <div class="submit-div">
+            <button type="submit" class="submit-button">Submit</button>
+        </div>
+    </form>
+</div>

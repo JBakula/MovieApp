@@ -68,7 +68,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                                                 .GetBytes(builder.Configuration.GetSection("AppSettings:SecretKey").Value)),
                         ValidateIssuer = false,
                         ValidateAudience = false,
-                        ValidateLifetime= true
+                        ValidateLifetime= true,
+                        ClockSkew = TimeSpan.Zero
                     };
                 });
 var app = builder.Build();
