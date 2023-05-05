@@ -4,7 +4,7 @@
     <div class="info-div">
       <div class="title-div">
         <h5 class="">{{data.movieName}}</h5>
-        <span>({{data.year}})</span> 
+        <span>({{data.year}}) </span> 
       </div>
       <div class="bottom-div">
         <div class="description-div">
@@ -16,8 +16,11 @@
           <div class="iconDiv" [ngClass]="{'icon-div-closed':modalOpen}">
             <i class="fa-brands fa-imdb fa-xl imdb-icon"></i> {{data.imDbRating}}
         </div>
-          <button *ngIf="data.rating === 0" (click)="ratingPopUp($event)" class="rate-btn" [ngClass]="{'hide-button': modalOpen}"  >Rate</button>
-          <i *ngIf="data.rating > 0" (click)="ratingPopUp($event)" class="fas fa-star user-rating" [ngClass]="{'hide-user-rating':modalOpen}"> {{data.rating}}</i>
+          <div *ngIf="isUserLoggedIn">
+            <button  *ngIf="data.rating === 0" (click)="ratingPopUp($event)" class="rate-btn" [ngClass]="{'hide-button': modalOpen}"  >Rate</button>
+            <i *ngIf="data.rating > 0" (click)="ratingPopUp($event)" class="fas fa-star user-rating" [ngClass]="{'hide-user-rating':modalOpen}"> {{data.rating}}</i>
+          </div>
+          
           
           <div class="ngb-rating-div" [ngClass]="{'rating-opened': modalOpen}">
             <div class="closeModal-div" >

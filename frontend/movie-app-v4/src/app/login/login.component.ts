@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Login } from '../interfaces/login';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { UserService } from '../user.service';
+import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,9 +12,11 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit{
   user:Login;
   formData:FormGroup;
+  loggedIn:boolean;
   constructor(private http:UserService,private router:Router){
     this.user = {} as Login,
-    this.formData = {} as FormGroup
+    this.formData = {} as FormGroup,
+    this.loggedIn = {} as boolean
   }
   onSubmit(){
     if(this.formData.valid){
@@ -24,7 +26,12 @@ export class LoginComponent implements OnInit{
 
       this.http.loginUser(this.user).subscribe({
         next:(res)=>{
-          console.log(res.body.token);
+          
+          console.log(res.body.token );
+          this.formData.reset();
+          this.http.storeToken(res.body.token);
+          this.http.setStatusEmitter(true);
+          this.router.navigate(["/"]);
         },
         error:(err)=>{
           console.log(err)

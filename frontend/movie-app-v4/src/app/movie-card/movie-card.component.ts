@@ -1,32 +1,40 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { movieDetails } from '../interfaces/movieDetails';
-import { HttpService } from '../http.service';
+import { HttpService } from '../services/http.service';
 import { MovieCard } from '../interfaces/movieCardInterface';
 import {faImdb} from '@fortawesome/free-brands-svg-icons'
 import { FormControl } from '@angular/forms';
 import { Rating } from '../interfaces/rating';
 import { Subscription } from 'rxjs';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
   styleUrls: ['./movie-card.component.css']
 })
-export class MovieCardComponent {
+export class MovieCardComponent implements OnInit {
   @Input() defaultPath:string 
   @Input() data:MovieCard;
   movieDetails:movieDetails
   modalOpen:boolean
   imdb = faImdb
   rating:Rating 
+  isUserLoggedIn:boolean
   ratingSubscribe:Subscription
-  constructor(private http:HttpService){
+  constructor(private http:HttpService, private userService:UserService){
     this.data = {} as MovieCard;
     this.defaultPath = {} as string;
     this.movieDetails = {} as movieDetails;
     this.modalOpen = false;
     this.rating = {} as Rating;
-    this.ratingSubscribe = {} as Subscription  
+    this.ratingSubscribe = {} as Subscription;
+    this.isUserLoggedIn = this.userService.isLoggedIn(); 
+  }
+  ngOnInit(): void {
+    this.userService.statusEmitter.subscribe((val)=>{
+      this.isUserLoggedIn = val;
+    })
   }
   ratingPopUp(event:any){
     event.preventDefault();

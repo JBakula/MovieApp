@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpService } from '../http.service';
+import { HttpService } from '../services/http.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { movieDetails } from '../interfaces/movieDetails';
 
