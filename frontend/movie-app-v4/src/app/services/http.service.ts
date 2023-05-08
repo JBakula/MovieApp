@@ -36,7 +36,7 @@ export class HttpService {
   }
   rateMovie(rating:Rating):Observable<any>{
     
-    return this.http.post<any>(`${this.defaultPath}api/Rating`,rating);
+    return this.http.post<any>(`${this.defaultPath}api/Rating`,rating); 
   }
  
 }

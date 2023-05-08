@@ -43,32 +43,36 @@ namespace MoviesApp.Controllers
             }
             else
             {
-                Response.Cookies.Append("refreshToken", authResponse.RefreshToken.Token, _userService.SetRefreshToken(authResponse.RefreshToken));
+                //Response.Cookies.Append("refreshToken", authResponse.RefreshToken.Token, _userService.SetRefreshToken(authResponse.RefreshToken));
                 return Ok(new
                 {
                     message="Login success",
-                    token= authResponse.JwtToken
+                    jwtToken= authResponse.JwtToken,
+                    refreshToken=authResponse.RefreshToken.Token
                 });
             }
 
         }
         [HttpPost]
         [Route("refresh-token")]
-        public IActionResult RefreshToken()
+        public IActionResult RefreshToken(RefreshTokenRequest refreshToken)
         {
-            var refreshToken = Request.Cookies["refreshToken"];
-            if (_userService.IsTokenExpired(refreshToken))
+            
+            if (_userService.IsTokenExpired(refreshToken.RefreshToken))
             {
-                return Unauthorized();
+                return StatusCode(500);
             }
             else
             {
                 
-               var refreshedToken =  _userService.RefreshToken(refreshToken);
+               var refreshedToken =  _userService.RefreshToken(refreshToken.RefreshToken);
                 if(refreshedToken != null)
                 {
-                    Response.Cookies.Append("refreshToken", refreshedToken.RefreshToken.Token, _userService.SetRefreshToken(refreshedToken.RefreshToken));
-                    return Ok(refreshedToken.JwtToken);
+                    //Response.Cookies.Append("refreshToken", refreshedToken.RefreshToken.Token, _userService.SetRefreshToken(refreshedToken.RefreshToken));
+                    return Ok(new {
+                        refreshedToken.JwtToken,
+                        refreshedToken.RefreshToken.Token
+                    });
                 }
                 else
                 {

@@ -96,39 +96,30 @@ namespace MoviesApp.Services.UserRepo
         public bool IsTokenExpired(string token)
         {
             var refreshToken = _context.RefreshTokens.Where(r=>r.Token == token ).FirstOrDefault(); 
-            if( refreshToken != null )
+            if(refreshToken == null || (refreshToken.ExpiresAt < DateTime.UtcNow))
             {
-                if(refreshToken.ExpiresAt < DateTime.UtcNow)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
+              
                 return true;
             }
+            return false;
             
         }
-        public CookieOptions SetRefreshToken(RefreshToken refreshToken)
-        {
-            var cookieOptions = new CookieOptions
-            {
-                HttpOnly = true,
-                Expires = refreshToken.ExpiresAt
-            };
-            return cookieOptions;
-        }
+        //public CookieOptions SetRefreshToken(RefreshToken refreshToken)
+        //{
+        //    var cookieOptions = new CookieOptions
+        //    {
+        //        HttpOnly = true,
+        //        Expires = refreshToken.ExpiresAt
+        //    };
+        //    return cookieOptions;
+        //}
         private RefreshToken GenerateRefreshToken(User user)
         {
             var refreshToken = new RefreshToken()
             {
                 Token = Convert.ToBase64String(RandomNumberGenerator.GetBytes(64)),
-                ExpiresAt = DateTime.UtcNow.AddDays(1),
                 CreatedAt = DateTime.UtcNow,
+                ExpiresAt = DateTime.UtcNow.AddHours(5),
                 User = user,
                 UserId = user.UserId,
                 
@@ -151,7 +142,7 @@ namespace MoviesApp.Services.UserRepo
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
             var token = new JwtSecurityToken(
                 claims: claims,
-                expires: DateTime.UtcNow.AddMinutes(10),
+                expires: DateTime.UtcNow.AddSeconds(15),
                 signingCredentials: credentials);
 
             var jwt = new JwtSecurityTokenHandler().WriteToken(token);

@@ -28,8 +28,10 @@ export class LoginComponent implements OnInit{
         next:(res)=>{
           
           console.log(res.body.token );
+          console.log(res);
           this.formData.reset();
-          this.http.storeToken(res.body.token);
+          this.http.storeToken(res.body.jwtToken);
+          this.http.storeRefreshToken(res.body.refreshToken);
           this.http.setStatusEmitter(true);
           this.router.navigate(["/"]);
         },

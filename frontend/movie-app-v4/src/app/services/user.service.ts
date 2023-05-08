@@ -4,6 +4,7 @@ import { Registration } from '../interfaces/registration';
 import { Login } from '../interfaces/login';
 import { Router } from '@angular/router';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import { RefreshToken } from '../interfaces/refreshToken';
 @Injectable({
   providedIn: 'root'
 })
@@ -23,15 +24,22 @@ export class UserService {
   storeToken(tokenValue:string){
     localStorage.setItem("token",tokenValue);
   }
+  storeRefreshToken(token:string){
+    localStorage.setItem("refreshToken",token);
+
+  }
   getToken(){
     return localStorage.getItem("token");
+  }
+  getRefreshToken(){
+    return localStorage.getItem("refreshToken");
   }
   isLoggedIn():boolean{
     return !!localStorage.getItem("token");
   }
   signOut(){
     localStorage.removeItem("token");
-    
+    localStorage.removeItem("refreshToken");
     this.router.navigate(["/login"]);
 
   }
@@ -40,7 +48,9 @@ export class UserService {
     const token = this.getToken()!;
     return jwtHelper.decodeToken(token); 
   }
-
+  refreshToken(token:RefreshToken){
+    return this.http.post<any>(`${this.defaultPath}api/User/refresh-token`,token);
+  }
   
   statusEmitter = new EventEmitter<boolean>();
   

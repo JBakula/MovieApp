@@ -244,7 +244,7 @@ namespace MoviesApp.Services.MovieRepo
             var moviesResponeList = new List<MoviesResponse>();
             foreach (var movie in movies)
             {
-                var rating = CountMovieRating(movie.MovieId);
+                float rating = CalculateMovieRating(movie.MovieId);
                 moviesResponeList.Add(new MoviesResponse()
                 {
                     MovieId = movie.MovieId,
@@ -268,14 +268,20 @@ namespace MoviesApp.Services.MovieRepo
                                
             
         }
-        private float CountMovieRating(int id)
+        //private int UserRating(int userId, int movieId)
+        //{
+        //    int rating = _context.Ratings.Where(r => r.MovieId == movieId).Where(r => r.UserId == userId).Select(r=>r.Value).FirstOrDefault();
+        //    return rating;
+        //}
+        private float CalculateMovieRating(int id)
         {
-            if (NumberOfRatings(id) == 0)
+            int numberOfRatings = NumberOfRatings(id);
+            if (numberOfRatings == 0)
             {
                 return 0;
             }
-            return _context.Ratings.Where(r => r.MovieId == id).Select(r => r.Value).Sum()
-                                            / NumberOfRatings(id);
+            return ((_context.Ratings.Where(r => r.MovieId == id).Sum(r=>r.Value))
+                                            / numberOfRatings);
         }
         private int NumberOfRatings(int id)
         {
@@ -342,7 +348,7 @@ namespace MoviesApp.Services.MovieRepo
                 MovieId = movie.MovieId,
                 MovieName = movie.MovieName,
                 Year = movie.Year,
-                Rating = CountMovieRating(movie.MovieId),
+                Rating = CalculateMovieRating(movie.MovieId),
                 CoverImage = movie.CoverImage,
                 Description = movie.Description,
                 IMDbRating = (float)movie.IMDbRating,
@@ -465,7 +471,7 @@ namespace MoviesApp.Services.MovieRepo
             var moviesResponeList = new List<MoviesResponse>();
             foreach (var movie in movies)
             {
-                var rating = CountMovieRating(movie.MovieId);
+                var rating = CalculateMovieRating(movie.MovieId);
                 moviesResponeList.Add(new MoviesResponse()
                 {
                     MovieId = movie.MovieId,

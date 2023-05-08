@@ -17,7 +17,6 @@ namespace MoviesApp.Controllers
         }
 
         [HttpGet]
-        
         public IActionResult GetMovies([FromQuery]int page = 1, [FromQuery] string ordering= "Name ascending")
         {
             var movies = _movieService.GetMovies(page, ordering);

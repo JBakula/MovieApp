@@ -20,8 +20,6 @@
             <button  *ngIf="data.rating === 0" (click)="ratingPopUp($event)" class="rate-btn" [ngClass]="{'hide-button': modalOpen}"  >Rate</button>
             <i *ngIf="data.rating > 0" (click)="ratingPopUp($event)" class="fas fa-star user-rating" [ngClass]="{'hide-user-rating':modalOpen}"> {{data.rating}}</i>
           </div>
-          
-          
           <div class="ngb-rating-div" [ngClass]="{'rating-opened': modalOpen}">
             <div class="closeModal-div" >
               <button (click)="closeModal($event)" class="close-btn">x</button>
