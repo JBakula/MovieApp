@@ -39,19 +39,22 @@ export class TokenInterceptor implements HttpInterceptor {
   }
 
   handleUnAuthorizedError(req:HttpRequest<any>,next:HttpHandler){
-     this.refreshToken.token = this.userService.getRefreshToken()!;
+     this.refreshToken.refreshToken = this.userService.getRefreshToken()!;
     return this.userService.refreshToken(this.refreshToken).pipe(
       switchMap((data:any)=>{
-        this.userService.storeToken(data.token);
-        this.userService.storeRefreshToken(data.refreshToken);
+        this.userService.storeToken(data.body.jwtToken);
+        this.userService.storeRefreshToken(data.body.refreshToken);
+        console.log(data);
         req = req.clone({
-          setHeaders:{Authorization:`Bearer ${data.token}`}
+          setHeaders:{Authorization:`Bearer ${data.body.jwtToken}`}
         })
         return next.handle(req);
       }),
       catchError((err)=>{
         return throwError(()=>{
           this.router.navigate(["login"]);
+          this.userService.signOut();
+          this.userService.setStatusEmitter(false);
         });
 
       })

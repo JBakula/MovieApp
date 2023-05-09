@@ -60,7 +60,10 @@ namespace MoviesApp.Controllers
             
             if (_userService.IsTokenExpired(refreshToken.RefreshToken))
             {
-                return StatusCode(500);
+                return BadRequest(new
+                {
+                    message="Session expired, please login again"
+                });
             }
             else
             {
@@ -70,8 +73,8 @@ namespace MoviesApp.Controllers
                 {
                     //Response.Cookies.Append("refreshToken", refreshedToken.RefreshToken.Token, _userService.SetRefreshToken(refreshedToken.RefreshToken));
                     return Ok(new {
-                        refreshedToken.JwtToken,
-                        refreshedToken.RefreshToken.Token
+                        jwtToken = refreshedToken.JwtToken,
+                        refreshToken = refreshedToken.RefreshToken.Token
                     });
                 }
                 else

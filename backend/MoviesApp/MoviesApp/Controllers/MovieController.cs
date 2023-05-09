@@ -19,6 +19,16 @@ namespace MoviesApp.Controllers
         [HttpGet]
         public IActionResult GetMovies([FromQuery]int page = 1, [FromQuery] string ordering= "Name ascending")
         {
+            //var token = HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+            //MoviesResponsePaginated movies;
+            //if (token == null)
+            //{
+            //    movies = _movieService.GetMovies(page, ordering, "");
+            //}
+            //else
+            //{
+            //    movies = _movieService.GetMovies(page, ordering, token);
+            //}
             var movies = _movieService.GetMovies(page, ordering);
             if(movies!=null)
             {

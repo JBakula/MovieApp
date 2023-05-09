@@ -119,7 +119,7 @@ namespace MoviesApp.Services.UserRepo
             {
                 Token = Convert.ToBase64String(RandomNumberGenerator.GetBytes(64)),
                 CreatedAt = DateTime.UtcNow,
-                ExpiresAt = DateTime.UtcNow.AddHours(5),
+                ExpiresAt = DateTime.UtcNow.AddHours(10),
                 User = user,
                 UserId = user.UserId,
                 
@@ -142,7 +142,7 @@ namespace MoviesApp.Services.UserRepo
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
             var token = new JwtSecurityToken(
                 claims: claims,
-                expires: DateTime.UtcNow.AddSeconds(15),
+                expires: DateTime.UtcNow.AddMinutes(5),
                 signingCredentials: credentials);
 
             var jwt = new JwtSecurityTokenHandler().WriteToken(token);

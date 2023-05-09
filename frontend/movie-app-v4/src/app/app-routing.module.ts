@@ -4,6 +4,7 @@ import { MoviesContainerComponent } from './movies-container/movies-container.co
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -27,10 +28,10 @@ const routes: Routes = [
     path:'actor/:actorId',component:MoviesContainerComponent
   },
   {
-    path:'login',component:LoginComponent
+    path:'login',component:LoginComponent,canActivate:[AuthGuard]
   },
   {
-    path:'signup',component:SignupComponent
+    path:'signup',component:SignupComponent,canActivate:[AuthGuard]
   }
 ];
 

@@ -31,7 +31,10 @@ namespace MoviesApp.Controllers
             }
             if (_ratingService.RateMovie(ratingRequest,token))
             {
-                return Ok();
+                return Ok(new
+                {
+                    message="Successfully rated"
+                });
             }
             else
             {

@@ -32,6 +32,21 @@ export class MoviesContainerComponent implements OnInit{
       
     });
   }
+  refreshParent(){
+    this.activatedRoute.params.subscribe((params:Params)=>{
+      if(params['movie-search']){
+        this.getDataBySearch(params['movie-search'],this.order,this.page);
+      }else if(params['categoryId']){
+        this.getDataByCategoryId(params['categoryId'],this.order,this.page);
+      }else if(params['directorId']){
+        this.getDataByDirectorId(params['directorId'],this.order,this.page)
+      }else if(params['actorId']){
+        this.getDataByActorId(params['actorId'],this.order,this.page)
+      }else{
+        this.getData(this.page,this.order);
+      }
+    })
+  }
   getDataBySearch(searchedTerm:string,order:string,page:number){
     this.http.getMoviesBySearchedTerm(searchedTerm,order,page).subscribe((res)=>{
       this.moviesResponse = res;

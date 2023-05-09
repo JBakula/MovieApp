@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { movieDetails } from '../interfaces/movieDetails';
 import { HttpService } from '../services/http.service';
 import { MovieCard } from '../interfaces/movieCardInterface';
@@ -16,12 +16,14 @@ import { UserService } from '../services/user.service';
 export class MovieCardComponent implements OnInit {
   @Input() defaultPath:string 
   @Input() data:MovieCard;
+  @Output() refreshParent = new EventEmitter();
   movieDetails:movieDetails
   modalOpen:boolean
   imdb = faImdb
   rating:Rating 
   isUserLoggedIn:boolean
   ratingSubscribe:Subscription
+  
   constructor(private http:HttpService, private userService:UserService){
     this.data = {} as MovieCard;
     this.defaultPath = {} as string;
@@ -49,8 +51,11 @@ export class MovieCardComponent implements OnInit {
     this.rating.Rating = this.ratingControl.value;
     this.ratingSubscribe=this.http.rateMovie(this.rating).subscribe((res)=>{
       console.log(res);
+      this.refreshParent.emit();
     });
+    
     this.modalOpen = false;
+    
   }
   closeModal(event:any){
     event.preventDefault();

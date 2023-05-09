@@ -3,6 +3,7 @@ export interface MovieCard{
     movieName:string,
     year:number,
     rating:number,
+    userRating:number,
     imDbRating:number,
     coverImage:string,
     description:string

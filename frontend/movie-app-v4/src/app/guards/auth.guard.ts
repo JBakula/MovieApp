@@ -12,9 +12,9 @@ export class AuthGuard  {
   }
   canActivate():boolean{
     if(this.userService.isLoggedIn()){
-      return true;
-    }else{
       return false;
+    }else{
+      return true;
     }
   }
   

@@ -148,11 +148,13 @@ namespace MoviesApp.Services.CategoryRepo
             var moviesResponseList = new List<MoviesResponse>();
             foreach (var movie in movies)
             {
+                var rating = CalculateMovieRating(movie.MovieId);
                 moviesResponseList.Add(new MoviesResponse()
                 {
                     MovieId = movie.MovieId,
                     MovieName = movie.MovieName,
                     Year = movie.Year,
+                    Rating = rating,
                     CoverImage = movie.CoverImage,
                     IMDbRating = (float)movie.IMDbRating,
                     Description = movie.Description,
@@ -168,6 +170,22 @@ namespace MoviesApp.Services.CategoryRepo
             return moviesResponsePaginated;
 
 
+        }
+        private float CalculateMovieRating(int id)
+        {
+            int numberOfRatings = NumberOfRatings(id);
+            if (numberOfRatings == 0)
+            {
+                return 0;
+            }
+            int rating = _context.Ratings.Where(r => r.MovieId == id).Sum(r => r.Value);
+
+
+            return (float)Math.Round((double)((float)rating / (float)numberOfRatings), 1);
+        }
+        private int NumberOfRatings(int id)
+        {
+            return _context.Ratings.Where(r => r.MovieId == id).Count();
         }
         public bool IsCategoryExist(int id)
         {

@@ -163,7 +163,7 @@ namespace MoviesApp.Services.DirectorRepo
             var moviesResponeList = new List<MoviesResponse>();
             foreach (var movie in movies)
             {
-                var rating = CountMovieRating(movie.MovieId);
+                var rating = CalculateMovieRating(movie.MovieId);
                 moviesResponeList.Add(new MoviesResponse()
                 {
                     MovieId = movie.MovieId,
@@ -185,15 +185,18 @@ namespace MoviesApp.Services.DirectorRepo
 
             return moviesResponsePaginated;
         }
-        
-        private float CountMovieRating(int id)
+
+        private float CalculateMovieRating(int id)
         {
-            if (NumberOfRatings(id) == 0)
+            int numberOfRatings = NumberOfRatings(id);
+            if (numberOfRatings == 0)
             {
                 return 0;
             }
-            return _context.Ratings.Where(r => r.MovieId == id).Select(r => r.Value).Sum()
-                                            / NumberOfRatings(id);
+            int rating = _context.Ratings.Where(r => r.MovieId == id).Sum(r => r.Value);
+
+
+            return (float)Math.Round((double)((float)rating / (float)numberOfRatings), 1);
         }
         private int NumberOfRatings(int id)
         {

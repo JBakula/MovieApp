@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MoviesApp.DTO;
 using MoviesApp.Models;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 
 namespace MoviesApp.Services.MovieRepo
@@ -112,7 +113,16 @@ namespace MoviesApp.Services.MovieRepo
 
         public MoviesResponsePaginated GetMovies([FromQuery]int page,[FromQuery] string ordering)
         {
-           
+            //int loggedUserId;
+            //if (token == ""){
+            //    loggedUserId = 0;
+            //}
+            //else
+            //{
+            //    loggedUserId = IsLoggedIn(token);
+
+            //}
+
             var numberOfMoviesPerPage = 8f;
             var numberOfPages = NumberOfPages(numberOfMoviesPerPage);
             var movies = _context.Movies.OrderBy(m => m.MovieName)
@@ -245,12 +255,23 @@ namespace MoviesApp.Services.MovieRepo
             foreach (var movie in movies)
             {
                 float rating = CalculateMovieRating(movie.MovieId);
+                //int userRating;
+                //if (loggedUserId > 0)
+                //{
+                //    userRating = UserRating(loggedUserId, movie.MovieId);
+                //}
+                //else
+                //{
+                //    userRating = 0;
+                //}
+
                 moviesResponeList.Add(new MoviesResponse()
                 {
                     MovieId = movie.MovieId,
                     MovieName = movie.MovieName,
                     Rating = rating,
                     Year = movie.Year,
+                    /*UserRating = userRating*/
                     CoverImage = movie.CoverImage,
                     IMDbRating = (float)movie.IMDbRating,
                     Description = movie.Description
@@ -268,9 +289,22 @@ namespace MoviesApp.Services.MovieRepo
                                
             
         }
+        //private int IsLoggedIn(string token)
+        //{
+        //    if (token != null)
+        //    {
+        //        var handler = new JwtSecurityTokenHandler();
+        //        var decodedToken = handler.ReadJwtToken(token);
+
+
+        //        var userId = int.Parse(decodedToken.Claims.First(c => c.Type == "UserId").Value);
+        //        return userId;
+        //    }
+        //    return 0;
+        //}
         //private int UserRating(int userId, int movieId)
         //{
-        //    int rating = _context.Ratings.Where(r => r.MovieId == movieId).Where(r => r.UserId == userId).Select(r=>r.Value).FirstOrDefault();
+        //    int rating = _context.Ratings.Where(r => (r.MovieId == movieId) && (r.UserId == userId)).Select(r => r.Value).FirstOrDefault();
         //    return rating;
         //}
         private float CalculateMovieRating(int id)
@@ -280,8 +314,10 @@ namespace MoviesApp.Services.MovieRepo
             {
                 return 0;
             }
-            return ((_context.Ratings.Where(r => r.MovieId == id).Sum(r=>r.Value))
-                                            / numberOfRatings);
+            int rating = _context.Ratings.Where(r => r.MovieId == id).Sum(r => r.Value);
+
+            
+            return (float) Math.Round((double)((float)rating/(float)numberOfRatings),1);
         }
         private int NumberOfRatings(int id)
         {

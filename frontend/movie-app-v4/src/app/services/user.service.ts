@@ -49,7 +49,7 @@ export class UserService {
     return jwtHelper.decodeToken(token); 
   }
   refreshToken(token:RefreshToken){
-    return this.http.post<any>(`${this.defaultPath}api/User/refresh-token`,token);
+    return this.http.post<any>(`${this.defaultPath}api/User/refresh-token`,token,{ observe: 'response' });
   }
   
   statusEmitter = new EventEmitter<boolean>();
