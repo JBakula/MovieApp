@@ -25,8 +25,6 @@ namespace MoviesApp.Services.CategoryRepo
             var numberOfMoviesPerPage = 8f;
             var numberOfPages = NumberOfPages(id,numberOfMoviesPerPage);
             var movies = _context.CategoryMovies.Where(c=>c.CategoryId == id)
-                                                .Skip((page - 1) * (int)numberOfPages)
-                                                .Take((int)numberOfMoviesPerPage)
                                                 .Select(c => new
                                                 {
                                                     c.MovieId,
@@ -36,130 +34,55 @@ namespace MoviesApp.Services.CategoryRepo
                                                     c.Movie.Year,
                                                     c.Movie.Description
                                                 }).ToList();
-            switch (ordering)
-            {
-                case "Title ascending":
-                    movies = _context.CategoryMovies.Where(c => c.CategoryId == id)
-                                                .OrderBy(c=>c.Movie.MovieName)
-                                                .Skip((page - 1) * (int)numberOfPages)
-                                                .Take((int)numberOfMoviesPerPage)
-                                                .Select(c => new
-                                                {
-                                                    c.MovieId,
-                                                    c.Movie.MovieName,
-                                                    c.Movie.CoverImage,
-                                                    c.Movie.IMDbRating,
-                                                    c.Movie.Year,
-                                                    c.Movie.Description
-                                                }).ToList();
-                    break;
-                case "Title descending":
-                    movies = _context.CategoryMovies.Where(c => c.CategoryId == id)
-                                                .OrderByDescending(c => c.Movie.MovieName)
-                                                .Skip((page - 1) * (int)numberOfPages)
-                                                .Take((int)numberOfMoviesPerPage)
-                                                .Select(c => new
-                                                {
-                                                    c.MovieId,
-                                                    c.Movie.MovieName,
-                                                    c.Movie.CoverImage,
-                                                    c.Movie.IMDbRating,
-                                                    c.Movie.Year,
-                                                    c.Movie.Description
-                                                }).ToList();
-                    break;
-                case "Year ascending":
-                    movies = _context.CategoryMovies.Where(c => c.CategoryId == id)
-                                                .OrderBy(c => c.Movie.Year)
-                                                .Skip((page - 1) * (int)numberOfPages)
-                                                .Take((int)numberOfMoviesPerPage)
-                                                .Select(c => new
-                                                {
-                                                    c.MovieId,
-                                                    c.Movie.MovieName,
-                                                    c.Movie.CoverImage,
-                                                    c.Movie.IMDbRating,
-                                                    c.Movie.Year,
-                                                    c.Movie.Description
-                                                }).ToList();
-                    break;
-                case "Year descending":
-                    movies = _context.CategoryMovies.Where(c => c.CategoryId == id)
-                                                 .OrderByDescending(c => c.Movie.Year)
-                                                 .Skip((page - 1) * (int)numberOfPages)
-                                                .Take((int)numberOfMoviesPerPage)
-                                                .Select(c => new
-                                                {
-                                                    c.MovieId,
-                                                    c.Movie.MovieName,
-                                                    c.Movie.CoverImage,
-                                                    c.Movie.IMDbRating,
-                                                    c.Movie.Year,
-                                                    c.Movie.Description
-                                                }).ToList();
-                    break;
-                case "IMDb rating ascending":
-                    movies = _context.CategoryMovies.Where(c => c.CategoryId == id)
-                                                 .OrderBy(c => c.Movie.IMDbRating)
-                                                 .Skip((page - 1) * (int)numberOfPages)
-                                                .Take((int)numberOfMoviesPerPage)
-                                                .Select(c => new
-                                                {
-                                                    c.MovieId,
-                                                    c.Movie.MovieName,
-                                                    c.Movie.CoverImage,
-                                                    c.Movie.IMDbRating,
-                                                    c.Movie.Year,
-                                                    c.Movie.Description
-                                                }).ToList();
-                    break;
-                case "IMDb rating descending":
-                    movies = _context.CategoryMovies.Where(c => c.CategoryId == id)
-                                                 .OrderByDescending(c => c.Movie.IMDbRating)
-                                                 .Skip((page - 1) * (int)numberOfPages)
-                                                .Take((int)numberOfMoviesPerPage)
-                                                .Select(c => new
-                                                {
-                                                    c.MovieId,
-                                                    c.Movie.MovieName,
-                                                    c.Movie.CoverImage,
-                                                    c.Movie.IMDbRating,
-                                                    c.Movie.Year,
-                                                    c.Movie.Description
-                                                }).ToList();
-                    break;
-                default:
-                    movies = _context.CategoryMovies.Where(c => c.CategoryId == id).OrderBy(c => c.Movie.MovieName)
-
-                                                .Skip((page - 1) * (int)numberOfPages)
-                                                .Take((int)numberOfMoviesPerPage)
-                                                .Select(c => new
-                                                {
-                                                    c.MovieId,
-                                                    c.Movie.MovieName,
-                                                    c.Movie.CoverImage,
-                                                    c.Movie.IMDbRating,
-                                                    c.Movie.Year,
-                                                    c.Movie.Description
-                                                }).ToList();
-                    break;
-
-            }
             var moviesResponseList = new List<MoviesResponse>();
             foreach (var movie in movies)
             {
-                var rating = CalculateMovieRating(movie.MovieId);
+                float rating = CalculateMovieRating(movie.MovieId);
+
+
                 moviesResponseList.Add(new MoviesResponse()
                 {
                     MovieId = movie.MovieId,
                     MovieName = movie.MovieName,
-                    Year = movie.Year,
                     Rating = rating,
+                    Year = movie.Year,
+                    /*UserRating = userRating*/
                     CoverImage = movie.CoverImage,
                     IMDbRating = (float)movie.IMDbRating,
-                    Description = movie.Description,
-                    
+                    Description = movie.Description
                 });
+            }
+            switch (ordering)
+            {
+                case "Title ascending":
+                    moviesResponseList = moviesResponseList.OrderBy(m => m.MovieName).Skip((page - 1) * (int)numberOfPages).Take((int)numberOfMoviesPerPage).ToList();
+                    break;
+                case "Title descending":
+                    moviesResponseList = moviesResponseList.OrderByDescending(m => m.MovieName).Skip((page - 1) * (int)numberOfPages).Take((int)numberOfMoviesPerPage).ToList();
+                    break;
+                case "Year ascending":
+                    moviesResponseList = moviesResponseList.OrderBy(m => m.Year).Skip((page - 1) * (int)numberOfPages).Take((int)numberOfMoviesPerPage).ToList();
+                    break;
+                case "Year descending":
+                    moviesResponseList = moviesResponseList.OrderByDescending(m => m.Year).Skip((page - 1) * (int)numberOfPages).Take((int)numberOfMoviesPerPage).ToList();
+                    break;
+                case "IMDb rating ascending":
+                    moviesResponseList = moviesResponseList.OrderBy(m => m.IMDbRating).Skip((page - 1) * (int)numberOfPages).Take((int)numberOfMoviesPerPage).ToList();
+                    break;
+                case "IMDb rating descending":
+                    moviesResponseList = moviesResponseList.OrderByDescending(m => m.IMDbRating).Skip((page - 1) * (int)numberOfPages).Take((int)numberOfMoviesPerPage).ToList();
+                    break;
+                case "Users rating ascending":
+                    moviesResponseList = moviesResponseList.OrderBy(m => m.Rating).Skip((page - 1) * (int)numberOfPages).Take((int)numberOfMoviesPerPage).ToList();
+                    break;
+                case "Users rating descending":
+                    moviesResponseList = moviesResponseList.OrderByDescending(m => m.Rating).Skip((page - 1) * (int)numberOfPages).Take((int)numberOfMoviesPerPage).ToList();
+                    break;
+
+                default:
+                    moviesResponseList = moviesResponseList.OrderBy(m => m.MovieName).Skip((page - 1) * (int)numberOfPages).Take((int)numberOfMoviesPerPage).ToList();
+                    break;
+
             }
             var moviesResponsePaginated = new MoviesResponsePaginated()
             {

@@ -84,5 +84,14 @@ namespace MoviesApp.Controllers
                 
             }
         }
+        [HttpGet,Authorize]
+        [Route("recommendation")]
+        public IActionResult MovieRecommender()
+        {
+            var token = HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+            var list = _userService.MoviesRecommendation(token);
+
+            return Ok(list);
+        }
     }
 }
