@@ -1,6 +1,7 @@
 .moviesContainerClass{
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 .cards-container{
     width: 100%;
@@ -21,12 +22,64 @@
 } */
 .select-container{
     padding: 10px 0px;
-    width: 300px;
+    
     display: flex;
-    justify-content: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
 }
 .select{
     background-color: black;
     color: white;
-    width: 80%;
+    width: 300px;
+}
+.recommendtaion-btn{
+    color: black;
+    
+}
+.recommendation-modal{
+
+    opacity: 0;
+    pointer-events: none;
+    background-color: white;
+    position: absolute;
+    top: 130px;
+    bottom: 150px;
+    right: 250px;
+    left:250px;
+    background-color: aliceblue;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+.recommendation-modal-active{
+    opacity: 1;
+    pointer-events: auto;
+}
+.modalHeader{
+    height: 50px;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+}
+.close-modal-btn{
+    color: white;
+    background-color: red;
+    border: none;
+    border-radius: 5px;
+}
+.modalRefreshIcon{
+    display: flex;
+    justify-content: center;
+}
+.modalBody{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 190px;
+}
+.card-body{
+    height: 400px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

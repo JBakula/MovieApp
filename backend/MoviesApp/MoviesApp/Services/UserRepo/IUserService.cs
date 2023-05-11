@@ -11,6 +11,6 @@ namespace MoviesApp.Services.UserRepo
         //CookieOptions SetRefreshToken(RefreshToken refreshToken);
         AuthResponse RefreshToken(string token);
         bool IsTokenExpired(string token);
-        ICollection<MoviesResponse> MoviesRecommendation(string token);
+        MoviesResponse MoviesRecommendation(string token);
     }
 }

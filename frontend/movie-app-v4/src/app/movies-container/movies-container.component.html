@@ -3,7 +3,10 @@
     <select class="form-select select" aria-label="Default select example" (change)="handleChangeSelectOrder($event)">
       <option  *ngFor="let option of selectListOptions" value={{option}}>{{option}}</option>
     </select>
-  </div>  
+    <button *ngIf="isLoggedIn" class="btn btn-warning recommendtaion-btn" (click)="movieRecommendation()" >Pick a movie for me</button>
+    
+  </div> 
+  
   <div class="cards-container">
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4  g-3">
       <app-movie-card [defaultPath] = "defaultPath"  *ngFor="let card of cards" [data]="card" (refreshParent)="refreshParent()" ></app-movie-card>
@@ -12,5 +15,21 @@
   <div *ngIf="totalPages.length>1" class="pagination-container">
     <app-pagination [totalPages] = "totalPages" [currentPath]="currentPath" (pageEvent)="handlePageChange($event)"></app-pagination>
   </div>
-</div>
+  <app-recomended-movie-modal [isOpen]="modalActive"></app-recomended-movie-modal>
   
+  <!-- <div class="recommendation-modal" [ngClass]="{'recommendation-modal-active':modalActive}">
+    <div class="modalHeader">
+     
+      <button (click)="closeModal()"><i class="fa-solid fa-circle-xmark" style="color: #d71919;"></i></button>
+    </div>
+    <div class="modalRefreshIcon">
+      <button><i (click)="refreshRecommendedData()" class="fa-solid fa-arrows-rotate"></i></button>
+    </div>
+    <div class="modalBody">
+      <div class="card-body">
+        <app-movie-card [defaultPath] = "defaultPath" [data]="recommendedMovieCard"></app-movie-card>        
+      </div>
+    </div>
+  </div>   -->
+  
+</div>

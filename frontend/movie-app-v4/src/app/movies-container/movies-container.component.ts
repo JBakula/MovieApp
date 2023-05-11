@@ -3,6 +3,8 @@ import { HttpService } from '../services/http.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MoviesResponse } from '../interfaces/moviesResponse';
 import { MovieCard } from '../interfaces/movieCardInterface';
+import { RecommendationService } from '../services/recommendation.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-movies-container',
@@ -16,11 +18,18 @@ export class MoviesContainerComponent implements OnInit{
   page:number = 1
   currentPath:string = "";
   totalPages:number[] = [];
-  selectListOptions:string[] = ["Title ascending","Title descending","Year ascending","Year descending","IMDb rating ascending","IMDb rating descending"];
+  isLoggedIn:boolean;
+  recommendedMovieCard:MovieCard;
+  selectListOptions:string[] = ["Title ascending","Title descending","Year ascending","Year descending","IMDb rating ascending","IMDb rating descending","Users rating ascending",
+                                "Users rating descending"];
   order:string = "Title ascending";
-  
-  constructor(private http:HttpService, private activatedRoute:ActivatedRoute,private router:Router){
-    this.moviesResponse = {} as MoviesResponse
+  modalActive:boolean;
+  constructor(private http:HttpService, private recommender:RecommendationService,
+    private user:UserService,private activatedRoute:ActivatedRoute,private router:Router){
+    this.moviesResponse = {} as MoviesResponse,
+    this.isLoggedIn = {} as boolean,
+    this.modalActive = false,
+    this.recommendedMovieCard = {} as MovieCard
     
   } 
   getData(page:number,ordering:string){
@@ -116,8 +125,26 @@ export class MoviesContainerComponent implements OnInit{
     
   }
   
+  closeModal(){
+    this.modalActive = false;
+  }
+  refreshRecommendedData(){
+    this.recommender.pickAMoiveForMe().subscribe((res)=>{
+      this.recommendedMovieCard = res;
+
+    })
+  }
+  movieRecommendation(){
+    this.modalActive = true
+    this.recommender.pickAMoiveForMe().subscribe((res)=>{
+      this.recommendedMovieCard = res;
+
+    })
+  }
+  
   ngOnInit(): void {
     this.currentPath = this.router.url;
+    this.isLoggedIn = this.user.isLoggedIn();
     this.activatedRoute.params.subscribe((params:Params)=>{
       if(params['movie-search']){
         this.getDataBySearch(params['movie-search'],this.order,this.page);

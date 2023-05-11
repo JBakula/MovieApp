@@ -158,7 +158,7 @@ namespace MoviesApp.Services.UserRepo
 
             }
         }
-        public ICollection<MoviesResponse> MoviesRecommendation(string token)
+        public MoviesResponse MoviesRecommendation(string token)
         {
             var handler = new JwtSecurityTokenHandler();
             var decodedToken = handler.ReadJwtToken(token);
@@ -175,7 +175,6 @@ namespace MoviesApp.Services.UserRepo
                 r.Movie.IMDbRating,
             }).ToList();
 
-            //var categories = _context.CategoryMovies.ToList();
             var favouriteCategoriesList = new List<int>();
 
             foreach (var movie in userFavouriteMovies)
@@ -207,7 +206,10 @@ namespace MoviesApp.Services.UserRepo
                 favouriteDirectors.Add(newDirectorResponse);
             }
 
-            //var favouriteStarActors = new List<ActorsResponse>
+            var ratedMovies = _context.Ratings.Where(r=>r.UserId == userId).Select(r=>r.MovieId).ToList();
+
+
+
             var notRatedMovies = _context.Ratings.Where(r => r.UserId != userId).Select(r => new
             {
                 r.Movie.MovieId,
@@ -222,28 +224,33 @@ namespace MoviesApp.Services.UserRepo
 
             foreach (var movie in notRatedMovies)
             {
-                var categories = _context.CategoryMovies.Where(c => c.MovieId == movie.MovieId).Select(c => new { c.CategoryId }).ToList();
-                foreach (var category in categories)
+                if(!ratedMovies.Contains(movie.MovieId))
                 {
-                    if (favouriteCategoriesList.Contains(category.CategoryId))
+                    var categories = _context.CategoryMovies.Where(c => c.MovieId == movie.MovieId).Select(c => new { c.CategoryId }).ToList();
+                    foreach (var category in categories)
                     {
-                        recommendedList.Add(new MoviesResponse()
+                        if (favouriteCategoriesList.Contains(category.CategoryId))
                         {
-                            MovieId = movie.MovieId,
-                            MovieName = movie.MovieName,
-                            CoverImage = movie.CoverImage,
-                            Description = movie.Description,
-                            Year = movie.Year,
-                            IMDbRating = (float)movie.IMDbRating,
-                            Rating = CalculateMovieRating(movie.MovieId)
-                        }); ;
+                            recommendedList.Add(new MoviesResponse()
+                            {
+                                MovieId = movie.MovieId,
+                                MovieName = movie.MovieName,
+                                CoverImage = movie.CoverImage,
+                                Description = movie.Description,
+                                Year = movie.Year,
+                                IMDbRating = (float)movie.IMDbRating,
+                                Rating = CalculateMovieRating(movie.MovieId)
+                            }); 
+                        }
                     }
                 }
+                
             }
 
             List<MoviesResponse> uniqueList = CustomDistinctMethod(recommendedList);
-            
-            return uniqueList;
+            Random rd = new Random();
+           
+            return uniqueList[rd.Next(0, uniqueList.Count)];
             
             
         }

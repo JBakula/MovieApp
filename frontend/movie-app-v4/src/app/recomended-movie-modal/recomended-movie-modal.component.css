@@ -1,0 +1,34 @@
+.modal{
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    left: 200px;
+    right: 200px;
+    bottom: 250px;
+    background-color: aliceblue;
+    border: 1px solid black;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    
+}
+.modal-footer{
+    display: flex;
+    height: 40px;
+    background-color: burlywood;
+}
+.info-div{
+    background-color: aquamarine;
+}
+.modal-header{
+    background-color: blueviolet;
+}
+.modal-active{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.c{
+    background-color: blue;
+
+}
