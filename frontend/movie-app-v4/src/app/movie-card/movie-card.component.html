@@ -14,7 +14,7 @@
         </div>
         <div class="rating-div">
           <div class="iconDiv" [ngClass]="{'icon-div-closed':modalOpen}">
-            <i class="fa-brands fa-imdb fa-xl imdb-icon"></i> {{data.imDbRating}}
+            <i class="fa-brands fa-imdb fa-xl imdb-icon "></i> {{data.imDbRating}}
         </div>
           <div *ngIf="isUserLoggedIn">
             <button  *ngIf="data.rating === 0" (click)="ratingPopUp($event)" class="rate-btn" [ngClass]="{'hide-button': modalOpen}"  >Rate</button>

@@ -1,29 +1,21 @@
-
-<!-- <div class="container detailsContainer">
-    <div class="coverimage-div">
-        <img class="cover-image" src="{{defaultPath+movieDetails.coverImage}}" alt="">
+<div class="container details-container">
+    <div class="cover-image-div" >
+        <div class="wrapper">
+            <img src="{{defaultPath+images[currentIndex]}}" alt="" 
+            class="cover-image">
+            <div class="arrows">
+                <div>
+                    <i class="fa-solid fa-arrow-left fa-2xl" 
+                    style="color: #c9c9c9;" (click)="previousImage()"></i>
+                </div>
+                <div>
+                    <i class="fa-solid fa-arrow-right fa-2xl" 
+                    style="color: #c9c9c9;" (click)="nextImage()"></i>
+                </div>
+            </div>
+        </div>
     </div>
     <div>
-        
+
     </div>
-    
-</div> 
-<div class="container detailsContainer">
-    <div class="coverimage-div">
-        <img class="cover-image" src="{{defaultPath+movieDetails.coverImage}}" alt="">
-    </div>
-    <div class="info-div"></div>
-</div>-->
-{{movieDetails|json}}
-<br>
-Director: 
-<span> <button routerLink="/director/{{movieDetails.directorId}}">{{movieDetails.directorName}}</button></span>
-Actors: 
-<span *ngFor="let actor of movieDetails.actors">
-    <button routerLink="/actor/{{actor.actorId}}">{{actor.actorName}}</button>
-</span>
-<br>
-Genres: 
-<span *ngFor="let category of movieDetails.categories">
-    <button routerLink="/category/{{category.categoryId}}">{{category.categoryName}}</button>
-</span>
+</div>

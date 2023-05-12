@@ -14,7 +14,6 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { TokenInterceptor } from './interceptors/token.interceptor';
-import { RecomendedMovieModalComponent } from './recomended-movie-modal/recomended-movie-modal.component';
 
 
 @NgModule({
@@ -26,8 +25,6 @@ import { RecomendedMovieModalComponent } from './recomended-movie-modal/recomend
     PaginationComponent,
     LoginComponent,
     SignupComponent,
-    RecomendedMovieModalComponent,
-    
   ],
   imports: [
     BrowserModule,

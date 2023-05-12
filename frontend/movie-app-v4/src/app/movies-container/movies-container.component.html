@@ -15,21 +15,47 @@
   <div *ngIf="totalPages.length>1" class="pagination-container">
     <app-pagination [totalPages] = "totalPages" [currentPath]="currentPath" (pageEvent)="handlePageChange($event)"></app-pagination>
   </div>
-  <app-recomended-movie-modal [isOpen]="modalActive"></app-recomended-movie-modal>
   
-  <!-- <div class="recommendation-modal" [ngClass]="{'recommendation-modal-active':modalActive}">
-    <div class="modalHeader">
-     
-      <button (click)="closeModal()"><i class="fa-solid fa-circle-xmark" style="color: #d71919;"></i></button>
-    </div>
-    <div class="modalRefreshIcon">
-      <button><i (click)="refreshRecommendedData()" class="fa-solid fa-arrows-rotate"></i></button>
-    </div>
-    <div class="modalBody">
-      <div class="card-body">
-        <app-movie-card [defaultPath] = "defaultPath" [data]="recommendedMovieCard"></app-movie-card>        
+  <div class="recommendation-modal" [ngClass]="{'recommendation-modal-active':modalActive}">
+    
+    <div class="upper-div">
+      <div class="modalHeader">
+        <span>Recommended for you:</span>
+        <i class="fa-solid fa-circle-xmark close-btn" style="color: #d71919;" (click)="closeModal()"></i>
+        <!-- <button ></button> -->
+      </div>
+      
+      <div class="modalBody" >
+        <div class="card-body">
+          <div class="image-div">
+            <img src="{{defaultPath+recommendedMovieCard.coverImage}}" alt="" class="recommended-movie-image" routerLink="/details/{{recommendedMovieCard.movieId}}">
+          </div>
+          <div class="info-div">
+            <div class="title" routerLink="/details/{{recommendedMovieCard.movieId}}">
+              {{recommendedMovieCard.movieName}} ({{recommendedMovieCard.year}})
+            </div>
+            <div>
+              {{recommendedMovieCard.description}}
+            </div>
+            <div class="ratings-div">
+              <span>
+              <i class="fa-brands fa-imdb fa-2xl" style="color: #FFC107; margin-right: 5px;"></i>{{recommendedMovieCard.imDbRating}}
+              </span>
+              <span>
+                <i class="fas fa-star" style="color: #FFC107; margin-right: 5px;"></i>{{recommendedMovieCard.rating}}
+              </span>
+            </div>
+          </div>        
+        </div>
       </div>
     </div>
-  </div>   -->
+    <div>
+      <div class="modalFooter">
+       <i (click)="refreshRecommendedData()" class="fa-solid fa-arrows-rotate" style="cursor: pointer;"></i>
+      </div>
+    </div>
+   
+    
+  </div>  
   
 </div>
