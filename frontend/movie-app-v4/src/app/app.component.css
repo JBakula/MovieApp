@@ -1,5 +1,5 @@
 .search-bar{
-    border: 1px solid white;
+    border: 1px solid #FFC107;
     color: white;
     background-color: rgb(15, 15, 15);
 }
@@ -9,7 +9,7 @@
   }
 
 .search-btn{
-    border: 1px solid white;
+    border: 1px solid #FFC107;
     color: white;
 }
 .containerClass{
@@ -25,6 +25,7 @@
     display: flex;
 }
 .brand{
+    /* color:#FFC107; */
     color: white;
 }
 .signup-btn{

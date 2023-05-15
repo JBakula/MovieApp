@@ -30,6 +30,9 @@
             <small *ngIf="formData.controls['Password'].errors?.['minlength']">
                 Password must be at least 6 characters long
             </small>
+            <small *ngIf="credentialsMessage">
+                {{credentialsMessage}}
+            </small>
         </div>
         
         

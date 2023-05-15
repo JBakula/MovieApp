@@ -52,44 +52,47 @@ namespace MoviesApp.Services.CategoryRepo
                     Description = movie.Description
                 });
             }
+            var moviesResponseListOrdered = new List<MoviesResponse>();
             switch (ordering)
             {
                 case "Title ascending":
-                    moviesResponseList = moviesResponseList.OrderBy(m => m.MovieName).Skip((page - 1) * (int)numberOfPages).Take((int)numberOfMoviesPerPage).ToList();
+                    moviesResponseListOrdered = moviesResponseList.OrderBy(m => m.MovieName).Skip((page - 1) * (int)numberOfMoviesPerPage).Take((int)numberOfMoviesPerPage).ToList();
                     break;
                 case "Title descending":
-                    moviesResponseList = moviesResponseList.OrderByDescending(m => m.MovieName).Skip((page - 1) * (int)numberOfPages).Take((int)numberOfMoviesPerPage).ToList();
+                    moviesResponseListOrdered = moviesResponseList.OrderByDescending(m => m.MovieName).Skip((page - 1) * (int)numberOfMoviesPerPage).Take((int)numberOfMoviesPerPage).ToList();
                     break;
                 case "Year ascending":
-                    moviesResponseList = moviesResponseList.OrderBy(m => m.Year).Skip((page - 1) * (int)numberOfPages).Take((int)numberOfMoviesPerPage).ToList();
+                    moviesResponseListOrdered = moviesResponseList.OrderBy(m => m.Year).Skip((page - 1) * (int)numberOfMoviesPerPage).Take((int)numberOfMoviesPerPage).ToList();
                     break;
                 case "Year descending":
-                    moviesResponseList = moviesResponseList.OrderByDescending(m => m.Year).Skip((page - 1) * (int)numberOfPages).Take((int)numberOfMoviesPerPage).ToList();
+                    moviesResponseListOrdered = moviesResponseList.OrderByDescending(m => m.Year).Skip((page - 1) * (int)numberOfMoviesPerPage).Take((int)numberOfMoviesPerPage).ToList();
                     break;
                 case "IMDb rating ascending":
-                    moviesResponseList = moviesResponseList.OrderBy(m => m.IMDbRating).Skip((page - 1) * (int)numberOfPages).Take((int)numberOfMoviesPerPage).ToList();
+                    moviesResponseListOrdered = moviesResponseList.OrderBy(m => m.IMDbRating).Skip((page - 1) * (int)numberOfMoviesPerPage).Take((int)numberOfMoviesPerPage).ToList();
                     break;
                 case "IMDb rating descending":
-                    moviesResponseList = moviesResponseList.OrderByDescending(m => m.IMDbRating).Skip((page - 1) * (int)numberOfPages).Take((int)numberOfMoviesPerPage).ToList();
+                    moviesResponseListOrdered = moviesResponseList.OrderByDescending(m => m.IMDbRating).Skip((page - 1) * (int)numberOfMoviesPerPage).Take((int)numberOfMoviesPerPage).ToList();
                     break;
                 case "Users rating ascending":
-                    moviesResponseList = moviesResponseList.OrderBy(m => m.Rating).Skip((page - 1) * (int)numberOfPages).Take((int)numberOfMoviesPerPage).ToList();
+                    moviesResponseListOrdered = moviesResponseList.OrderBy(m => m.Rating).Skip((page - 1) * (int)numberOfMoviesPerPage).Take((int)numberOfMoviesPerPage).ToList();
                     break;
                 case "Users rating descending":
-                    moviesResponseList = moviesResponseList.OrderByDescending(m => m.Rating).Skip((page - 1) * (int)numberOfPages).Take((int)numberOfMoviesPerPage).ToList();
+                    moviesResponseListOrdered = moviesResponseList.OrderByDescending(m => m.Rating).Skip((page - 1) * (int)numberOfMoviesPerPage).Take((int)numberOfMoviesPerPage).ToList();
                     break;
 
                 default:
-                    moviesResponseList = moviesResponseList.OrderBy(m => m.MovieName).Skip((page - 1) * (int)numberOfPages).Take((int)numberOfMoviesPerPage).ToList();
+                    moviesResponseListOrdered = moviesResponseList.OrderBy(m => m.MovieName).Skip((page - 1) * (int)numberOfMoviesPerPage).Take((int)numberOfMoviesPerPage).ToList();
                     break;
 
             }
+
             var moviesResponsePaginated = new MoviesResponsePaginated()
             {
-                Movies = moviesResponseList,
+                Movies = moviesResponseListOrdered,
                 CurrentPage = page,
                 NumberOfPages = (int)numberOfPages
             };
+
             return moviesResponsePaginated;
 
 

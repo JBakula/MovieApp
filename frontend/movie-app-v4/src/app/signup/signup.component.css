@@ -16,8 +16,10 @@
     flex: 1;
     border-radius: 15px;
     border:none;
-    background-color: rgb(29, 51, 243);
-    color: white;
+    background-color:#FFC107;
+    color:  rgb(45,48,50);
+    font-weight: 600;
+    padding: 8px 0px;
 }
 .input.ng-invalid.ng-touched{
     border: 1px solid red;

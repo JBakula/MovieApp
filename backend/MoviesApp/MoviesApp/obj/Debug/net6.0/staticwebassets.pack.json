@@ -9,8 +9,16 @@
       "PackagePath": "staticwebassets\\images\\04223862346c4f1eba7ccf1c85d83e9b_saving-private-ryan.webp"
     },
     {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\10bc9a18ea954564bc3d5da16f8af695_fafa.jfif",
+      "PackagePath": "staticwebassets\\images\\10bc9a18ea954564bc3d5da16f8af695_fafa.jfif"
+    },
+    {
       "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\138c3999f66a413db96babb46de4ce74_image-asset.png",
       "PackagePath": "staticwebassets\\images\\138c3999f66a413db96babb46de4ce74_image-asset.png"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\150550d0a6a54f74a32325a8bf1e68e2_joker_3.jpg",
+      "PackagePath": "staticwebassets\\images\\150550d0a6a54f74a32325a8bf1e68e2_joker_3.jpg"
     },
     {
       "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\1af29e9975e540ce9937f592fd45e4ae_MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg",
@@ -29,12 +37,20 @@
       "PackagePath": "staticwebassets\\images\\1dc712744d36482594d0ed5cc31748fa_46529_pulp_fiction.jpg"
     },
     {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\23edf3afa9a54e3abb6f98e8e8876e0b_MV5BYzc5MTU4N2EtYTkyMi00NjdhLTg3NWEtMTY4OTEyMzJhZTAzXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_FMjpg_UX1000_.jpg",
+      "PackagePath": "staticwebassets\\images\\23edf3afa9a54e3abb6f98e8e8876e0b_MV5BYzc5MTU4N2EtYTkyMi00NjdhLTg3NWEtMTY4OTEyMzJhZTAzXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_FMjpg_UX1000_.jpg"
+    },
+    {
       "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\2574250faf724b0dbbdbf4e8706e3b68_Schindlers_list-1-.jpg",
       "PackagePath": "staticwebassets\\images\\2574250faf724b0dbbdbf4e8706e3b68_Schindlers_list-1-.jpg"
     },
     {
       "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\2a0e1246ece14738b0f28af3ca42d6c3_MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_FMjpg_UX1000_.jpg",
       "PackagePath": "staticwebassets\\images\\2a0e1246ece14738b0f28af3ca42d6c3_MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_FMjpg_UX1000_.jpg"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\2bf7e2020e994f57bea3bfdac1352eae_ff.jfif",
+      "PackagePath": "staticwebassets\\images\\2bf7e2020e994f57bea3bfdac1352eae_ff.jfif"
     },
     {
       "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\2c9f47b04847428795cec44108b1aa22_lord-of-the-rings-return-of-the-king.webp",
@@ -45,12 +61,24 @@
       "PackagePath": "staticwebassets\\images\\368d92fadc6540078ff229ea78b02077_gf63idlewild-main1.jpg"
     },
     {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\37842bde077b4b1cbe13d22a9903f3a0_Green-Book-Viggo-Ties.jpg",
+      "PackagePath": "staticwebassets\\images\\37842bde077b4b1cbe13d22a9903f3a0_Green-Book-Viggo-Ties.jpg"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\3786fd0ab3a4486494dc3a7499643164_logan-wolverine-hugh-jackman-reveals-x-23-dafne-keen-punched-him-during-her-audition-but-0001.jpg",
+      "PackagePath": "staticwebassets\\images\\3786fd0ab3a4486494dc3a7499643164_logan-wolverine-hugh-jackman-reveals-x-23-dafne-keen-punched-him-during-her-audition-but-0001.jpg"
+    },
+    {
       "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\3a3c9950c8564aed821001f22f420e3e_MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
       "PackagePath": "staticwebassets\\images\\3a3c9950c8564aed821001f22f420e3e_MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg"
     },
     {
       "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\3af5b609e8e8445fa8577fa989e25665_poster-goodfellas.jpg",
       "PackagePath": "staticwebassets\\images\\3af5b609e8e8445fa8577fa989e25665_poster-goodfellas.jpg"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\3cd0424926a24c699ee07f5959551942_Will-Joaquin-Phoenix’s-Joker-laugh-at-the-Oscars-1024x580.jpg",
+      "PackagePath": "staticwebassets\\images\\3cd0424926a24c699ee07f5959551942_Will-Joaquin-Phoenix’s-Joker-laugh-at-the-Oscars-1024x580.jpg"
     },
     {
       "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\3ce34c6091e847e4b2deaea16cfd31d1_Interstellar_Trailer1.jpg",
@@ -65,6 +93,10 @@
       "PackagePath": "staticwebassets\\images\\40261d30b3af48ccb7f0a6dd23b42fb8_aff504599ef9efa3-600x338.jpg"
     },
     {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\41384e2d4afa4e8886ba8256b7e4d5c9_MV5BM2UwMDVmMDItM2I2Yi00NGZmLTk4ZTUtY2JjNTQ3OGQ5ZjM2XkEyXkFqcGdeQXVyMTA1OTYzOTUx._V1_.jpg",
+      "PackagePath": "staticwebassets\\images\\41384e2d4afa4e8886ba8256b7e4d5c9_MV5BM2UwMDVmMDItM2I2Yi00NGZmLTk4ZTUtY2JjNTQ3OGQ5ZjM2XkEyXkFqcGdeQXVyMTA1OTYzOTUx._V1_.jpg"
+    },
+    {
       "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\42e1402dcc5c4769bee4a701339b61af_MV5BZjhkMDM4MWItZTVjOC00ZDRhLThmYTAtM2I5NzBmNmNlMzI1XkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_FMjpg_UX1000_.jpg",
       "PackagePath": "staticwebassets\\images\\42e1402dcc5c4769bee4a701339b61af_MV5BZjhkMDM4MWItZTVjOC00ZDRhLThmYTAtM2I5NzBmNmNlMzI1XkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_FMjpg_UX1000_.jpg"
     },
@@ -75,6 +107,10 @@
     {
       "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\4909887bd68c4b0297a52dfb393decba_gettyimages-3248844.jpg",
       "PackagePath": "staticwebassets\\images\\4909887bd68c4b0297a52dfb393decba_gettyimages-3248844.jpg"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\4f5183402f5c4b489db3ad42cf94693d_MV5BZDY3Y2FlZjUtOTE0Yi00NmM4LTg2ZDMtMGE5YWI4NjY1ZWNlXkEyXkFqcGdeQW1yb3NzZXI@._V1_QL75_UY281_CR31,0,500,281_.jpg",
+      "PackagePath": "staticwebassets\\images\\4f5183402f5c4b489db3ad42cf94693d_MV5BZDY3Y2FlZjUtOTE0Yi00NmM4LTg2ZDMtMGE5YWI4NjY1ZWNlXkEyXkFqcGdeQW1yb3NzZXI@._V1_QL75_UY281_CR31,0,500,281_.jpg"
     },
     {
       "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\539827161b6e40deb9d6cc18fa42ac69_MV5BMTkzNTkxMDUtNDJmMi00MjNhLWIyNjItN2RjZmE0MjllNTI0XkEyXkFqcGdeQVRoaXJkUGFydHlJbmdlc3Rpb25Xb3JrZmxvdw@@._V1_.jpg",
@@ -89,8 +125,20 @@
       "PackagePath": "staticwebassets\\images\\586944fc9076482295059bee23731530_djangounchained-leoblog630-jpg_225139.jpg"
     },
     {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\5b1d0cb8ade147f79afc086eaf088898_joaquin-phoenix-joker-transformation-1580917726.jpg",
+      "PackagePath": "staticwebassets\\images\\5b1d0cb8ade147f79afc086eaf088898_joaquin-phoenix-joker-transformation-1580917726.jpg"
+    },
+    {
       "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\5dd425bb4c50421ab8ddaafdb90ace85_interstellar.jpg",
       "PackagePath": "staticwebassets\\images\\5dd425bb4c50421ab8ddaafdb90ace85_interstellar.jpg"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\62b2a498c2ce48b1a00bf98c4e8133a5_greenbook_wide-f83cfd0d38191fb70997a9e0641b7ca6b00f6a98.jpg",
+      "PackagePath": "staticwebassets\\images\\62b2a498c2ce48b1a00bf98c4e8133a5_greenbook_wide-f83cfd0d38191fb70997a9e0641b7ca6b00f6a98.jpg"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\6611b72ca54c41838ebdef6f4aa6d48b_Logan-La-critique.jpg",
+      "PackagePath": "staticwebassets\\images\\6611b72ca54c41838ebdef6f4aa6d48b_Logan-La-critique.jpg"
     },
     {
       "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\67f6af3f290c4953a8d4f8b6293a110b_TELEMMGLPICT000000687552_trans_NvBQzQNjv4BqqVzuuqpFlyLIwiB6NTmJwSX5rhseiWKOo9p9OQ-ymek.jpeg",
@@ -103,6 +151,10 @@
     {
       "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\7c41981d52964b939d43a011fc2dfece_shawshank-redemption-759.jpg",
       "PackagePath": "staticwebassets\\images\\7c41981d52964b939d43a011fc2dfece_shawshank-redemption-759.jpg"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\84618dacd066486685a8cdb3ed002022_adsad.jfif",
+      "PackagePath": "staticwebassets\\images\\84618dacd066486685a8cdb3ed002022_adsad.jfif"
     },
     {
       "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\854ec0afd06449b08940be02f2d87d04_MV5BMTU5NTA0OTIxNF5BMl5BanBnXkFtZTcwNjI4MTc4Mw@@._V1_.jpg",
@@ -153,8 +205,16 @@
       "PackagePath": "staticwebassets\\images\\addc9c70444048d5bd76080878c2d864_b51aab85720086a24244.jpeg"
     },
     {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\b3c58f521cb44bf395e59ad2fced2d3a_MV5BYzIzYmJlYTYtNGNiYy00N2EwLTk4ZjItMGYyZTJiOTVkM2RlXkEyXkFqcGdeQXVyODY1NDk1NjE@._V1_.jpg",
+      "PackagePath": "staticwebassets\\images\\b3c58f521cb44bf395e59ad2fced2d3a_MV5BYzIzYmJlYTYtNGNiYy00N2EwLTk4ZjItMGYyZTJiOTVkM2RlXkEyXkFqcGdeQXVyODY1NDk1NjE@._V1_.jpg"
+    },
+    {
       "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\b76aa2646a57421a926760f06929f513_schindler-s-list-original2.jpg",
       "PackagePath": "staticwebassets\\images\\b76aa2646a57421a926760f06929f513_schindler-s-list-original2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\bb5830a03f3143ab91bda0bbaded7d27_03LOGAN-superJumbo.jpg",
+      "PackagePath": "staticwebassets\\images\\bb5830a03f3143ab91bda0bbaded7d27_03LOGAN-superJumbo.jpg"
     },
     {
       "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\be0316c44ebe440b93464a79138c01c6_MV5BN2ZkY2E2ODYtZTY1MC00NTAzLWJhNDUtNzAyNTcyZTcwZmE3XkEyXkFqcGdeQXVyMDc2NTEzMw@@._V1_.jpg",
@@ -207,6 +267,10 @@
     {
       "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\fa65d2daaf614a968d71c99a8dddbb8b_5e31d435ab49fd290b1ed218.webp",
       "PackagePath": "staticwebassets\\images\\fa65d2daaf614a968d71c99a8dddbb8b_5e31d435ab49fd290b1ed218.webp"
+    },
+    {
+      "Id": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\fb1811715f564bd083b10db20f9a0349_MV5BNGVjNWI4ZGUtNzE0MS00YTJmLWE0ZDctN2ZiYTk2YmI3NTYyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg",
+      "PackagePath": "staticwebassets\\images\\fb1811715f564bd083b10db20f9a0349_MV5BNGVjNWI4ZGUtNzE0MS00YTJmLWE0ZDctN2ZiYTk2YmI3NTYyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.MoviesApp.Microsoft.AspNetCore.StaticWebAssets.props",

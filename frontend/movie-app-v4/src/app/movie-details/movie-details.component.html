@@ -4,18 +4,57 @@
             <img src="{{defaultPath+images[currentIndex]}}" alt="" 
             class="cover-image">
             <div class="arrows">
-                <div>
-                    <i class="fa-solid fa-arrow-left fa-2xl" 
-                    style="color: #c9c9c9;" (click)="previousImage()"></i>
+                <div class="left">
+                    <i class="fa-solid fa-arrow-left fa-2xl " 
+                     (click)="previousImage()"></i>
                 </div>
-                <div>
-                    <i class="fa-solid fa-arrow-right fa-2xl" 
-                    style="color: #c9c9c9;" (click)="nextImage()"></i>
+                <div class="right">
+                    <i class="fa-solid fa-arrow-right fa-2xl "  
+                    (click)="nextImage()"></i>
                 </div>
             </div>
         </div>
     </div>
-    <div>
-
+    <div class="info-div">
+        <div class="movie-title">
+            <div class="title">
+                <h3>{{movieDetails.movieName}}</h3> ({{movieDetails.year}})
+            </div>
+            <div class="ratings-div">
+                <div>
+                    <i class="fa-brands fa-imdb fa-xl imdb-icon fs-2" style="color:#FFC107"></i> {{movieDetails.imDbRating}}
+                </div>
+                <div>
+                    Users rating: <i class="fas fa-star star-class" style="color:#FFC107"></i>{{movieDetails.rating}}
+                </div>
+            </div>
+        </div>
+        <div class="description-div">
+            {{movieDetails.description}}
+        </div>
+        <div class="categories-div" >
+            <div *ngFor="let category of movieDetails.categories">
+                <button class="category-btn" routerLink="/category/{{category.categoryId}}">{{category.categoryName}}</button>
+            </div>
+        </div>
+        <div class="row-div">
+            Director - <span class="name" routerLink="/director/{{movieDetails.directorId}}">{{movieDetails.directorName}}</span>
+        </div>
+        <div class="row-div">
+            Stars - 
+            <div *ngFor="let actor of movieDetails.actors">
+                <span *ngIf="actor.star === true" class="name" routerLink="/actor/{{actor.actorId}}">
+                    {{actor.actorName}} &middot;
+                </span>
+            </div>
+        </div>
+        <div class="row-div">
+            Cast - 
+            <div *ngFor="let actor of movieDetails.actors">
+                <span *ngIf="actor.star === false" class="name" routerLink="/actor/{{actor.actorId}}">
+                    {{actor.actorName}} &middot;
+                </span>
+            </div>
+        </div>
     </div>
 </div>

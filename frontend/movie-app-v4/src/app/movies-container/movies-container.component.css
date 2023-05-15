@@ -5,6 +5,7 @@
 }
 .cards-container{
     width: 100%;
+    min-height: 720px;
 }
 .pagination-container{
     margin-top: 20px;

@@ -71,13 +71,5 @@ namespace MoviesApp.Controllers
         {
             return Ok(_movieService.GetMovieBySearchTerm(term,ordering,page));
         }
-        //[HttpGet]
-        //[Route("year/asc/{page:int}")]
-        //public IActionResult GetMoviesByYear([FromRoute]int page)
-        //{
-        //    return Ok(_movieService.GetMoviesOrderedByYear(page));
-        //}
-        
-
     }
 }

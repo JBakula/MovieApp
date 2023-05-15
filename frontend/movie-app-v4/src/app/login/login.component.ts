@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit{
   user:Login;
   formData:FormGroup;
   loggedIn:boolean;
+  credentialsMessage:string = "";
   constructor(private http:UserService,private router:Router){
     this.user = {} as Login,
     this.formData = {} as FormGroup,
@@ -36,7 +37,9 @@ export class LoginComponent implements OnInit{
           this.router.navigate(["/"]);
         },
         error:(err)=>{
-          console.log(err)
+          if(err.status === 400){
+            this.credentialsMessage = "Wrong email or password";
+          }
         }
       })
     }
