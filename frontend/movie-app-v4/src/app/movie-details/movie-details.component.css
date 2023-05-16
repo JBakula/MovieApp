@@ -80,6 +80,7 @@
     display: flex;
     margin-bottom: 20px;
 }
+
 .name{
     margin-left: 5px;
     color: #FFC107;
@@ -88,7 +89,7 @@
 @media only screen and (max-width: 600px) {
     .details-container{
         grid-template-columns: 1fr;
-        padding: 0px 20px;
+        padding: 0px 10px;
     }
     .info-div{
         padding: 0px 5px;
@@ -115,7 +116,7 @@
         margin-top: 20px;
     }
     .row-div{
-        
+        flex-direction: column;
     }
     
 }
@@ -155,8 +156,45 @@
     
 }
 
-@media only screen and (min-width: 768px) {}
+@media only screen and (min-width: 768px) and (max-width:991px) {
+    .details-container{
+        grid-template-columns: 1fr;
+        padding: 0px 0px;
+    }
+    .info-div{
+        padding: 0px 5px;
+    }
+    .cover-image-div{
+        justify-content: center;
+    }
+    .movie-title{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .title{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: space-between;
+        padding: 0px 20px;
+    }
+    .description-div{
+        padding-top: 30px;
+    }
+    .ratings-div{
+        margin-top: 20px;
+    }
+    
+}
 
-@media only screen and (min-width: 992px) {}
+@media only screen and (min-width: 992px)  and (max-width:1199px){
+    .details-container{
+        height: 80vh;
+        display: grid;
+        grid-template-columns: 50% 1fr;
+        padding: 0px 20px;
+    }
+}
 
 @media only screen and (min-width: 1200px) {}

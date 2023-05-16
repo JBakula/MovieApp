@@ -38,10 +38,10 @@
             </div>
         </div>
         <div class="row-div">
-            Director - <span class="name" routerLink="/director/{{movieDetails.directorId}}">{{movieDetails.directorName}}</span>
+            <span>Director :</span> <span class="name" routerLink="/director/{{movieDetails.directorId}}">{{movieDetails.directorName}}</span>
         </div>
         <div class="row-div">
-            Stars - 
+            <span>Stars :</span>
             <div *ngFor="let actor of movieDetails.actors">
                 <span *ngIf="actor.star === true" class="name" routerLink="/actor/{{actor.actorId}}">
                     {{actor.actorName}} &middot;
@@ -49,8 +49,8 @@
             </div>
         </div>
         <div class="row-div">
-            Cast - 
-            <div *ngFor="let actor of movieDetails.actors">
+            <span>Cast :</span> 
+            <div *ngFor="let actor of movieDetails.actors" class="actors-class">
                 <span *ngIf="actor.star === false" class="name" routerLink="/actor/{{actor.actorId}}">
                     {{actor.actorName}} &middot;
                 </span>

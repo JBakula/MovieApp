@@ -3,6 +3,8 @@ import { HttpService } from '../services/http.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { movieDetails } from '../interfaces/movieDetails';
 import{Image} from '../interfaces/image';
+import { UserService } from '../services/user.service';
+import { RatingResponse } from '../interfaces/ratingResponse';
 
 @Component({
   selector: 'app-movie-details',
@@ -14,8 +16,11 @@ export class MovieDetailsComponent {
   images:string[] = []
   defaultPath:string =  "https://localhost:7179/";
   currentIndex:number = 0;
-  constructor(private http:HttpService, private activatedRoute:ActivatedRoute){
+  yourRating:number = 0;
+  ratedMovies:RatingResponse[] = []
+  constructor(private http:HttpService, private userService:UserService, private activatedRoute:ActivatedRoute){
     this.movieDetails = {} as movieDetails;
+    
   }
   getDetails(movieId:number){
     this.http.getMovieDetails(movieId).subscribe((res)=>{
@@ -25,7 +30,10 @@ export class MovieDetailsComponent {
         this.images.push(image.imageName)
       })
     })
+    
   }
+  
+  
   nextImage(){
     if(this.currentIndex === (this.images.length - 1) ){
       this.currentIndex = 0;
@@ -44,6 +52,9 @@ export class MovieDetailsComponent {
     this.activatedRoute.params.subscribe((params:Params)=>{
       this.getDetails(params['movieId']);
       })
+    
+    
     }
+    
   }
 

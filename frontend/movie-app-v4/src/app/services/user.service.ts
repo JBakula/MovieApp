@@ -5,6 +5,7 @@ import { Login } from '../interfaces/login';
 import { Router } from '@angular/router';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import { RefreshToken } from '../interfaces/refreshToken';
+import { RatingResponse } from '../interfaces/ratingResponse';
 @Injectable({
   providedIn: 'root'
 })
@@ -58,5 +59,13 @@ export class UserService {
   setStatusEmitter(status:boolean){
     this.statusEmitter.emit(status);
   }
-  
+  // getUserRatings(){
+  //   return this.http.get<any>(`${this.defaultPath}api/Rating`);
+  // }
+  // ratingsEmitter = new EventEmitter<RatingResponse[]>();
+
+  // setRatingsEmitter(list:RatingResponse[]){
+  //   this.ratingsEmitter.emit()
+  // }
+
 }

@@ -27,3 +27,30 @@
 small{
     color: red;
 }
+@media only screen and (max-width: 600px){
+    .form-container{
+        padding: 50px 0px;
+
+    }
+}
+@media only screen and (min-width: 600px) and (max-width:767px){
+    .form-container{
+        padding: 50px 20px;
+
+    }
+}
+@media only screen and (min-width: 768px) and (max-width:991px){
+    .form-container{
+        padding: 50px 40px;
+    }
+}
+@media only screen and (min-width: 992px)  and (max-width:1199px){
+    .form-container{
+        padding: 50px 180px ;
+    }
+}
+@media only screen and (min-width: 1200px){
+    .form-container{
+        padding: 50px 280px ;
+    }
+}

@@ -31,7 +31,8 @@
 .select{
     background-color: black;
     color: white;
-    width: 300px;
+    max-width: 300px;
+    cursor: pointer;
 }
 .recommendtaion-btn{
     color: black;
@@ -120,4 +121,101 @@
     padding-right: 20px;
     font-size: 15px;
     font-weight: 600;
+}
+@media only screen and (max-width: 600px) {
+    .recommendation-modal{
+        opacity: 0;
+        pointer-events: none; 
+        background-color: white;
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        right: 0px;
+        left:0px;
+        background: rgb(45,48,50);
+        color: white;
+        border: 1px solid white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px 0px;
+    }
+    .upper-div{
+        display: flex;
+    }
+    .card-body{
+    
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .select-container{
+        flex-direction: column;
+        
+    }
+    
+}
+@media only screen and (min-width: 600px) and (max-width:767px) {
+    .recommendation-modal{
+        opacity: 0;
+        pointer-events: none; 
+        background-color: white;
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        right: 0px;
+        left:0px;
+        background: rgb(45,48,50);
+        color: white;
+        border: 1px solid white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px 0px;
+    }
+    .upper-div{
+        display: flex;
+    }
+    .card-body{
+    
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .select-container{
+        flex-direction: column;
+        
+    }
+}
+@media only screen and (min-width: 768px) and (max-width:991px){
+    .recommendation-modal{
+        opacity: 0;
+        pointer-events: none; 
+        background-color: white;
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        right: 0px;
+        left:0px;
+        margin: auto;
+        background: rgb(45,48,50);
+        color: white;
+        border: 1px solid white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px 0px;
+    }
+    .upper-div{
+        display: flex;
+    }
+    .card-body{
+    
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .select-container{
+        flex-direction: column;
+    }
 }
