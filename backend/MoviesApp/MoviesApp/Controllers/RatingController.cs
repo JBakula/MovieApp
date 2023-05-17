@@ -29,17 +29,14 @@ namespace MoviesApp.Controllers
             {
                 return BadRequest();
             }
-            if (_ratingService.RateMovie(ratingRequest,token))
-            {
-                return Ok(new
-                {
-                    message="Successfully rated"
-                });
-            }
-            else
-            {
-                return StatusCode(500);
-            }
+            return Ok(_ratingService.RateMovie(ratingRequest, token));
+        }
+        [HttpGet, Authorize]
+        public IActionResult UserRating(int movieId)
+        {
+            var token = HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+            var rating = _ratingService.UserRating(token, movieId);
+            return Ok(rating);
         }
     }
 }

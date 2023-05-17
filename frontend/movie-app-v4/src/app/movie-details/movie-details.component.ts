@@ -53,8 +53,6 @@ export class MovieDetailsComponent {
       this.getDetails(params['movieId']);
       })
     
-    
     }
-    
   }
 

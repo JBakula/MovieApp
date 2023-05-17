@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { Registration } from '../interfaces/registration';
 import { Login } from '../interfaces/login';
@@ -67,5 +67,10 @@ export class UserService {
   // setRatingsEmitter(list:RatingResponse[]){
   //   this.ratingsEmitter.emit()
   // }
+  getUserRatings(movieId:number){
+    let params = new HttpParams().set("movieId",movieId);
+    return this.http.get<any>(`${this.defaultPath}api/Rating`,{params:params});
+  }
 
+  
 }

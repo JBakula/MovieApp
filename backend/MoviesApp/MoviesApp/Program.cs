@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using MoviesApp.Extensions;
 using MoviesApp.Models;
 using MoviesApp.Services.ActorRepo;
 using MoviesApp.Services.CategoryRepo;
@@ -18,12 +19,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddScoped<IActorService,ActorService>();
-builder.Services.AddScoped<ICategoryService,CategoryService>();
-builder.Services.AddScoped<IDirectorService,DirectorService>();
-builder.Services.AddScoped<IMovieService,MovieService>();
-builder.Services.AddScoped<IUserService,UserService>();
-builder.Services.AddScoped<IRatingService, RatingService>();
+builder.Services.RegisterServices();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>

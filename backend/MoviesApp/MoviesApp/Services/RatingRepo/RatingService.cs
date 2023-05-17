@@ -12,7 +12,7 @@ namespace MoviesApp.Services.RatingRepo
             _context = context;
         }
 
-        public bool RateMovie(RatingRequest ratingRequest, string token)
+        public RatingResponse RateMovie(RatingRequest ratingRequest, string token)
         {
 
             
@@ -39,12 +39,45 @@ namespace MoviesApp.Services.RatingRepo
             };
             _context.Ratings.Add(rating);
             _context.SaveChanges();
-            return true;
+            var ratingResponse = new RatingResponse()
+            {
+                MovieId = rating.MovieId,
+                UserId = userId,
+                RatingValue = rating.Value
+            };
+
+            return ratingResponse;
+
+        }
+        public RatingResponse UserRating(string token,int movieId)
+        {
+            var handler = new JwtSecurityTokenHandler();
+            var decodedToken = handler.ReadJwtToken(token);
+
+
+            var userId = int.Parse(decodedToken.Claims.First(c => c.Type == "UserId").Value);
+
+            var rating = _context.Ratings.Where(r => ((r.MovieId == movieId) && (r.UserId == userId))).FirstOrDefault();
+            var ratingResponse = new RatingResponse();
+            if(rating != null)
+            {
+                ratingResponse.MovieId = movieId;
+                ratingResponse.UserId = userId;
+                ratingResponse.RatingValue = rating.Value;
+                return ratingResponse;
+            }
+            else
+            {
+                return ratingResponse;
+            }
+           
+
 
         }
         public bool IsMovieExist(int id)
         {
             return _context.Movies.Where(m => m.MovieId == id).Any();
         }
+        
     }
 }

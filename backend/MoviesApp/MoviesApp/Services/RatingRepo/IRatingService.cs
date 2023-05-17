@@ -1,10 +1,12 @@
 ﻿using MoviesApp.DTO;
+using MoviesApp.Models;
 
 namespace MoviesApp.Services.RatingRepo
 {
     public interface IRatingService
     {
-        bool RateMovie(RatingRequest ratingRequest,string token);
+        RatingResponse RateMovie(RatingRequest ratingRequest,string token);
         bool IsMovieExist(int id);
+        RatingResponse UserRating(string token, int movieId);
     }
 }

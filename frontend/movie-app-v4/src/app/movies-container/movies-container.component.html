@@ -12,7 +12,7 @@
       <app-movie-card [defaultPath] = "defaultPath"  *ngFor="let card of cards" [data]="card" (refreshParent)="refreshParent()" ></app-movie-card>
     </div>
   </div>
-  <div *ngIf="totalPages.length>1" class="pagination-container">
+  <div *ngIf="(totalPages.length>1)" class="pagination-container">
     <app-pagination [totalPages] = "totalPages" [currentPath]="currentPath" (pageEvent)="handlePageChange($event)"></app-pagination>
   </div>
   
