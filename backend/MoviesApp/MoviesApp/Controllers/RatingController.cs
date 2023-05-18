@@ -31,12 +31,20 @@ namespace MoviesApp.Controllers
             }
             return Ok(_ratingService.RateMovie(ratingRequest, token));
         }
-        [HttpGet, Authorize]
+        [HttpGet]
         public IActionResult UserRating(int movieId)
         {
             var token = HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
-            var rating = _ratingService.UserRating(token, movieId);
-            return Ok(rating);
+            if (token != null)
+            {
+                var rating = _ratingService.UserRating(token, movieId);
+                return Ok(rating);
+
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
     }
 }

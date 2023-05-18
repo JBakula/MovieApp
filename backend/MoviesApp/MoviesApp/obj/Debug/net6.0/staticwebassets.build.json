@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "sDRkltenARCIEiGJrp0B8D5sh9UA0UEE81AwRtrrUCY=",
+  "Hash": "ef/aQYr+NPbU74jrGPana/9IpK0OpPPO5PLgSJf6fww=",
   "Source": "MoviesApp",
   "BasePath": "_content/MoviesApp",
   "Mode": "Default",
@@ -34,6 +34,23 @@
       "OriginalItemSpec": "wwwroot\\images\\00cf1a5f6eae45d69e9d7713cf8f81b3_MV5BOTY4YjI2N2MtYmFlMC00ZjcyLTg3YjEtMDQyM2ZjYzQ5YWFkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg"
     },
     {
+      "Identity": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\0217adb9c33541b3bae3357a9fb31850_forrest-gump.jpg",
+      "SourceId": "MoviesApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\",
+      "BasePath": "_content/MoviesApp",
+      "RelativePath": "images/0217adb9c33541b3bae3357a9fb31850_forrest-gump.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\0217adb9c33541b3bae3357a9fb31850_forrest-gump.jpg"
+    },
+    {
       "Identity": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\04223862346c4f1eba7ccf1c85d83e9b_saving-private-ryan.webp",
       "SourceId": "MoviesApp",
       "SourceType": "Discovered",
@@ -49,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\04223862346c4f1eba7ccf1c85d83e9b_saving-private-ryan.webp"
+    },
+    {
+      "Identity": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\097dd62cf2cf414aaf02be327fef49de_MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg",
+      "SourceId": "MoviesApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\",
+      "BasePath": "_content/MoviesApp",
+      "RelativePath": "images/097dd62cf2cf414aaf02be327fef49de_MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\097dd62cf2cf414aaf02be327fef49de_MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg"
     },
     {
       "Identity": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\0f53474f04fc434d8e63feadf73edfe2_01SNIPER1-superJumbo.jpg",
@@ -1122,6 +1156,23 @@
       "OriginalItemSpec": "wwwroot\\images\\96c2187974444a568f09953008ab7655_MV5BNmQzOWZhOTMtZTcxNC00MTdkLWEwYmUtOWVmOTFhNTdkNjRkXkEyXkFqcGdeQXVyODk2NDQ3MTA@._V1_.jpg"
     },
     {
+      "Identity": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\98aebf2243fa4696a1d19c83c27edbe0_forrest-gump (1).jpg",
+      "SourceId": "MoviesApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\",
+      "BasePath": "_content/MoviesApp",
+      "RelativePath": "images/98aebf2243fa4696a1d19c83c27edbe0_forrest-gump (1).jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\98aebf2243fa4696a1d19c83c27edbe0_forrest-gump (1).jpg"
+    },
+    {
       "Identity": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\98da3bc5f800406494dbdb5ea18ad13d_theprestige.jpg",
       "SourceId": "MoviesApp",
       "SourceType": "Discovered",
@@ -1698,6 +1749,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\d7065964c49c404cb6ebeabdcfc80194_740x438-schindler-s-list-02-20210123090655.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\d7d378ac3bab4ae69e731f4ae2470990_1110-sunmo-forrestgump-1974310-640x360.jpg",
+      "SourceId": "MoviesApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\",
+      "BasePath": "_content/MoviesApp",
+      "RelativePath": "images/d7d378ac3bab4ae69e731f4ae2470990_1110-sunmo-forrestgump-1974310-640x360.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\d7d378ac3bab4ae69e731f4ae2470990_1110-sunmo-forrestgump-1974310-640x360.jpg"
     },
     {
       "Identity": "C:\\Users\\bakula\\source\\repos\\MoviesApp\\MoviesApp\\wwwroot\\images\\e02d27971c664166bc549be8f14dc465_MV5BYzA4ZWRhNjktMTA3ZS00NDNiLThmMDMtNzdlYzk0ZjY2ZGFmXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_.jpg",

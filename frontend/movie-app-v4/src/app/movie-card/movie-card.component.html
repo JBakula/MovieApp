@@ -16,15 +16,17 @@
           <div class="iconDiv" [ngClass]="{'icon-div-closed':modalOpen}">
             <i class="fa-brands fa-imdb fa-xl imdb-icon "> <span style="font-size: 16px;"> {{data.imDbRating}}</span></i> 
         </div>
-          <div>
+          <div class="stars-div">
+            
+            <div>
+              <i *ngIf="data.rating > 0"  class="fas fa-star user-rating" [ngClass]="{'hide-user-rating':modalOpen}"> {{data.rating}}</i>
+              <i *ngIf="ratedCheck" (click)="ratingPopUp($event)" class="fas fa-star" style="color: #1e67e6;" [ngClass]="{'hide-user-rating':modalOpen}">{{ratingResponse.ratingValue}}</i>
+            </div>
             <div *ngIf="isUserLoggedIn">
-              <button  *ngIf="ratedCheck === false " (click)="ratingPopUp($event)" class="rate-btn" [ngClass]="{'hide-button': modalOpen}"  >Rate</button>
+              <!-- <button  *ngIf="ratedCheck === false " (click)="ratingPopUp($event)" class="rate-btn" [ngClass]="{'hide-button': modalOpen}"  >Rate</button> -->
+              <i *ngIf="ratedCheck === false" (click)="ratingPopUp($event)" class="fas fa-star" style="color: #1e67e6;" [ngClass]="{'hide-user-rating':modalOpen}"></i>
               
             </div>
-            <div>
-            <i *ngIf="data.rating > 0"  class="fas fa-star user-rating" [ngClass]="{'hide-user-rating':modalOpen}"> {{data.rating}}</i>
-            <i *ngIf="ratedCheck" (click)="ratingPopUp($event)" class="fas fa-star" style="color: #1e67e6;" [ngClass]="{'hide-user-rating':modalOpen}">{{ratingResponse.ratingValue}}</i>
-          </div>
           </div>
           
           <div class="ngb-rating-div" [ngClass]="{'rating-opened': modalOpen}">

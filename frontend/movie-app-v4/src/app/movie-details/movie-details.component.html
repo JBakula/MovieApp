@@ -20,16 +20,25 @@
             <div class="title">
                 <h3>{{movieDetails.movieName}}</h3> ({{movieDetails.year}})
             </div>
-            <div class="ratings-div">
-                <div>
-                    <i class="fa-brands fa-imdb fa-xl imdb-icon fs-2" style="color:#FFC107"></i> {{movieDetails.imDbRating}}
+            <div class="ratings-div" [ngClass]="{'alignment':!isUserLoggedIn}">
+                <div [ngClass]="{'hide-user-rating':modalOpen}">
+                    <i class="fa-brands fa-imdb fa-xl imdb-icon fs-2" style="color:#FFC107" ></i> {{movieDetails.imDbRating}}
                 </div>
-                <div>
-                    Users rating: <i class="fas fa-star star-class" style="color:#FFC107"></i>{{movieDetails.rating}}
+                <div [ngClass]="{'hide-user-rating':modalOpen}">
+                    <span class="text">Users rating: </span> <i class="fas fa-star star-class" style="color:#FFC107" ></i>{{movieDetails.rating}}
                 </div>
-                <div>
-                    Your rating: <i class="fas fa-star star-class" style="color: #1e67e6;"></i>{{movieDetails.rating}}
+                <div *ngIf="isUserLoggedIn" [ngClass]="{'hide-user-rating':modalOpen}">
+                    <span class="text">Your rating: </span> <i class="fas fa-star star-class" style="color: #1e67e6; cursor: pointer;" (click)="ratingPopUp($event)"></i><span *ngIf="rated===true">{{userRating}}</span>
                 </div>
+
+                <div class="ngb-rating-div" [ngClass]="{'rating-opened': modalOpen}">
+                    <div class="closeModal-div" >
+                      <button (click)="closeModal($event)" class="close-btn">x</button>
+                    </div>
+                    <div>
+                      <ngb-rating class="ngb-rating" [max]="10" [formControl]="ratingControl"  (click)="getRatingFromForm($event,movieDetails.movieId)"></ngb-rating>   
+                    </div>
+                  </div>
             </div>
         </div>
         <div class="description-div">

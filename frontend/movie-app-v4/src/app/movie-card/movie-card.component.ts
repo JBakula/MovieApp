@@ -36,25 +36,25 @@ export class MovieCardComponent implements OnInit {
     this.isUserLoggedIn = this.userService.isLoggedIn(); 
     this.ratingResponse = {} as RatingResponse;
   }
-  // getUserRating(){
-  //   if(this.isUserLoggedIn){
-  //     this.userService.getUserRatings(this.data.movieId).subscribe((res)=>{
-  //       if(res.movieId !== 0){
-  //         this.ratingResponse.movieId = res.movieId;
-  //         this.ratingResponse.ratingValue = res.ratingValue;
-  //         this.ratingResponse.userId = res.userId;
-  //         this.ratedCheck = true;
-  //       }else{
-  //         this.ratedCheck = false;
-  //       }
-  //     })
-  //   }
-  // }
+  getUserRating(){
+    if(this.isUserLoggedIn){
+      this.userService.getUserRatings(this.data.movieId).subscribe((res)=>{
+        if(res.movieId !== 0){
+          this.ratingResponse.movieId = res.movieId;
+          this.ratingResponse.ratingValue = res.ratingValue;
+          this.ratingResponse.userId = res.userId;
+          this.ratedCheck = true;
+        }else{
+          this.ratedCheck = false;
+        }
+      })
+    }
+  }
   ngOnInit(): void {
     this.userService.statusEmitter.subscribe((val)=>{
       this.isUserLoggedIn = val;
     })
-    // this.getUserRating();
+    this.getUserRating();
   }
   ratingPopUp(event:any){
     event.preventDefault();

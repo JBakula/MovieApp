@@ -59,14 +59,7 @@ export class UserService {
   setStatusEmitter(status:boolean){
     this.statusEmitter.emit(status);
   }
-  // getUserRatings(){
-  //   return this.http.get<any>(`${this.defaultPath}api/Rating`);
-  // }
-  // ratingsEmitter = new EventEmitter<RatingResponse[]>();
-
-  // setRatingsEmitter(list:RatingResponse[]){
-  //   this.ratingsEmitter.emit()
-  // }
+  
   getUserRatings(movieId:number){
     let params = new HttpParams().set("movieId",movieId);
     return this.http.get<any>(`${this.defaultPath}api/Rating`,{params:params});
