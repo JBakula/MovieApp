@@ -144,7 +144,6 @@
         display: flex;
     }
     .card-body{
-    
         display: flex;
         justify-content: center;
         flex-direction: column;
@@ -152,6 +151,9 @@
     .select-container{
         flex-direction: column;
         
+    }
+    .cards-container{
+        padding: 0px 40px;
     }
     
 }

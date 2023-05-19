@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import { RefreshToken } from '../interfaces/refreshToken';
 import { RatingResponse } from '../interfaces/ratingResponse';
+import { User } from '../interfaces/user';
 @Injectable({
   providedIn: 'root'
 })
@@ -65,5 +66,12 @@ export class UserService {
     return this.http.get<any>(`${this.defaultPath}api/Rating`,{params:params});
   }
 
+  
+  userModel = new EventEmitter<User>();
+  
+
+  setUserModel(user:User){
+    this.userModel.emit(user);
+  }
   
 }

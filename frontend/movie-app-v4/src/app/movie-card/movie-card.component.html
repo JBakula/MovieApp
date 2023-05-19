@@ -14,13 +14,13 @@
         </div>
         <div class="rating-div">
           <div class="iconDiv" [ngClass]="{'icon-div-closed':modalOpen}">
-            <i class="fa-brands fa-imdb fa-xl imdb-icon "> <span style="font-size: 16px;"> {{data.imDbRating}}</span></i> 
+            <i class="fa-brands fa-imdb fa-xl imdb-icon "> </i><span style="color:#FFC107;font-size: 18px; font-weight: 600; ">&nbsp;{{data.imDbRating}}</span> 
         </div>
           <div class="stars-div">
             
             <div>
-              <i *ngIf="data.rating > 0"  class="fas fa-star user-rating" [ngClass]="{'hide-user-rating':modalOpen}"> {{data.rating}}</i>
-              <i *ngIf="ratedCheck" (click)="ratingPopUp($event)" class="fas fa-star" style="color: #1e67e6;" [ngClass]="{'hide-user-rating':modalOpen}">{{ratingResponse.ratingValue}}</i>
+              <i *ngIf="data.rating > 0"  class="fas fa-star user-rating" [ngClass]="{'hide-user-rating':modalOpen}">&nbsp;{{data.rating}}</i>
+              <i *ngIf="ratedCheck" (click)="ratingPopUp($event)" class="fas fa-star" style="color: #1e67e6;" [ngClass]="{'hide-user-rating':modalOpen}">&nbsp;{{ratingResponse.ratingValue}}</i>
             </div>
             <div *ngIf="isUserLoggedIn">
               <!-- <button  *ngIf="ratedCheck === false " (click)="ratingPopUp($event)" class="rate-btn" [ngClass]="{'hide-button': modalOpen}"  >Rate</button> -->

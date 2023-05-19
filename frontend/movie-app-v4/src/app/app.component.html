@@ -5,14 +5,17 @@
     </div>
     <div class="search-bar-div">
         <div class="input-group ">
-          <input type="text" class="form-control search-bar" placeholder="Search..." aria-label="Search movie" (keyup)="handleKeyUp($event)" >
+          <input type="text" class="form-control search-bar" placeholder="Search..." aria-label="Search movie" id="search" name="search" (keyup)="handleKeyUp($event)" >
           <button class="btn btn-outline-secondary search-btn" type="button"  >Search</button>
         </div>
         <div *ngIf="!isLoggedIn">
           <button class="btn btn-warning signup-btn" routerLink="/signup"> SignUp</button>
         </div>
         <div *ngIf="!isLoggedIn">
-          <button class="btn btn-warning signup-btn" routerLink="/login" > Login</button>
+          <button class="btn btn-warning signup-btn" routerLink="/login"  > Login</button>
+        </div>
+        <div *ngIf="isLoggedIn" class="userName">
+          <span>{{userDataModel.name}} {{userDataModel.lastname}}</span>
         </div>
         <div *ngIf="isLoggedIn">
           <button class="btn btn-warning signup-btn" (click)="logout()"> Logout</button>

@@ -67,7 +67,7 @@ export class MoviesContainerComponent implements OnInit{
   }
   getDataByCategoryId(categoryId:number, order:string,page:number){
     this.http.getMoviesByCategoryId(categoryId,order,page).subscribe((res)=>{
-      console.log(res)
+      
       this.moviesResponse = res;
       this.cards = res.movies
       this.totalPages = Array.from(new Array(res.numberOfPages),(x,i)=>i+1)

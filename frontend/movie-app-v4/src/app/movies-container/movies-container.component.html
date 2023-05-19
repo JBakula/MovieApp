@@ -1,6 +1,6 @@
 <div  class="moviesContainerClass">
   <div class="select-container">
-    <select class="form-select select" aria-label="Default select example" (change)="handleChangeSelectOrder($event)">
+    <select class="form-select select" aria-label="Default select example" name="select" id="select" (change)="handleChangeSelectOrder($event)">
       <option  *ngFor="let option of selectListOptions" value={{option}}>{{option}}</option>
     </select>
     <button *ngIf="isLoggedIn" class="btn btn-warning recommendtaion-btn" (click)="movieRecommendation()" >Pick a movie for me</button>
