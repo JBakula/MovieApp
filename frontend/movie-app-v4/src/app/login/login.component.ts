@@ -32,7 +32,8 @@ export class LoginComponent implements OnInit{
           this.formData.reset();
           this.http.storeToken(res.body.jwtToken);
           this.http.storeRefreshToken(res.body.refreshToken);
-          this.http.setStatusEmitter(true);          
+          this.http.setStatusEmitter(true);
+          this.http.setUserModel();          
           this.router.navigate(["/"]);
         },
         error:(err)=>{

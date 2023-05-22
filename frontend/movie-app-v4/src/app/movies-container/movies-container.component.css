@@ -31,8 +31,16 @@
 .select{
     background-color: black;
     color: white;
-    max-width: 300px;
+    max-width: 330px;
     cursor: pointer;
+    border-radius: 0px;
+    border: 1px solid#FFC107;
+}
+.select-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 350px;
 }
 .recommendtaion-btn{
     color: black;

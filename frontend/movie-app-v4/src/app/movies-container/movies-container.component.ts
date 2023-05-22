@@ -5,6 +5,7 @@ import { MoviesResponse } from '../interfaces/moviesResponse';
 import { MovieCard } from '../interfaces/movieCardInterface';
 import { RecommendationService } from '../services/recommendation.service';
 import { UserService } from '../services/user.service';
+import { Category } from '../interfaces/category';
 
 @Component({
   selector: 'app-movies-container',
@@ -20,10 +21,12 @@ export class MoviesContainerComponent implements OnInit{
   totalPages:number[] = [];
   isLoggedIn:boolean;
   recommendedMovieCard:MovieCard;
+  loader:boolean = false;
   selectListOptions:string[] = ["Title ascending","Title descending","Year ascending","Year descending","IMDb rating ascending","IMDb rating descending","Users rating ascending",
                                 "Users rating descending"];
   order:string = "Title ascending";
   modalActive:boolean;
+  categories:Category[] = [];
   constructor(private http:HttpService, private recommender:RecommendationService,
     private user:UserService,private activatedRoute:ActivatedRoute,private router:Router){
     this.moviesResponse = {} as MoviesResponse,
@@ -33,6 +36,7 @@ export class MoviesContainerComponent implements OnInit{
     
   } 
   getData(page:number,ordering:string){
+    this.load();
     this.http.getMovies(page,ordering).subscribe((res)=>{
       this.cards = res.movies;
       this.moviesResponse = res;
@@ -40,6 +44,28 @@ export class MoviesContainerComponent implements OnInit{
       this.totalPages = Array.from(new Array(res.numberOfPages),(x,i)=>i+1)
       
     });
+    
+  }
+  load() : void {
+    this.loader = true;
+    setTimeout( () => this.loader = false, 500 );
+  }
+  handleCategoryChange(event:any){
+    this.load();
+    let value = event.target.value;
+    if(value === "any"){
+      this.page = 1;
+      this.router.navigate(['/']);
+      this.currentPath = '/';
+
+      
+
+    }else{
+      this.page = 1;
+
+      this.router.navigate([`/category/${value}`]);
+      this.currentPath = `/category/${value}`;
+    }
   }
   refreshParent(){
     this.activatedRoute.params.subscribe((params:Params)=>{
@@ -108,7 +134,6 @@ export class MoviesContainerComponent implements OnInit{
   }
   handleChangeSelectOrder(event:any){
     this.order = event.target.value;
-    console.log(this.order);
     this.activatedRoute.params.subscribe((params:Params)=>{
       if(params['movie-search']){
         this.getDataBySearch(params['movie-search'],this.order,this.page);
@@ -143,6 +168,10 @@ export class MoviesContainerComponent implements OnInit{
   }
   
   ngOnInit(): void {
+    
+    this.http.getCategories().subscribe((res)=>{
+      this.categories = res
+    })
     this.currentPath = this.router.url;
     this.isLoggedIn = this.user.isLoggedIn();
     this.activatedRoute.params.subscribe((params:Params)=>{

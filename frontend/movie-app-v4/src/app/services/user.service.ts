@@ -13,8 +13,12 @@ import { User } from '../interfaces/user';
 export class UserService {
   private defaultPath = "https://localhost:7179/";
   userPayload:any;
+  helper:JwtHelperService;
+  user:User;
   constructor(private http:HttpClient,private router:Router) {
     this.userPayload = this.decodedToken
+    this.helper = new JwtHelperService()
+    this.user = {} as User
    }
 
   registerUser(user:Registration){
@@ -70,8 +74,16 @@ export class UserService {
   userModel = new EventEmitter<User>();
   
 
-  setUserModel(user:User){
-    this.userModel.emit(user);
+  setUserModel(){
+    let decodedToken = this.helper.decodeToken(this.getToken()!!);
+    
+    this.user.userId = decodedToken.UserId
+    this.user.email = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress']     
+    this.user.name = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'] 
+    this.user.lastname = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname'] 
+    this.userModel.emit(this.user);
   }
+
+
   
 }

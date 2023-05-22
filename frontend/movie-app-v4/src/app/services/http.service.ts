@@ -38,5 +38,9 @@ export class HttpService {
     
     return this.http.post<any>(`${this.defaultPath}api/Rating`,rating); 
   }
+
+  getCategories(){
+    return this.http.get<any>(`${this.defaultPath}`+'api/Category');
+  }
  
 }

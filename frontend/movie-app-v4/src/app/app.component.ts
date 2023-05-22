@@ -33,7 +33,6 @@ export class AppComponent implements OnInit {
     this.userDataModel.email = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress']     
     this.userDataModel.name = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'] 
     this.userDataModel.lastname = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname'] 
-    console.log(this.userDataModel);
   }
   handleKeyUp(event:any){
     event.target.value == "" ? this.router.navigate(['']):
@@ -50,5 +49,8 @@ export class AppComponent implements OnInit {
     if(this.isLoggedIn===true){
       this.readTokenData();
     }
+    this.http.userModel.subscribe((val)=>{
+      this.userDataModel = val;
+    });
   }
 }

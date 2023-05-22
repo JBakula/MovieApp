@@ -4,12 +4,23 @@
 .pager{
     color: white;
     background: rgb(25, 25, 27);
-    
+    border: #FFC107 0.5px solid;
 }
-.pager-div{
-    
-    border-radius: 0px;
-}
+
+
 li{
     cursor: pointer;
+}
+.pagination>li:first-child>a, .pagination>li:first-child>span {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border: 1px solid #FFC107;
+}
+.pagination>li{
+    border: 1px solid #FFC107;
+}
+.pagination>li:last-child>a, .pagination>li:last-child>span {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border: 1px solid #FFC107;
 }

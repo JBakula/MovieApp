@@ -1,7 +1,8 @@
 <nav class="navbar navClass" data-bs-theme="dark" >
   <div class="container containerFlex">
     <div class="brand-div">
-      <a routerLink="/" class="navbar-brand brand">MoviesApp</a>
+      <i routerLink="/" class="fa-sharp fa-solid fa-film fa-2xl" style="color: #FFC107; cursor:pointer;"  ></i>      
+      
     </div>
     <div class="search-bar-div">
         <div class="input-group ">
@@ -15,7 +16,7 @@
           <button class="btn btn-warning signup-btn" routerLink="/login"  > Login</button>
         </div>
         <div *ngIf="isLoggedIn" class="userName">
-          <span>{{userDataModel.name}} {{userDataModel.lastname}}</span>
+          <span>{{userDataModel.name}}</span>&nbsp;<span>{{userDataModel.lastname}}</span>
         </div>
         <div *ngIf="isLoggedIn">
           <button class="btn btn-warning signup-btn" (click)="logout()"> Logout</button>

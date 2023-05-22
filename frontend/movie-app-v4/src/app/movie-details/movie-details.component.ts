@@ -24,13 +24,19 @@ export class MovieDetailsComponent {
   isUserLoggedIn:boolean;
   rated:boolean = false;
   rating:Rating
+  loader:boolean = false;
   constructor(private http:HttpService, private userService:UserService, private activatedRoute:ActivatedRoute){
     this.movieDetails = {} as movieDetails;
     this.userRating = {} as number;
     this.isUserLoggedIn = this.userService.isLoggedIn();
     this.rating = {} as Rating
   }
+  load() : void {
+    this.loader = true;
+    setTimeout( () => this.loader = false, 500 );
+  }
   getDetails(movieId:number){
+    this.load();
     this.http.getMovieDetails(movieId).subscribe((res)=>{
       this.movieDetails = res;
       this.images.push(this.movieDetails.coverImage);
@@ -38,6 +44,7 @@ export class MovieDetailsComponent {
         this.images.push(image.imageName)
       })
     })
+    
   }
   getRating(id:number){
     if(this.isUserLoggedIn === true){

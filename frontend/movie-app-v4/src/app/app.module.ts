@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { LoaderComponent } from './loader/loader.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     PaginationComponent,
     LoginComponent,
     SignupComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
