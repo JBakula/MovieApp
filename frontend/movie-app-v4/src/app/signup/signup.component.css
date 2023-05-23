@@ -12,9 +12,12 @@
     display: flex;
     padding-top: 20px;
 }
+.form-controll-class{
+    border-radius: 0px;
+}
 .submit-button{
     flex: 1;
-    border-radius: 15px;
+    border-radius: 0px;
     border:none;
     background-color:#FFC107;
     color:  rgb(45,48,50);

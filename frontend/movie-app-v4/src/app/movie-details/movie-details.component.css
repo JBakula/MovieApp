@@ -166,6 +166,7 @@
     .details-container{
         grid-template-columns: 1fr;
         padding: 0px 0px;
+        
     }
     .info-div{
         padding: 0px 5px;
@@ -199,11 +200,11 @@
 
 @media only screen and (min-width: 768px) and (max-width:991px) {
     .details-container{
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr ;
         padding: 0px 0px;
     }
     .info-div{
-        padding: 0px 5px;
+        padding: 0px 25px;
     }
     .cover-image-div{
         justify-content: center;
@@ -213,18 +214,36 @@
         justify-content: center;
         align-items: center;
     }
+    .category-btn{
+        padding: 11px 18px;
+        border-radius: 25px;
+        font-size: 20px;
+    }
+    .row-div{
+        font-size: 20px;
+    }
     .title{
         display: flex;
         align-items: center;
         width: 100%;
         justify-content: space-between;
-        padding: 0px 20px;
+        padding: 0px 0px;
+        font-size: 20px;
     }
     .description-div{
         padding-top: 30px;
+        font-size: 20px;
     }
     .ratings-div{
         margin-top: 20px;
+        font-size: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .ngb-rating{
+        font-size: 25px;
     }
     
 }
@@ -236,6 +255,39 @@
         grid-template-columns: 50% 1fr;
         padding: 0px 20px;
     }
+    .movie-title{
+        
+        flex-direction: column;
+    }
+    .title{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
 }
 
-@media only screen and (min-width: 1200px) {}
+@media only screen and (min-width: 1200px) and (max-width:1339px) {
+    .details-container{
+        height: 80vh;
+        display: grid;
+        grid-template-columns: 40% 1fr;
+        padding: 0px 20px;
+    }
+    .info-div{
+        padding-left: 20px;
+        padding-right: 10px;
+    }
+}
+@media only screen and (min-width:1340) and (max-width:1399px ){
+    .details-container{
+        height: 80vh;
+        display: grid;
+        grid-template-columns: 40% 1fr;
+        padding: 0px 20px;
+    }
+    .info-div{
+        padding-left: 20px;
+        padding-right: 10px;
+    }
+}

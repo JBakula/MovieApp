@@ -14,7 +14,7 @@
 }
 .submit-button{
     flex: 1;
-    border-radius: 15px;
+    border-radius: 0px;
     border:none;
     background-color:#FFC107;
     color:  rgb(45,48,50);
@@ -26,6 +26,9 @@
 }
 small{
     color: red;
+}
+.form-controll-class{
+    border-radius: 0px;
 }
 @media only screen and (max-width: 600px){
     .form-container{

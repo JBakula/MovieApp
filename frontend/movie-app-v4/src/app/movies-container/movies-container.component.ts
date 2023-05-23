@@ -57,12 +57,8 @@ export class MoviesContainerComponent implements OnInit{
       this.page = 1;
       this.router.navigate(['/']);
       this.currentPath = '/';
-
-      
-
     }else{
       this.page = 1;
-
       this.router.navigate([`/category/${value}`]);
       this.currentPath = `/category/${value}`;
     }

@@ -3,7 +3,7 @@
     <form action="" class="form-class" [formGroup]="formData" (ngSubmit)="onSubmit()">
         <label for="Name" class="form label">Name</label>
         <div class="input-group">
-            <input type="text" formControlName="Name" class="form-control">
+            <input type="text" formControlName="Name" class="form-control form-controll-class">
             
         </div>
         <div>
@@ -13,7 +13,7 @@
         </div>
         <label for="Lastname" class="form label">Lastname</label>
         <div class="input-group">
-            <input type="text" formControlName="Lastname" class="form-control">
+            <input type="text" formControlName="Lastname" class="form-control form-controll-class">
         </div>
         <div>
             <small *ngIf="formData.controls['Lastname'].errors?.['required']">
@@ -23,7 +23,7 @@
         
         <label for="Email" class="form label">Email</label>
         <div class="input-group">
-            <input type="text" formControlName="Email" class="form-control">
+            <input type="text" formControlName="Email" class="form-control form-controll-class">
         </div>
         <div>
             <small *ngIf="formData.controls['Email'].errors?.['required']">
@@ -37,7 +37,7 @@
         </div>
         <label for="Password" class="form label">Password</label>
         <div class="input-group">
-            <input type="password" formControlName="Password" class="form-control" >
+            <input type="password" formControlName="Password" class="form-control form-controll-class" >
         </div>
         <div>
             <small *ngIf="formData.controls['Password'].errors?.['required']">
@@ -51,7 +51,7 @@
         </div>
         <label for="Confirm password" class="form label">Confirm password</label>
         <div class="input-group">
-            <input type="password" class="form-control" formControlName="ConfirmPassword" >
+            <input type="password" class="form-control form-controll-class" formControlName="ConfirmPassword" >
         </div>
         <div>
             <small *ngIf="formData.controls['ConfirmPassword'].errors?.['required']">
