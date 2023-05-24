@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     position: relative;
+   
 }
 .cards-container{
     width: 100%;
@@ -11,7 +12,6 @@
     margin-top: 20px;
     display: flex;
     justify-content: center;
-
 }
 /* .pager{
     color: black;
@@ -53,10 +53,14 @@
     pointer-events: none;
     background-color: white;
     position: absolute;
-    top: 130px;
+    /* top: 130px;
     bottom: 250px;
     right: 250px;
-    left:250px;
+    left:250px; */
+    top: 15%;
+    right: 20%;
+    left: 20%;
+    bottom: 27%;
     background: rgb(45,48,50);
     color: white;
     border: 1px solid #FFC107;
@@ -134,30 +138,37 @@
     font-weight: 600;
 }
 @media only screen and (max-width: 427px) {
-    .recommendation-modal{
-        opacity: 0;
-        pointer-events: none; 
-        background-color: white;
-        position: absolute;
-        top: 0px;
-        bottom: 0px;
-        right: 0px;
-        left:0px;
-        background: rgb(45,48,50);
-        color: white;
-        border: 1px solid white;
-        display: flex;
-        flex-direction: column;
+    
+    .recommendation-modal-active{
+        top:4%;
+        left: 8%;
+        right: 8%;
+        max-height: 30%;
         justify-content: space-between;
-        padding: 20px 0px;
+    }
+    .info-div{
+        padding-top: 10px;
+        padding-left: 0;
+    }
+    .image-div{
+       width: 100%;
     }
     .upper-div{
         display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
     }
+    .modalBody{
+        flex-direction: column;
+        flex: 1;
+    }
+    
     .card-body{
         display: flex;
-        justify-content: center;
+        flex: 1;
+        align-items: center;
         flex-direction: column;
+        
     }
     .select-container{
         flex-direction: column;
@@ -171,38 +182,45 @@
     }
     .cards-container{
         padding: 0px 30px;
+        
     }
     
     
 }
 @media screen and (min-width:428px) and (max-width:488px){
-    .recommendation-modal{
-        opacity: 0;
-        pointer-events: none; 
-        background-color: white;
-        position: absolute;
-        top: 0px;
-        bottom: 0px;
-        right: 0px;
-        left:0px;
-        background: rgb(45,48,50);
-        color: white;
-        border: 1px solid white;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 20px 0px;
-    }
     .moviesContainerClass{
         width: 100%;
     }
+    .recommendation-modal-active{
+        top:8%;
+        left: 8%;
+        right: 8%;
+        max-height: 100vh;
+        justify-content: space-between;
+    }
+    .info-div{
+        padding-top: 10px;
+        padding-left: 0;
+    }
+    .image-div{
+       width: 100%;
+    }
     .upper-div{
         display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
     }
+    .modalBody{
+        flex-direction: column;
+        flex: 1;
+    }
+    
     .card-body{
         display: flex;
-        justify-content: center;
+        flex: 1;
+        align-items: center;
         flex-direction: column;
+        
     }
     .select-container{
         flex-direction: column;
@@ -221,6 +239,7 @@
     }
     .cards-container{
         padding: 0px 60px;
+        
     }
     .sub-div{
         display: flex;
@@ -228,33 +247,40 @@
     }
 }
 @media only screen and (min-width:489px) and (max-width:599px){
-    .recommendation-modal{
-        opacity: 0;
-        pointer-events: none; 
-        background-color: white;
-        position: absolute;
-        top: 0px;
-        bottom: 0px;
-        right: 0px;
-        left:0px;
-        background: rgb(45,48,50);
-        color: white;
-        border: 1px solid white;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 20px 0px;
-    }
+    
     .moviesContainerClass{
         width: 100%;
     }
+    .recommendation-modal-active{
+        top:4%;
+        left: 8%;
+        right: 8%;
+        max-height: 30%;
+        justify-content: space-between;
+    }
+    .info-div{
+        padding-top: 10px;
+        padding-left: 0;
+    }
+    .image-div{
+       width: 100%;
+    }
     .upper-div{
         display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
     }
+    .modalBody{
+        flex-direction: column;
+        flex: 1;
+    }
+    
     .card-body{
         display: flex;
-        justify-content: center;
+        flex: 1;
+        align-items: center;
         flex-direction: column;
+        
     }
     .select-container{
         flex-direction: column;
@@ -273,6 +299,7 @@
     }
     .cards-container{
         padding: 0px 80px;
+        overflow: auto;
     }
     .sub-div{
         display: flex;
@@ -281,33 +308,40 @@
 }
 @media only screen and (min-width:529px) and (max-width:600px){
 
-    .recommendation-modal{
-        opacity: 0;
-        pointer-events: none; 
-        background-color: white;
-        position: absolute;
-        top: 0px;
-        bottom: 0px;
-        right: 0px;
-        left:0px;
-        background: rgb(45,48,50);
-        color: white;
-        border: 1px solid white;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 20px 0px;
-    }
     .moviesContainerClass{
         width: 100%;
+        overflow: auto;
+    }
+    .recommendation-modal-active{
+        top:4%;
+        left: 8%;
+        right: 8%;
+        max-height: 30%;
+        justify-content: space-between;
+    }
+    .info-div{
+        padding-top: 10px;
+        padding-left: 0;
+    }
+    .image-div{
+       width: 100%;
     }
     .upper-div{
         display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
     }
+    .modalBody{
+        flex-direction: column;
+        flex: 1;
+    }
+    
     .card-body{
         display: flex;
-        justify-content: center;
+        flex: 1;
+        align-items: center;
         flex-direction: column;
+        
     }
     .select-container{
         flex-direction: column;
@@ -326,6 +360,7 @@
     }
     .cards-container{
         padding: 0px 100px;
+        overflow: auto;
     }
     .sub-div{
         display: flex;
@@ -333,118 +368,92 @@
     }
 }
 @media only screen and (min-width:600px) and (max-width:767px){
-.recommendation-modal{
-        opacity: 0;
-        pointer-events: none; 
-        background-color: white;
-        position: absolute;
-        top: 0px;
-        bottom: 0px;
-        right: 0px;
-        left:0px;
-        background: rgb(45,48,50);
-        color: white;
-        border: 1px solid white;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 20px 0px;
-    }
     .moviesContainerClass{
         width: 100%;
+        
+    }
+    .recommendation-modal-active{
+        top:4%;
+        left: 8%;
+        right: 8%;
+        max-height: 30%;
+        justify-content: space-between;
+    }
+    .info-div{
+        padding-top: 10px;
+        padding-left: 0;
+    }
+    .image-div{
+       width: 100%;
     }
     .upper-div{
         display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
     }
+    .modalBody{
+        flex-direction: column;
+        flex: 1;
+    }
+    
     .card-body{
         display: flex;
-        justify-content: center;
+        flex: 1;
+        align-items: center;
         flex-direction: column;
+        
     }
     .select-container{
         flex-direction: column;
-        
         margin-bottom: 10px;
         padding: 0px 55px;
     }
     .select-div{
         display: flex;
         flex-direction: column;
-       
     }
-   
     .select{
         width: 100%;
     }
     .cards-container{
         padding: 0px 55px;
+        overflow: auto;
     }
     .sub-div{
         display: flex;
         width: 100%;
     }
 }
-/* @media only screen and (min-width: 600px) and (max-width:767px) {
-    .recommendation-modal{
-        opacity: 0;
-        pointer-events: none; 
-        background-color: white;
-        position: absolute;
-        top: 0px;
-        bottom: 0px;
-        right: 0px;
-        left:0px;
-        background: rgb(45,48,50);
-        color: white;
-        border: 1px solid white;
-        display: flex;
-        flex-direction: column;
+@media only screen and(min-width:768) and (max-width:1199px) {
+    .recommendation-modal-active{
+        top:10%;
+        left: 8%;
+        right: 8%;
+        max-height: 30%;
         justify-content: space-between;
-        padding: 20px 0px;
+    }
+    .info-div{
+        padding-top: 10px;
+        padding-left: 0;
+    }
+    .image-div{
+       width: 100%;
     }
     .upper-div{
         display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
     }
-    .card-body{
+    .modalBody{
+        flex-direction: column;
+        flex: 1;
+    }
     
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-    }
-    .select-container{
-        flex-direction: column;
-        
-    }
-} */
-/* @media only screen and (min-width: 768px) and (max-width:991px){
-    .recommendation-modal{
-        opacity: 0;
-        pointer-events: none; 
-        background-color: white;
-        position: absolute;
-        top: 0px;
-        bottom: 0px;
-        right: 0px;
-        left:0px;
-        margin: auto;
-        background: rgb(45,48,50);
-        color: white;
-        border: 1px solid white;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 20px 0px;
-    }
-    .upper-div{
-        display: flex;
-    }
     .card-body{
-    
         display: flex;
-        justify-content: center;
+        flex: 1;
+        align-items: center;
         flex-direction: column;
     }
-    .select-container{
-        flex-direction: column;
-    }
-} */
+}
+

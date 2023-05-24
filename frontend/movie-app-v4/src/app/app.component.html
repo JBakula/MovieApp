@@ -1,32 +1,41 @@
-<nav class="navbar navClass" data-bs-theme="dark" >
+
+<nav class="navbar navbar-expand-md navClass">
   <div class="container containerFlex">
     <div class="brand-div">
-      <i routerLink="/" class="fa-sharp fa-solid fa-film fa-2xl" style="color: #FFC107; cursor:pointer;"  ></i>      
-      
+      <i routerLink="/" class="fa-sharp fa-solid fa-film fa-2xl" style="color: #FFC107; cursor:pointer;"  ></i>
     </div>
-    <div class="search-bar-div">
-        <div class="input-group ">
-          <input type="text" class="form-control search-bar" placeholder="Search..." aria-label="Search movie" id="search" name="search" (keyup)="handleKeyUp($event)" >
-          <button class="btn btn-outline-secondary search-btn" type="button"  ><i class="fa-solid fa-magnifying-glass" style="color: #FFC107;"></i></button>
-        </div>
-        <div *ngIf="!isLoggedIn">
-          <button class="btn btn-warning signup-btn" routerLink="/signup"> SignUp</button>
-        </div>
-        <div *ngIf="!isLoggedIn">
-          <button class="btn btn-warning signup-btn" routerLink="/login"  > Login</button>
-        </div>
-        <div *ngIf="isLoggedIn" class="userName">
-          <span>{{userDataModel.name}}</span>&nbsp;<span>{{userDataModel.lastname}}</span>
-        </div>
+    <div class="search-container">
+      <div class="input-group search-form">
+        <input type="text" class="form-control search-bar" placeholder="Search..." aria-label="Search movie" id="search" name="search" (keyup)="handleKeyUp($event)" >
+        <button class="btn btn-outline-secondary search-btn" type="button"  ><i class="fa-solid fa-magnifying-glass" style="color: #FFC107;"></i></button>
+      </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu"><i class="fa-solid fa-bars" style="color: #FFC107;"></i></button>
+    <div class="collapse navbar-collapse collapse-class" id="navmenu">
+      <ul class="navbar-nav ms-auto menu-class">
+        <li class="nav-item">
+          <div *ngIf="!isLoggedIn">
+            <button class="btn btn-warning signup-btn" routerLink="/signup"> SignUp</button>
+          </div>
+        </li>
+        <li class="nav-item">
+          <div *ngIf="!isLoggedIn">
+            <button class="btn btn-warning signup-btn" routerLink="/login"  > Login</button>
+          </div>
+        </li>
+        <li class="nav-item name-class">
+          <div *ngIf="isLoggedIn" class="userName">
+            <span>{{userDataModel.name}}</span>&nbsp;<span>{{userDataModel.lastname}}</span>
+          </div>
+        </li>
         <div *ngIf="isLoggedIn">
           <button class="btn btn-warning signup-btn" (click)="logout()"> Logout</button>
         </div>
-        
-    </div>  
-    
+      </ul>
+    </div>
   </div>
+
 </nav>
 <div class="container containerClass">
-    
   <router-outlet></router-outlet>
 </div>

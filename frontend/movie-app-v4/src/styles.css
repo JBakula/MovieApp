@@ -2,5 +2,28 @@
 body{
     background: rgb(45,48,50);
     background: linear-gradient(90deg, rgba(45,48,50,1) 0%, rgba(7,7,8,1) 38%, rgba(45,48,50,1) 100%);
-    
 }
+@media only screen and (min-width:1300px){
+    body{
+        overflow: auto;}
+}
+/* @media only screen and (min-width: 427px){
+    body{
+        overflow: auto;
+    }
+}
+@media screen and (min-width:428px) and (max-width:488px){
+    body{
+        overflow: auto;
+    }
+}
+@media only screen and (min-width:489px) and (max-width:599px){
+    body{
+        overflow: auto;
+    }
+}
+@media only screen and (min-width:600px) and (max-width:1100px){
+    body{
+        overflow: auto;
+    }
+} */

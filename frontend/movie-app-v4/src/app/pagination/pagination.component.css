@@ -26,3 +26,8 @@ li{
     border-bottom-right-radius: 0;
     border: 1px solid #FFC107;
 }
+@media only screen and (max-width: 600px){
+    .page-navigation{
+        display: flex;
+    }
+}
