@@ -1,6 +1,7 @@
 .page-navigation{
     border-radius: 0px;
-  
+    display: flex;
+    
     
 }
 .pager{
@@ -26,8 +27,15 @@ li{
     border-bottom-right-radius: 0;
     border: 1px solid #FFC107;
 }
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 550px){
     .page-navigation{
         display: flex;
+        
+    }
+    .pagination{
+        max-width: 300px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
     }
 }

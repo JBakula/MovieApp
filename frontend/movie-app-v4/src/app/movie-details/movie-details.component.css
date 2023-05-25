@@ -115,6 +115,7 @@
 .row-div{
     display: flex;
     margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 .alignment{
     width: 190px;
