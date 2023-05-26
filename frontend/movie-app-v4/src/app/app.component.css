@@ -14,7 +14,6 @@
     border: 1px solid #FFC107;
     color: white;
     border-radius: 0px;
-
 }
 .search-form{
     max-width: 350px;
@@ -25,8 +24,6 @@
 .containerClass{
     margin-top: 40px;
     padding: 20px 50px;
-    
-    /* background-color: aquamarine; */
 }
 .toggler-button{
     background-color: #FFC107;
@@ -34,7 +31,6 @@
 }
 .navClass{
     background-color: rgb(15, 15, 15);
-    
 }
 .search-bar-div{
     display: flex;

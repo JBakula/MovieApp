@@ -1,7 +1,7 @@
 .moviesContainerClass{
     display: flex;
     flex-direction: column;
-    position: relative;
+    /* position: relative; */
    
 }
 .cards-container{
@@ -14,14 +14,7 @@
     justify-content: center;
     
 }
-/* .pager{
-    color: black;
-    
-}
-.pager-div{
-    border: 1px solid black;
-    border-radius: 5px;
-} */
+
 .select-container{
     padding: 10px 0px;
     display: flex;
@@ -35,7 +28,7 @@
     cursor: pointer;
     border-radius: 0px;
     border: 1px solid#FFC107;
-    
+    overflow: auto;
 }
 .select-div{
     display: flex;
@@ -57,9 +50,10 @@
     bottom: 250px;
     right: 250px;
     left:250px; */
-    top: 15%;
-    right: 20%;
-    left: 20%;
+    top: 25%;
+    right: 30%;
+    left: 30%;
+    /* bottom: 27%; */
     bottom: 27%;
     background: rgb(45,48,50);
     color: white;
@@ -73,9 +67,10 @@
     flex:1
 }
 .recommendation-modal-active{
-    display: relative;
+    /* display: relative; */
     opacity: 1;
     pointer-events: auto;
+    height: auto;
 }
 .modalHeader{
     height: 50px;
@@ -140,10 +135,11 @@
 @media only screen and (max-width: 427px) {
     
     .recommendation-modal-active{
-        top:4%;
+        
+        top:28.5%;
         left: 8%;
         right: 8%;
-        max-height: 30%;
+        height: fit-content;
         justify-content: space-between;
     }
     .info-div{
@@ -192,10 +188,10 @@
         width: 100%;
     }
     .recommendation-modal-active{
-        top:4%;
-        left: 8%;
-        right: 8%;
-        max-height: 100vh;
+        top:26.5%;
+        left: 12%;
+        right: 12%;
+        height: fit-content;
         justify-content: space-between;
     }
     
@@ -253,10 +249,10 @@
         width: 100%;
     }
     .recommendation-modal-active{
-        top:4%;
-        left: 8%;
-        right: 8%;
-        max-height: 30%;
+        top:27.5%;
+        left: 17%;
+        right: 17%;
+        height: fit-content;
         justify-content: space-between;
     }
     .info-div{
@@ -314,10 +310,10 @@
         overflow: auto;
     }
     .recommendation-modal-active{
-        top:4%;
-        left: 8%;
-        right: 8%;
-        max-height: 30%;
+        top:27.5%;
+        left: 20%;
+        right: 20%;
+        height: fit-content;
         justify-content: space-between;
     }
     .info-div{
@@ -374,10 +370,10 @@
         
     }
     .recommendation-modal-active{
-        top:4%;
-        left: 8%;
-        right: 8%;
-        max-height: 30%;
+        top:27.5%;
+        left: 22%;
+        right: 22%;
+        height: fit-content;
         justify-content: space-between;
     }
     .info-div{
@@ -428,9 +424,10 @@
 @media only screen and (min-width:768px) and (max-width:991px) {
     
     .recommendation-modal{
-        top: 6%;
+        top: 25.5%;
         display: flex;
         flex-direction: column;
+        height: fit-content;
         justify-content: space-between;
     }
     .upper-div{
@@ -449,20 +446,41 @@
     .image-div{
         width: 100%;
     }
+    .info-div{
+        padding-left: 0px;
+    }
+    .title{
+        margin-top: 10px;
+    }
     
     
 
 }
 @media only screen and (min-width:992px) and (max-width:1200px) {
     .recommendation-modal{
-        top: 10%;
-        bottom: 45%;
-        
+        top: 27.5%;
+        height: fit-content;
+        left: 20%;
+        right: 20%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
     }
     
     
+}
+@media only screen and (min-width:1201px) and (max-width:1300px){
+    .recommendation-modal{
+        top: 27.5%;
+        height: fit-content;
+        left: 18%;
+        right: 18%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .modalFooter{
+        margin-top: 20px;
+    }
 }
 

@@ -42,13 +42,7 @@ export class SignupComponent implements OnInit{
       })
     }
   }
-  // passwordConfirm(control:FormControl){
-  //   if(control.value != this.password){
-  //     return {passwordConfirm:true}
-  //   }else{
-  //     return null;
-  //   }
-  // }
+  
   ngOnInit():void{
    this.formData = new FormGroup({
       Name:new FormControl("",[Validators.required]),

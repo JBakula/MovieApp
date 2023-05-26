@@ -63,6 +63,7 @@ export class MoviesContainerComponent implements OnInit{
       this.currentPath = `/category/${value}`;
     }
   }
+  
   refreshParent(){
     this.activatedRoute.params.subscribe((params:Params)=>{
       if(params['movie-search']){
