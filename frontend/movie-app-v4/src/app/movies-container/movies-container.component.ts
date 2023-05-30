@@ -6,6 +6,7 @@ import { MovieCard } from '../interfaces/movieCardInterface';
 import { RecommendationService } from '../services/recommendation.service';
 import { UserService } from '../services/user.service';
 import { Category } from '../interfaces/category';
+import { SignalrService } from '../services/signalr.service';
 
 @Component({
   selector: 'app-movies-container',
@@ -28,7 +29,7 @@ export class MoviesContainerComponent implements OnInit{
   modalActive:boolean;
   categories:Category[] = [];
   constructor(private http:HttpService, private recommender:RecommendationService,
-    private user:UserService,private activatedRoute:ActivatedRoute,private router:Router){
+    private user:UserService,private activatedRoute:ActivatedRoute,private router:Router,private signalr:SignalrService){
     this.moviesResponse = {} as MoviesResponse,
     this.isLoggedIn = {} as boolean,
     this.modalActive = false,

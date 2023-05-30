@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using MoviesApp.DTO;
+using MoviesApp.Hubs;
 using MoviesApp.Models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
@@ -11,10 +13,12 @@ namespace MoviesApp.Services.MovieRepo
     {
         private readonly MoviesDbContext _context;
         public static IWebHostEnvironment _webHostEnvironment;
-        public MovieService(MoviesDbContext context, IWebHostEnvironment webHostEnvironment)
+        private readonly IHubContext<RatingHub> _hubContext;
+        public MovieService(MoviesDbContext context, IWebHostEnvironment webHostEnvironment, IHubContext<RatingHub> hubContext)
         {
             _context = context;
             _webHostEnvironment = webHostEnvironment;
+            _hubContext = hubContext;
         }
         public bool AddMovie(MovieRequest movieRequest)
         {
@@ -127,7 +131,7 @@ namespace MoviesApp.Services.MovieRepo
                 {
                     MovieId = movie.MovieId,
                     MovieName = movie.MovieName,
-                    Rating = rating,
+                    //Rating = rating,
                     Year = movie.Year,
                     /*UserRating = userRating*/
                     CoverImage = movie.CoverImage,
@@ -183,25 +187,8 @@ namespace MoviesApp.Services.MovieRepo
                                
             
         }
-        //private int IsLoggedIn(string token)
-        //{
-        //    if (token != null)
-        //    {
-        //        var handler = new JwtSecurityTokenHandler();
-        //        var decodedToken = handler.ReadJwtToken(token);
-
-
-        //        var userId = int.Parse(decodedToken.Claims.First(c => c.Type == "UserId").Value);
-        //        return userId;
-        //    }
-        //    return 0;
-        //}
-        //private int UserRating(int userId, int movieId)
-        //{
-        //    int rating = _context.Ratings.Where(r => (r.MovieId == movieId) && (r.UserId == userId)).Select(r => r.Value).FirstOrDefault();
-        //    return rating;
-        //}
-        private float CalculateMovieRating(int id)
+        
+        public float CalculateMovieRating(int id)
         {
             int numberOfRatings = NumberOfRatings(id);
             if (numberOfRatings == 0)
@@ -213,7 +200,7 @@ namespace MoviesApp.Services.MovieRepo
             
             return (float) Math.Round((double)((float)rating/(float)numberOfRatings),1);
         }
-        private int NumberOfRatings(int id)
+        public int NumberOfRatings(int id)
         {
             return _context.Ratings.Where(r => r.MovieId == id).Count();
         }
@@ -302,8 +289,6 @@ namespace MoviesApp.Services.MovieRepo
             var numberOfPages = NumberOfPages(numberOfMoviesPerPage);
 
 
-            //var movies = _context.Movies.Where(m => (m.MovieName.ToLower()).Contains(searchTerm.ToLower())
-            //                                        ||(m.Director.DirectorName.ToLower().Contains(searchTerm.ToLower())).ToList();
             var movies = _context.Movies.Where(m => (((m.MovieName.ToLower()).Contains(searchTerm.ToLower()))
                                     || ((m.Director.DirectorName.ToLower()).Contains(searchTerm.ToLower())))).ToList();
             var moviesResponeList = new List<MoviesResponse>();

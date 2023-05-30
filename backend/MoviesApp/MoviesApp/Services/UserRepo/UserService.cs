@@ -104,15 +104,6 @@ namespace MoviesApp.Services.UserRepo
             return false;
 
         }
-        //public CookieOptions SetRefreshToken(RefreshToken refreshToken)
-        //{
-        //    var cookieOptions = new CookieOptions
-        //    {
-        //        HttpOnly = true,
-        //        Expires = refreshToken.ExpiresAt
-        //    };
-        //    return cookieOptions;
-        //}
         private RefreshToken GenerateRefreshToken(User user)
         {
             var refreshToken = new RefreshToken()

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { movieDetails } from '../interfaces/movieDetails';
 import { HttpService } from '../services/http.service';
 import { MovieCard } from '../interfaces/movieCardInterface';
@@ -8,6 +8,9 @@ import { Rating } from '../interfaces/rating';
 import { Subscription } from 'rxjs';
 import { UserService } from '../services/user.service';
 import { RatingResponse } from '../interfaces/ratingResponse';
+import { SignalrService } from '../services/signalr.service';
+import { calculateRating } from '../interfaces/calculateRating';
+import { HubConnection } from '@microsoft/signalr';
 
 @Component({
   selector: 'app-movie-card',
@@ -26,7 +29,11 @@ export class MovieCardComponent implements OnInit {
   ratingSubscribe:Subscription
   ratingResponse:RatingResponse
   ratedCheck:boolean = false;
-  constructor(private http:HttpService, private userService:UserService){
+  // userRating:calculateRating;
+  avgRating:number;
+  
+
+  constructor(private http:HttpService, private userService:UserService,private signalr:SignalrService){
     this.data = {} as MovieCard;
     this.defaultPath = {} as string;
     this.movieDetails = {} as movieDetails;
@@ -35,6 +42,8 @@ export class MovieCardComponent implements OnInit {
     this.ratingSubscribe = {} as Subscription;
     this.isUserLoggedIn = this.userService.isLoggedIn(); 
     this.ratingResponse = {} as RatingResponse;
+    // this.userRating = {} as calculateRating
+    this.avgRating = {} as number;
   }
   getUserRating(){
     if(this.isUserLoggedIn){
@@ -50,12 +59,20 @@ export class MovieCardComponent implements OnInit {
       })
     }
   }
+  
   ngOnInit(): void {
-    this.userService.statusEmitter.subscribe((val)=>{
-      this.isUserLoggedIn = val;
+    this.signalr.startConnection();
+
+    this.signalr.UpdateRating(this.data.movieId);
+    this.signalr.newMovieRatingListener();
+    this.signalr.avgRating.subscribe((res)=>{
+      this.avgRating = res;
     })
+    
     this.getUserRating();
+    
   }
+  
   ratingPopUp(event:any){
     event.preventDefault();
     event.stopPropagation();
@@ -68,10 +85,16 @@ export class MovieCardComponent implements OnInit {
     this.rating.MovieId = movieId;
     this.rating.Rating = this.ratingControl.value;
     this.ratingSubscribe=this.http.rateMovie(this.rating).subscribe((res)=>{
-      console.log(res);
-      this.refreshParent.emit();
+      // console.log(res);
+      // this.refreshParent.emit();
     });
     
+    this.signalr.UpdateRating(movieId);
+    this.signalr.newMovieRatingListener();
+    this.signalr.avgRating.subscribe((val)=>{
+      this.avgRating = val
+      console.log(this.avgRating);
+    })
     this.modalOpen = false;
     
   }

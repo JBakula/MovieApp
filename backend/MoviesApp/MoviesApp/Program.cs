@@ -3,13 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MoviesApp.Extensions;
+using MoviesApp.Hubs;
 using MoviesApp.Models;
-using MoviesApp.Services.ActorRepo;
-using MoviesApp.Services.CategoryRepo;
-using MoviesApp.Services.DirectorRepo;
-using MoviesApp.Services.MovieRepo;
-using MoviesApp.Services.RatingRepo;
-using MoviesApp.Services.UserRepo;
 using Swashbuckle.AspNetCore.Filters;
 using System.Text;
 
@@ -69,6 +64,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                         ClockSkew = TimeSpan.Zero
                     };
                 });
+
+builder.Services.AddSignalR();
+
 var app = builder.Build();
 
 
@@ -80,14 +78,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseStaticFiles();
+
 app.UseHttpsRedirection();
+app.UseCors(MyAllowSpecificOrigins);
 app.UseStaticFiles();
 
-app.UseCors(MyAllowSpecificOrigins);
+
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.MapHub<RatingHub>("/hubs/calculateRating");
 app.Run();

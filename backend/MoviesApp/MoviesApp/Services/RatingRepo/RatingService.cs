@@ -7,6 +7,7 @@ namespace MoviesApp.Services.RatingRepo
     public class RatingService : IRatingService
     {
         private readonly MoviesDbContext _context;
+
         public RatingService(MoviesDbContext context)
         {
             _context = context;
@@ -54,7 +55,6 @@ namespace MoviesApp.Services.RatingRepo
             var handler = new JwtSecurityTokenHandler();
             var decodedToken = handler.ReadJwtToken(token);
 
-
             var userId = int.Parse(decodedToken.Claims.First(c => c.Type == "UserId").Value);
 
             var rating = _context.Ratings.Where(r => ((r.MovieId == movieId) && (r.UserId == userId))).FirstOrDefault();
@@ -70,9 +70,6 @@ namespace MoviesApp.Services.RatingRepo
             {
                 return ratingResponse;
             }
-           
-
-
         }
         public bool IsMovieExist(int id)
         {
