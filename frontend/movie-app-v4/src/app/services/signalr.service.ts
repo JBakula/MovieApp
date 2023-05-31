@@ -33,27 +33,32 @@ export class SignalrService {
       
     })
   }
-    UpdateRating(movieId:number){
-      this.hubConnection.invoke("UpdateRating",movieId)
-      .catch(err=>console.log(err));
-    }
-
-    avgRating = new EventEmitter<number>();
-    raiseAvgRatingEmmiter(avgRating:number){
-      this.avgRating.emit(avgRating)
-    }
-    
-    newMovieRatingListener(){
-      this.hubConnection.on("avgMovieRating",(avgRating)=>{
-        console.log(avgRating);
-        
-        this.raiseAvgRatingEmmiter(avgRating);
-      })
-    }
-    
-
-    
+  UpdateRating(movieId:number){
+    this.hubConnection.invoke("UpdateRating",movieId)
+        .catch(err=>console.log(err));
   }
+
+  avgRating = new EventEmitter<number>();
+  movieId = new EventEmitter<number>();
+  raiseAvgRatingEmmiter(avgRating:number){
+    this.avgRating.emit(avgRating)
+  }
+  raiseMovieIdEmmiter(id:number){
+    this.movieId.emit(id);
+  }
+
+
+  newMovieRatingListener(){
+    this.hubConnection.on("avgMovieRating",(res)=>{
+    console.log(res.avgRating)  
+    this.raiseAvgRatingEmmiter(res.avgRating);
+    this.raiseMovieIdEmmiter(res.id);
+    })
+  }
+    
+
+    
+}
     
   
   

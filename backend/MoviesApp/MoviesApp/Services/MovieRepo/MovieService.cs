@@ -265,7 +265,7 @@ namespace MoviesApp.Services.MovieRepo
                 MovieId = movie.MovieId,
                 MovieName = movie.MovieName,
                 Year = movie.Year,
-                Rating = CalculateMovieRating(movie.MovieId),
+                //Rating = CalculateMovieRating(movie.MovieId),
                 CoverImage = movie.CoverImage,
                 Description = movie.Description,
                 IMDbRating = (float)movie.IMDbRating,

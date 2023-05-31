@@ -166,7 +166,8 @@ export class MoviesContainerComponent implements OnInit{
   }
   
   ngOnInit(): void {
-    
+    // this.signalr.startConnection();
+
     this.http.getCategories().subscribe((res)=>{
       this.categories = res
     })

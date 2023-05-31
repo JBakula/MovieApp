@@ -25,7 +25,7 @@
                     <i class="fa-brands fa-imdb fa-xl imdb-icon fs-2" style="color:#FFC107" ></i> {{movieDetails.imDbRating}}
                 </div>
                 <div [ngClass]="{'hide-user-rating':modalOpen}">
-                    <span class="text">Users rating: </span> <i class="fas fa-star star-class" style="color:#FFC107" ></i>{{movieDetails.rating}}
+                    <span class="text">Users rating: </span> <i class="fas fa-star star-class" style="color:#FFC107"  ></i>{{avgRating}}
                 </div>
                 <div *ngIf="isUserLoggedIn" [ngClass]="{'hide-user-rating':modalOpen}">
                     <span class="text">Your rating: </span> <i class="fas fa-star star-class" style="color: #1e67e6; cursor: pointer;" (click)="ratingPopUp($event)"></i><span *ngIf="rated===true">{{userRating}}</span>

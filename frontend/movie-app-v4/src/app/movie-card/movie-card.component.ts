@@ -11,6 +11,7 @@ import { RatingResponse } from '../interfaces/ratingResponse';
 import { SignalrService } from '../services/signalr.service';
 import { calculateRating } from '../interfaces/calculateRating';
 import { HubConnection } from '@microsoft/signalr';
+import { User } from '../interfaces/user';
 
 @Component({
   selector: 'app-movie-card',
@@ -21,6 +22,7 @@ export class MovieCardComponent implements OnInit {
   @Input() defaultPath:string 
   @Input() data:MovieCard;
   @Output() refreshParent = new EventEmitter();
+
   movieDetails:movieDetails
   modalOpen:boolean
   imdb = faImdb
@@ -31,8 +33,8 @@ export class MovieCardComponent implements OnInit {
   ratedCheck:boolean = false;
   // userRating:calculateRating;
   avgRating:number;
-  
-
+  ratedMovieId:number;
+  loggedUser:User;
   constructor(private http:HttpService, private userService:UserService,private signalr:SignalrService){
     this.data = {} as MovieCard;
     this.defaultPath = {} as string;
@@ -44,6 +46,8 @@ export class MovieCardComponent implements OnInit {
     this.ratingResponse = {} as RatingResponse;
     // this.userRating = {} as calculateRating
     this.avgRating = {} as number;
+    this.ratedMovieId = {} as number;
+    this.loggedUser = {} as User;
   }
   getUserRating(){
     if(this.isUserLoggedIn){
@@ -64,9 +68,11 @@ export class MovieCardComponent implements OnInit {
     this.signalr.startConnection();
 
     this.signalr.UpdateRating(this.data.movieId);
+
     this.signalr.newMovieRatingListener();
     this.signalr.avgRating.subscribe((res)=>{
       this.avgRating = res;
+      console.log(this.avgRating);
     })
     
     this.getUserRating();
@@ -78,8 +84,11 @@ export class MovieCardComponent implements OnInit {
     event.stopPropagation();
     this.modalOpen = true; 
   }
+
   ratingControl = new FormControl(0);
+
   getRating(event:any,movieId:number){
+
     event.preventDefault();
     event.stopPropagation();
     this.rating.MovieId = movieId;
@@ -88,22 +97,26 @@ export class MovieCardComponent implements OnInit {
       // console.log(res);
       // this.refreshParent.emit();
     });
-    
-    this.signalr.UpdateRating(movieId);
-    this.signalr.newMovieRatingListener();
-    this.signalr.avgRating.subscribe((val)=>{
-      this.avgRating = val
-      console.log(this.avgRating);
-    })
+
     this.modalOpen = false;
+    setTimeout(() => {
+      this.userService.userModel.subscribe((val)=>{
+        this.loggedUser.userId = val.userId
+      })
+      this.signalr.UpdateRating(movieId);
+      this.signalr.movieId.subscribe((res)=>{
+      this.ratedMovieId = res;
+      this.getUserRating();
+    })
+    }, 30);
+    
     
   }
+
   closeModal(event:any){
     event.preventDefault();
     event.stopPropagation();
     this.modalOpen = false;
   }
-  
-  
   
 }

@@ -7,6 +7,7 @@ import { UserService } from '../services/user.service';
 import { RatingResponse } from '../interfaces/ratingResponse';
 import { FormControl } from '@angular/forms';
 import { Rating } from '../interfaces/rating';
+import { SignalrService } from '../services/signalr.service';
 
 @Component({
   selector: 'app-movie-details',
@@ -25,11 +26,15 @@ export class MovieDetailsComponent {
   rated:boolean = false;
   rating:Rating
   loader:boolean = false;
-  constructor(private http:HttpService, private userService:UserService, private activatedRoute:ActivatedRoute){
+  avgRating:number;
+  constructor(private http:HttpService, private userService:UserService, private activatedRoute:ActivatedRoute,private signalr:SignalrService){
     this.movieDetails = {} as movieDetails;
     this.userRating = {} as number;
     this.isUserLoggedIn = this.userService.isLoggedIn();
-    this.rating = {} as Rating
+    this.rating = {} as Rating;
+    this.avgRating = {} as number;
+    this.signalr.startConnection();
+
   }
   load() : void {
     this.loader = true;
@@ -44,9 +49,18 @@ export class MovieDetailsComponent {
         this.images.push(image.imageName)
       })
     })
+
+    // this.signalr.UpdateRating(movieId);
+    // this.signalr.newMovieRatingListener();
+    this.signalr.avgRating.subscribe((res)=>{
+      this.avgRating = res
+      console.log(this.avgRating);
+    })
     
   }
   getRating(id:number){
+    this.signalr.UpdateRating(id);
+
     if(this.isUserLoggedIn === true){
       
       this.userService.getUserRatings(id).subscribe((res)=>{
@@ -77,13 +91,15 @@ export class MovieDetailsComponent {
     this.rating.Rating = this.ratingControl.value;
     this.http.rateMovie(this.rating).subscribe((res)=>{
       console.log(res);
-      this.getDetails(movieId);
+      
       this.userRating = this.rating.Rating!!;
 
     });
-    console.log(this.ratingControl.value);
     this.modalOpen = false;
-    
+    setTimeout(() => {
+    this.signalr.UpdateRating(movieId);
+      
+    }, 30);
   }
   nextImage(){
     if(this.currentIndex === (this.images.length - 1) ){
@@ -100,10 +116,17 @@ export class MovieDetailsComponent {
     }
   }
   ngOnInit(): void {
+    this.signalr.newMovieRatingListener();
+    this.signalr.avgRating.subscribe((res)=>{
+      this.avgRating = res
+      console.log(this.avgRating);
+    })
+
     this.activatedRoute.params.subscribe((params:Params)=>{
       this.getDetails(params['movieId']);
       this.getRating(params['movieId']);
       })
+      
     
     }
   }

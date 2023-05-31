@@ -18,11 +18,16 @@ namespace MoviesApp.Hubs
 
         public async Task UpdateRating(int movieId)
         {
-            float ratingResponse = _movieService.CalculateMovieRating(movieId);
+
+            var ratingResponse = _movieService.CalculateMovieRating(movieId);
 
 
             //await Clients.Client(Context.ConnectionId).SendAsync("avgMovieRating", ratingResponse);
-            await Clients.Caller.SendAsync("avgMovieRating", ratingResponse);
+            await Clients.Caller.SendAsync("avgMovieRating", new
+            {
+                avgRating = ratingResponse,
+                id = movieId
+            });
         }
     }
 }
