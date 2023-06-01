@@ -28,20 +28,31 @@ export class MoviesContainerComponent implements OnInit{
   order:string = "Title ascending";
   modalActive:boolean;
   categories:Category[] = [];
+  newAvgRating:number;
   constructor(private http:HttpService, private recommender:RecommendationService,
     private user:UserService,private activatedRoute:ActivatedRoute,private router:Router,private signalr:SignalrService){
     this.moviesResponse = {} as MoviesResponse,
     this.isLoggedIn = {} as boolean,
     this.modalActive = false,
     this.recommendedMovieCard = {} as MovieCard
-    
+    this.newAvgRating = {} as number
   } 
   getData(page:number,ordering:string){
     this.load();
     this.http.getMovies(page,ordering).subscribe((res)=>{
       this.cards = res.movies;
-      this.moviesResponse = res;
-      
+      this.cards.forEach(card => {
+        this.signalr.UpdateRating(card.movieId);
+
+      });
+      let index = 0
+      this.signalr.avgRating.subscribe((val)=>{
+        if(this.cards[index]!=undefined){
+          this.cards[index].rating = val 
+          index++;
+        }
+        
+      })
       this.totalPages = Array.from(new Array(res.numberOfPages),(x,i)=>i+1)
       
     });
@@ -65,25 +76,21 @@ export class MoviesContainerComponent implements OnInit{
     }
   }
   
-  refreshParent(){
-    this.activatedRoute.params.subscribe((params:Params)=>{
-      if(params['movie-search']){
-        this.getDataBySearch(params['movie-search'],this.order,this.page);
-      }else if(params['categoryId']){
-        this.getDataByCategoryId(params['categoryId'],this.order,this.page);
-      }else if(params['directorId']){
-        this.getDataByDirectorId(params['directorId'],this.order,this.page)
-      }else if(params['actorId']){
-        this.getDataByActorId(params['actorId'],this.order,this.page)
-      }else{
-        this.getData(this.page,this.order);
-      }
-    })
-  }
+  
   getDataBySearch(searchedTerm:string,order:string,page:number){
     this.http.getMoviesBySearchedTerm(searchedTerm,order,page).subscribe((res)=>{
-      this.moviesResponse = res;
       this.cards = res.movies;
+      this.cards.forEach(card => {
+        this.signalr.UpdateRating(card.movieId);
+
+      });
+      let index = 0
+      this.signalr.avgRating.subscribe((val)=>{
+        if(this.cards[index]!=undefined){
+          this.cards[index].rating = val 
+          index++;
+        }
+      })
       this.totalPages = Array.from(new Array(res.numberOfPages),(x,i)=>i+1)
       
     })
@@ -91,25 +98,53 @@ export class MoviesContainerComponent implements OnInit{
   }
   getDataByCategoryId(categoryId:number, order:string,page:number){
     this.http.getMoviesByCategoryId(categoryId,order,page).subscribe((res)=>{
-      
-      this.moviesResponse = res;
-      this.cards = res.movies
+      this.cards = res.movies;
+      this.cards.forEach(card => {
+        this.signalr.UpdateRating(card.movieId);
+
+      });
+      let index = 0
+      this.signalr.avgRating.subscribe((val)=>{
+        if(this.cards[index]!=undefined){
+          this.cards[index].rating = val 
+          index++;
+        }
+      })
       this.totalPages = Array.from(new Array(res.numberOfPages),(x,i)=>i+1)
     })
   }
 
   getDataByDirectorId(directoryId:number,order:string,page:number){
     this.http.getMoviesByDirectoryId(directoryId,order,page).subscribe((res)=>{
-      console.log(res)
-      this.moviesResponse = res;
-      this.cards = res.movies
+      this.cards = res.movies;
+      this.cards.forEach(card => {
+        this.signalr.UpdateRating(card.movieId);
+
+      });
+      let index = 0
+      this.signalr.avgRating.subscribe((val)=>{
+        if(this.cards[index]!=undefined){
+          this.cards[index].rating = val 
+          index++;
+        }
+      })
       this.totalPages = Array.from(new Array(res.numberOfPages),(x,i)=>i+1)
     })
   }
   getDataByActorId(actorId:number,order:string,page:number){
     this.http.getMoviesByActorId(actorId,order,page).subscribe((res)=>{
-      this.moviesResponse = res;
       this.cards = res.movies;
+      this.cards.forEach(card => {
+        this.signalr.UpdateRating(card.movieId);
+
+      });
+      let index = 0
+      this.signalr.avgRating.subscribe((val)=>{
+        if(this.cards[index]!=undefined){
+          this.cards[index].rating = val 
+          index++;
+        }
+      })
       this.totalPages = Array.from(new Array(res.numberOfPages),(x,i)=>i+1)
        
     })
@@ -164,10 +199,21 @@ export class MoviesContainerComponent implements OnInit{
 
     })
   }
-  
+  updateRating(event:any){
+    this.signalr.UpdateRating(event);
+    this.signalr.avgRating.subscribe((val)=>{
+      console.log(val)
+      this.newAvgRating = val;
+    })
+    
+  }
   ngOnInit(): void {
-    // this.signalr.startConnection();
-
+    this.signalr.startConnection();
+    this.signalr.newMovieRatingListener();
+    // this.signalr.avgRating.subscribe((res)=>{
+    //   this.avgRating = res;
+    //   console.log(this.avgRating);
+    // })
     this.http.getCategories().subscribe((res)=>{
       this.categories = res
     })

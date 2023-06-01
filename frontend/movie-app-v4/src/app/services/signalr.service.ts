@@ -41,7 +41,11 @@ export class SignalrService {
   avgRating = new EventEmitter<number>();
   movieId = new EventEmitter<number>();
   raiseAvgRatingEmmiter(avgRating:number){
-    this.avgRating.emit(avgRating)
+    // console.log(avgRating)
+    if(avgRating != undefined){
+      this.avgRating.emit(avgRating)
+
+    }
   }
   raiseMovieIdEmmiter(id:number){
     this.movieId.emit(id);
@@ -50,7 +54,6 @@ export class SignalrService {
 
   newMovieRatingListener(){
     this.hubConnection.on("avgMovieRating",(res)=>{
-    console.log(res.avgRating)  
     this.raiseAvgRatingEmmiter(res.avgRating);
     this.raiseMovieIdEmmiter(res.id);
     })

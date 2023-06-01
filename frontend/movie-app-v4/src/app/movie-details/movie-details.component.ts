@@ -43,26 +43,26 @@ export class MovieDetailsComponent {
   getDetails(movieId:number){
     this.load();
     this.http.getMovieDetails(movieId).subscribe((res)=>{
-      this.movieDetails = res;
+      
+      this.movieDetails = res
+
+      this.signalr.UpdateRating(movieId);
+      
       this.images.push(this.movieDetails.coverImage);
       this.movieDetails.images.forEach((image:Image)=>{
         this.images.push(image.imageName)
       })
-    })
+      this.signalr.avgRating.subscribe((val)=>{
+        
+        this.movieDetails.rating = val
+      })
+      console.log(this.movieDetails);
 
-    // this.signalr.UpdateRating(movieId);
-    // this.signalr.newMovieRatingListener();
-    this.signalr.avgRating.subscribe((res)=>{
-      this.avgRating = res
-      console.log(this.avgRating);
     })
-    
   }
   getRating(id:number){
-    this.signalr.UpdateRating(id);
-
+    
     if(this.isUserLoggedIn === true){
-      
       this.userService.getUserRatings(id).subscribe((res)=>{
         if(res.movieId !== 0){
           this.userRating = res.ratingValue;
@@ -90,16 +90,16 @@ export class MovieDetailsComponent {
     this.rating.MovieId = movieId;
     this.rating.Rating = this.ratingControl.value;
     this.http.rateMovie(this.rating).subscribe((res)=>{
-      console.log(res);
+      // console.log(res);
       
       this.userRating = this.rating.Rating!!;
-
+      this.signalr.UpdateRating(movieId);
+      this.signalr.avgRating.subscribe((res)=>{
+        this.avgRating = res;
+      })
     });
     this.modalOpen = false;
-    setTimeout(() => {
-    this.signalr.UpdateRating(movieId);
-      
-    }, 30);
+    
   }
   nextImage(){
     if(this.currentIndex === (this.images.length - 1) ){
@@ -116,18 +116,12 @@ export class MovieDetailsComponent {
     }
   }
   ngOnInit(): void {
+    this.signalr.startConnection();
     this.signalr.newMovieRatingListener();
-    this.signalr.avgRating.subscribe((res)=>{
-      this.avgRating = res
-      console.log(this.avgRating);
-    })
-
     this.activatedRoute.params.subscribe((params:Params)=>{
       this.getDetails(params['movieId']);
       this.getRating(params['movieId']);
       })
-      
-    
     }
   }
 

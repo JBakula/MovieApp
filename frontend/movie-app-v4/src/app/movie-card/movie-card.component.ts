@@ -21,8 +21,8 @@ import { User } from '../interfaces/user';
 export class MovieCardComponent implements OnInit {
   @Input() defaultPath:string 
   @Input() data:MovieCard;
-  @Output() refreshParent = new EventEmitter();
-
+  @Output() movieId = new EventEmitter();
+  @Input() newAvgRating:number;
   movieDetails:movieDetails
   modalOpen:boolean
   imdb = faImdb
@@ -48,7 +48,15 @@ export class MovieCardComponent implements OnInit {
     this.avgRating = {} as number;
     this.ratedMovieId = {} as number;
     this.loggedUser = {} as User;
+    // this.updateRating(this);
+    this.newAvgRating = {} as number;
   }
+  // updateRating(){
+  //   console.log(this.newAvgRating);
+  //   this.data.rating = this.newAvgRating
+  //   this.getUserRating();
+
+  // }
   getUserRating(){
     if(this.isUserLoggedIn){
       this.userService.getUserRatings(this.data.movieId).subscribe((res)=>{
@@ -65,16 +73,6 @@ export class MovieCardComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.signalr.startConnection();
-
-    this.signalr.UpdateRating(this.data.movieId);
-
-    this.signalr.newMovieRatingListener();
-    this.signalr.avgRating.subscribe((res)=>{
-      this.avgRating = res;
-      console.log(this.avgRating);
-    })
-    
     this.getUserRating();
     
   }
@@ -96,21 +94,13 @@ export class MovieCardComponent implements OnInit {
     this.ratingSubscribe=this.http.rateMovie(this.rating).subscribe((res)=>{
       // console.log(res);
       // this.refreshParent.emit();
+      this.signalr.UpdateRating(movieId);
+      this.signalr.avgRating.subscribe((val)=>{
+      this.data.rating = val;
+      this.getUserRating();})
     });
 
-    this.modalOpen = false;
-    setTimeout(() => {
-      this.userService.userModel.subscribe((val)=>{
-        this.loggedUser.userId = val.userId
-      })
-      this.signalr.UpdateRating(movieId);
-      this.signalr.movieId.subscribe((res)=>{
-      this.ratedMovieId = res;
-      this.getUserRating();
-    })
-    }, 30);
-    
-    
+    this.modalOpen = false; 
   }
 
   closeModal(event:any){

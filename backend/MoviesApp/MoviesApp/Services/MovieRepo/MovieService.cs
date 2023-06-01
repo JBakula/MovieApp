@@ -131,7 +131,7 @@ namespace MoviesApp.Services.MovieRepo
                 {
                     MovieId = movie.MovieId,
                     MovieName = movie.MovieName,
-                    //Rating = rating,
+                    Rating = 0,
                     Year = movie.Year,
                     /*UserRating = userRating*/
                     CoverImage = movie.CoverImage,
@@ -265,7 +265,7 @@ namespace MoviesApp.Services.MovieRepo
                 MovieId = movie.MovieId,
                 MovieName = movie.MovieName,
                 Year = movie.Year,
-                //Rating = CalculateMovieRating(movie.MovieId),
+                //Rating = 0,
                 CoverImage = movie.CoverImage,
                 Description = movie.Description,
                 IMDbRating = (float)movie.IMDbRating,
@@ -301,7 +301,7 @@ namespace MoviesApp.Services.MovieRepo
                 {
                     MovieId = movie.MovieId,
                     MovieName = movie.MovieName,
-                    Rating = rating,
+                    //Rating = rating,
                     Year = movie.Year,
                     /*UserRating = userRating*/
                     CoverImage = movie.CoverImage,

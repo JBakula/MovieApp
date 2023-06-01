@@ -20,7 +20,7 @@
           <div class="stars-div">
             
             <div>
-              <i *ngIf="(avgRating > 0 )"  class="fas fa-star user-rating" [ngClass]="{'hide-user-rating':modalOpen}" >&nbsp;{{avgRating}}</i>
+              <i *ngIf="(data.rating > 0 )"  class="fas fa-star user-rating" [ngClass]="{'hide-user-rating':modalOpen}" >&nbsp;{{data.rating}}</i>
               <i *ngIf="ratedCheck" (click)="ratingPopUp($event)" class="fas fa-star" style="color: #1e67e6;" [ngClass]="{'hide-user-rating':modalOpen}">&nbsp;{{ratingResponse.ratingValue}}</i>
             </div>
             <div *ngIf="isUserLoggedIn">

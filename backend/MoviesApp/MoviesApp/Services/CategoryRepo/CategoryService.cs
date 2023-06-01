@@ -44,7 +44,7 @@ namespace MoviesApp.Services.CategoryRepo
                 {
                     MovieId = movie.MovieId,
                     MovieName = movie.MovieName,
-                    Rating = rating,
+                    //Rating = rating,
                     Year = movie.Year,
                     /*UserRating = userRating*/
                     CoverImage = movie.CoverImage,
