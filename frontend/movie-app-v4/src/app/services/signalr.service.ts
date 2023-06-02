@@ -50,17 +50,14 @@ export class SignalrService {
   raiseMovieIdEmmiter(id:number){
     this.movieId.emit(id);
   }
-
-
   newMovieRatingListener(){
     this.hubConnection.on("avgMovieRating",(res)=>{
     this.raiseAvgRatingEmmiter(res.avgRating);
     this.raiseMovieIdEmmiter(res.id);
     })
   }
-    
 
-    
+  
 }
     
   

@@ -51,12 +51,7 @@ export class MovieCardComponent implements OnInit {
     // this.updateRating(this);
     this.newAvgRating = {} as number;
   }
-  // updateRating(){
-  //   console.log(this.newAvgRating);
-  //   this.data.rating = this.newAvgRating
-  //   this.getUserRating();
-
-  // }
+  
   getUserRating(){
     if(this.isUserLoggedIn){
       this.userService.getUserRatings(this.data.movieId).subscribe((res)=>{

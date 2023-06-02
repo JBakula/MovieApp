@@ -91,8 +91,7 @@ export class MoviesContainerComponent implements OnInit{
           index++;
         }
       })
-      this.totalPages = Array.from(new Array(res.numberOfPages),(x,i)=>i+1)
-      
+      this.totalPages = Array.from(new Array(res.numberOfPages),(x,i)=>i+1) 
     })
     
   }

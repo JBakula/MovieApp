@@ -45,20 +45,21 @@ export class MovieDetailsComponent {
     this.http.getMovieDetails(movieId).subscribe((res)=>{
       
       this.movieDetails = res
-
-      this.signalr.UpdateRating(movieId);
       
+      this.signalr.UpdateRating(movieId); //connection error
+      
+      
+
       this.images.push(this.movieDetails.coverImage);
       this.movieDetails.images.forEach((image:Image)=>{
         this.images.push(image.imageName)
       })
-      this.signalr.avgRating.subscribe((val)=>{
-        
-        this.movieDetails.rating = val
-      })
-      console.log(this.movieDetails);
+      
 
+      
     })
+    
+    
   }
   getRating(id:number){
     
@@ -95,7 +96,7 @@ export class MovieDetailsComponent {
       this.userRating = this.rating.Rating!!;
       this.signalr.UpdateRating(movieId);
       this.signalr.avgRating.subscribe((res)=>{
-        this.avgRating = res;
+        this.movieDetails.rating = res;
       })
     });
     this.modalOpen = false;
@@ -116,9 +117,9 @@ export class MovieDetailsComponent {
     }
   }
   ngOnInit(): void {
-    this.signalr.startConnection();
+    // this.signalr.startConnection();
     this.signalr.newMovieRatingListener();
-    this.activatedRoute.params.subscribe((params:Params)=>{
+    this.activatedRoute.params.subscribe((params:Params)=>{ 
       this.getDetails(params['movieId']);
       this.getRating(params['movieId']);
       })
