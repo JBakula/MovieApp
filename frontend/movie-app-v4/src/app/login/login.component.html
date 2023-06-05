@@ -5,7 +5,7 @@
         
         <label for="Email" class="form label">Email</label>
         <div class="input-group">
-            <input type="text" formControlName="Email" class="form-control form-controll-class">
+            <input type="text" formControlName="Email" class="form-control form-controll-class" id="Email">
         </div>
         <div>
             <small *ngIf="formData.controls['Email'].errors?.['required']">
@@ -19,7 +19,7 @@
         </div>
         <label for="Password" class="form label">Password</label>
         <div class="input-group">
-            <input type="password" formControlName="Password" class="form-control form-controll-class" >
+            <input type="password" formControlName="Password" class="form-control form-controll-class" id="Password" >
         </div>
         <div>
             <small *ngIf="formData.controls['Password'].errors?.['required']">

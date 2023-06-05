@@ -2,9 +2,8 @@
   <div class="select-container">
     <div class="select-div">
       <div class="sub-div">
-        <select class="form-select select"  name="selectCategory" id="selectCategory" (change)="handleCategoryChange($event)">
-          <option value="any">Any</option>
-          <option  *ngFor="let category of categories" value={{category.categoryId}}>{{category.categoryName}}</option>
+        <select class="form-select select"  name="selectCategory" id="selectCategory" (change)="handleCategoryChange($event)" >
+          <option  *ngFor="let category of categories" [value]="category.categoryId" >{{category.categoryName}}</option>
         </select>
       </div>
       <div class="sub-div">

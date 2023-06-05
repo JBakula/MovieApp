@@ -23,8 +23,7 @@ export class MoviesContainerComponent implements OnInit{
   isLoggedIn:boolean;
   recommendedMovieCard:MovieCard;
   loader:boolean = false;
-  selectListOptions:string[] = ["Title ascending","Title descending","Year ascending","Year descending","IMDb rating ascending","IMDb rating descending","Users rating ascending",
-                                "Users rating descending"];
+  selectListOptions:string[] = ["Title ascending","Title descending","Year ascending","Year descending","IMDb rating ascending","IMDb rating descending"];
   order:string = "Title ascending";
   modalActive:boolean;
   categories:Category[] = [];
@@ -62,17 +61,18 @@ export class MoviesContainerComponent implements OnInit{
     this.loader = true;
     setTimeout( () => this.loader = false, 500 );
   }
+  // selectedOption:string = "Any";
   handleCategoryChange(event:any){
     this.load();
     let value = event.target.value;
-    if(value === "any"){
+    if(value !== "any"){
       this.page = 1;
-      this.router.navigate(['/']);
-      this.currentPath = '/';
+      this.currentPath = `/category/${value}`;
+      this.router.navigate([this.currentPath]);
     }else{
       this.page = 1;
-      this.router.navigate([`/category/${value}`]);
-      this.currentPath = `/category/${value}`;
+      this.currentPath = '/home';
+      this.router.navigate([this.currentPath]);
     }
   }
   
@@ -209,12 +209,9 @@ export class MoviesContainerComponent implements OnInit{
   ngOnInit(): void {
     this.signalr.startConnection();
     this.signalr.newMovieRatingListener();
-    // this.signalr.avgRating.subscribe((res)=>{
-    //   this.avgRating = res;
-    //   console.log(this.avgRating);
-    // })
     this.http.getCategories().subscribe((res)=>{
       this.categories = res
+      this.categories.unshift({categoryId:"any",categoryName:"Any"})
     })
     this.currentPath = this.router.url;
     this.isLoggedIn = this.user.isLoggedIn();

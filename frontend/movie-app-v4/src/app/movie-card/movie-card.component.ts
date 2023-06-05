@@ -87,12 +87,12 @@ export class MovieCardComponent implements OnInit {
     this.rating.MovieId = movieId;
     this.rating.Rating = this.ratingControl.value;
     this.ratingSubscribe=this.http.rateMovie(this.rating).subscribe((res)=>{
-      // console.log(res);
-      // this.refreshParent.emit();
+      
       this.signalr.UpdateRating(movieId);
       this.signalr.avgRating.subscribe((val)=>{
       this.data.rating = val;
-      this.getUserRating();})
+      this.getUserRating();
+    })
     });
 
     this.modalOpen = false; 

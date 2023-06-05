@@ -45,11 +45,6 @@ export class MovieDetailsComponent {
     this.http.getMovieDetails(movieId).subscribe((res)=>{
       
       this.movieDetails = res
-      
-      this.signalr.UpdateRating(movieId); //connection error
-      
-      
-
       this.images.push(this.movieDetails.coverImage);
       this.movieDetails.images.forEach((image:Image)=>{
         this.images.push(image.imageName)

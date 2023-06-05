@@ -12,6 +12,9 @@ const routes: Routes = [
     component: MoviesContainerComponent
   },
   {
+    path:'home',component:MoviesContainerComponent
+  },
+  {
     path:'search/:movie-search',
     component:MoviesContainerComponent
   },

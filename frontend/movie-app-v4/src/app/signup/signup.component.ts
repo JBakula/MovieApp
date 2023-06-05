@@ -24,7 +24,7 @@ export class SignupComponent implements OnInit{
   }
 
   onSubmit(){
-    if(this.formData.valid){
+    if(this.formData.valid && this.passwordConfirmedError === false){
       this.newUser.name = this.formData.value.Name;
       this.newUser.lastname = this.formData.value.Lastname;
       this.newUser.email = this.formData.value.Email;
@@ -42,7 +42,14 @@ export class SignupComponent implements OnInit{
       })
     }
   }
-  
+  passwordConfirmedError:boolean = false;
+  handleConfirmPasswordChange(){
+    if(this.formData.get("Password")?.value !== this.formData.get("ConfirmPassword")?.value){
+      this.passwordConfirmedError = true;
+    }else{
+      this.passwordConfirmedError = false;
+    }
+  }
   ngOnInit():void{
    this.formData = new FormGroup({
       Name:new FormControl("",[Validators.required]),
